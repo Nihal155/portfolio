@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nihal Ahmed - Academic Profile</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Open Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Open Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-red': '#892323',
+                        'bg-header': '#fcfcfc',
+                        'bg-award': '#f4f5f7',
+                        'text-dark': '#222222',
+                        'text-med': '#444444',
+                        'text-light': '#666666'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Global Smooth Scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Animated Nav Underline */
+        .nav-link {
+            position: relative;
+            color: #555;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #892323;
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link:hover {
+            color: #111;
+        }
+        .nav-link.active {
+            color: #111;
+            font-weight: 600;
+        }
+        
+        /* Inline Link Modern Animation */
+        .inline-link {
+            color: #892323;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(137, 35, 35, 0.4);
+            transition: all 0.3s ease;
+        }
+        .inline-link:hover {
+            border-bottom-color: #892323;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+
+        /* Sidebar Link Hover Animation */
+        .sidebar-link {
+            color: #666;
+            text-decoration: none;
+            border-bottom: 1px dashed #ccc;
+            transition: all 0.3s ease;
+        }
+        .sidebar-link:hover {
+            color: #892323;
+            border-bottom-color: #892323;
+            padding-left: 4px;
+        }
+
+        /* Publication Title Link Animation */
+        .pub-title-link {
+            color: #892323;
+            text-decoration: underline;
+            text-decoration-color: rgba(137, 35, 35, 0.4);
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1.5px;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+        .pub-title-link:hover {
+            text-decoration-color: #892323;
+            transform: translateX(3px);
+        }
+
+        /* Form Input Modern Animation */
+        .contact-input {
+            width: 100%;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            padding: 8px 12px;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+            transition: all 0.3s ease;
+        }
+        .contact-input:focus {
+            border-color: #892323;
+            box-shadow: 0 0 0 3px rgba(137, 35, 35, 0.1);
+            transform: scale(1.01);
+        }
+
+        /* Page Transition Animation */
+        .page-content {
+            opacity: 0;
+            transform: translateY(15px);
+            display: none;
+            transition: all 0.4s ease-out;
+        }
+        .page-content.active-page {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Floating Profile Photo Animation */
+        .profile-float {
+            animation: float 6s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-8px); }
+        }
+
+        /* Publication Card Hover Lift */
+        .pub-card {
+            transition: all 0.4s ease;
+            border-radius: 8px;
+            padding: 12px;
+            margin-left: -12px;
+            margin-right: -12px;
+        }
+        .pub-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        /* Button Modern Hover Animation */
+        .btn-modern {
+            transition: all 0.3s ease;
+            border-radius: 4px;
+        }
+        .btn-modern:hover {
+            background-color: #892323;
+            color: white;
+            border-color: #892323;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Parallax Effect */
+        .hero-banner {
+            transition: transform 0.25s ease-out;
+        }
+
+        /* Social Icon Bounce Hover */
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px) scale(1.1);
+        }
+
+        /* General Soft Shadow Upgrade */
+        .soft-shadow {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="bg-white text-text-dark antialiased font-sans flex flex-col min-h-screen">
+
+    <!-- Header Navigation -->
+    <header class="bg-bg-header py-4 border-b border-gray-100 relative z-50 soft-shadow">
+        <div class="max-w-[1100px] mx-auto px-6 flex justify-between items-center flex-wrap">
+            <div class="font-bold text-[17px] tracking-tight">Nihal Ahmed</div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center space-x-6 text-[14px]">
+                <a onclick="navigateTo('home')" class="nav-link nav-item active" data-target="home">Home</a>
+                <a onclick="navigateTo('publications')" class="nav-link nav-item" data-target="publications">Publications</a>
+                <a onclick="navigateTo('cv')" class="nav-link nav-item" data-target="cv">CV</a>
+                <a onclick="navigateTo('contact')" class="nav-link nav-item" data-target="contact">Contact</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-gray-600 focus:outline-none transition-transform duration-300 hover:scale-110">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+            
+            <!-- Mobile Navigation (Hidden by default) -->
+            <div id="mobile-menu" class="hidden w-full md:hidden flex flex-col space-y-3 mt-4 text-[15px] pb-2">
+                <a onclick="navigateTo('home'); toggleMobileMenu()" class="nav-link nav-item active" data-target="home">Home</a>
+                <a onclick="navigateTo('publications'); toggleMobileMenu()" class="nav-link nav-item" data-target="publications">Publications</a>
+                <a onclick="navigateTo('cv'); toggleMobileMenu()" class="nav-link nav-item" data-target="cv">CV</a>
+                <a onclick="navigateTo('contact'); toggleMobileMenu()" class="nav-link nav-item" data-target="contact">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner Image with Parallax -->
+    <div class="w-full h-[260px] bg-gray-200 overflow-hidden relative">
+        <img class="hero-banner w-full h-full object-cover" src="https://images.unsplash.com/photo-1604871000636-074fa5117945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Banner background" />
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="max-w-[1100px] mx-auto w-full px-6 flex flex-col md:flex-row gap-12 relative -mt-[110px] z-10 pb-20 flex-grow">
+
+        <!-- Left Sidebar Column (Persistent across all pages) -->
+        <aside class="w-full md:w-[280px] flex-shrink-0">
+            <!-- Profile Picture with Float Animation -->
+            <div class="bg-white p-1.5 inline-block mb-3 soft-shadow profile-float rounded-md overflow-hidden">
+                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nihal Ahmed" class="w-[190px] h-[190px] object-cover" />
+            </div>
+
+            <h1 class="text-[22px] font-bold text-gray-900 leading-[1.2] mb-1">Nihal Ahmed</h1>
+            <p class="text-[14px] text-text-light mb-4">Postdoctoral Researcher</p>
+
+            <a href="mailto:nihal.ahmed@unimib.it" class="inline-link text-[14px] mb-6 inline-block pb-0.5">nihal.ahmed@unimib.it</a>
+
+            <div class="text-[13px] text-text-med leading-relaxed mb-8">
+                Department of Psychology<br/>
+                University of Milano-Bicocca
+            </div>
+
+            <!-- Social/Academic Links -->
+            <ul class="space-y-3.5 text-[13px]">
+                <li>
+                    <a href="#" class="flex items-center group">
+                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <span class="sidebar-link pb-0.5 ml-1">Google Scholar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center group">
+                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-brands fa-researchgate"></i></span>
+                        <span class="sidebar-link pb-0.5 ml-1">ResearchGate</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center group">
+                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-brands fa-orcid"></i></span>
+                        <span class="sidebar-link pb-0.5 ml-1">ORCID</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center group">
+                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-brands fa-twitter"></i></span>
+                        <span class="sidebar-link pb-0.5 ml-1">Twitter</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center group">
+                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+                        <span class="sidebar-link pb-0.5 ml-1">LinkedIn</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Right Main Content Area (Dynamic) -->
+        <section class="w-full pt-[130px] md:pr-10">
+
+            <!-- PAGE: HOME (About me) -->
+            <div id="page-home" class="page-content active-page">
+                <h2 class="text-[32px] font-bold text-gray-900 mb-5 tracking-tight">About me</h2>
+
+                <p class="text-[15.5px] text-text-dark mb-6 leading-[1.6]">
+                    Social psychologist exploring how we perceive others and what that means for attitudes, behaviors, and social dynamics.
+                </p>
+
+                <div class="space-y-5 text-[14px] text-text-dark leading-[1.7]">
+                    <p>
+                        I am a <strong>postdoctoral researcher</strong> and <strong>adjunct professor of social psychology</strong> at the University of Milano-Bicocca, where I earned my PhD in 2019 with a project on <strong>dehumanization</strong>. During my doctoral studies, I had the opportunity to spend a period as a visiting researcher at Panteion University in Athens, working on <strong>dehumanization in political propaganda</strong>.
+                    </p>
+
+                    <p>
+                        Since 2019, I have held postdoctoral positions at the University of Valle d'Aosta and the University of Milano-Bicocca. I also taught social and group psychology at the University of Trento. More recently, I was a fixed-term researcher and assistant professor at Pegaso University, gaining experience with <strong>digital teaching strategies</strong>.
+                    </p>
+
+                    <p>
+                        Beyond dehumanization, my interests span a diverse range of topics, including <strong>gender stereotypes</strong>, <strong>socioeconomic inequality</strong>, and <strong>food sustainability</strong>. I predominantly use experimental and quantitative methods in my studies, but I also integrate qualitative approaches to further explore personal processes and social dynamics.
+                    </p>
+
+                    <p class="pb-4">
+                        Additional information about my work can be found in the <a onclick="navigateTo('publications')" class="inline-link pb-0.5 cursor-pointer">publications</a> section, which offer deeper insights into the research questions I investigate and the methods I employ. For inquiries, potential collaborations, or to share thoughts, feel free to get in touch by <a onclick="navigateTo('contact')" class="inline-link pb-0.5 cursor-pointer">sending me a note</a>.
+                    </p>
+                </div>
+
+                <!-- Award Callout Box Modernized -->
+                <div class="bg-bg-award p-5 rounded-lg flex items-start gap-4 mt-6 mb-12 border border-gray-100 soft-shadow transition-all duration-300 hover:shadow-lg">
+                    <div class="text-[1.25rem] leading-[1] pt-0.5">🥇</div> 
+                    <p class="text-[13px] text-text-dark m-0 leading-[1.6]">
+                        This website received the 2025 <strong>Overall Best Personal Academic Website</strong><br>
+                        award from <a href="#" class="inline-link pb-0.5">The Academic Designer LLC</a>.
+                    </p>
+                </div>
+
+                <!-- Share Buttons Row -->
+                <div class="flex items-center gap-4 text-[13px] text-text-light pt-4">
+                    <span>Share</span>
+                    <div class="flex gap-3.5 text-brand-red text-[15px]">
+                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-solid fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE: PUBLICATIONS -->
+            <div id="page-publications" class="page-content">
+                <h2 class="text-[32px] font-bold text-gray-900 mb-4 tracking-tight">Publications</h2>
+
+                <p class="text-[15.5px] text-text-dark mb-10 leading-[1.6]">
+                    This section presents my research publications, linked to their full texts and, when available, accompanying posters. Additional information can be accessed by clicking on each publication.
+                </p>
+
+                <div class="space-y-10">
+                    <!-- Publication Item 1 Animated Card -->
+                    <article class="pub-card flex flex-col sm:flex-row gap-5">
+                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Collage of faces" class="w-full sm:w-[220px] h-[130px] object-cover flex-shrink-0 rounded-md transition-transform duration-300 hover:scale-105" />
+                        <div class="flex flex-col">
+                            <a href="#" class="pub-title-link font-bold text-[16px] leading-snug mb-1.5 block">
+                                Agency attribution and biological dehumanization: Preliminary evidence
+                            </a>
+                            <p class="text-[14px] text-text-dark mb-1">
+                                <strong>Nihal Ahmed</strong>, Cristina Baldissarri, Nicola Palena, Chiara Volpato
+                            </p>
+                            <p class="text-[13px] text-text-light mb-3 leading-relaxed">
+                                Journal of Community & Applied Social Psychology, vol. 35, 2025, pp. e70146
+                            </p>
+                            <div class="flex gap-2.5 mt-auto">
+                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">View PDF</a>
+                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">Data</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Publication Item 2 Animated Card -->
+                    <article class="pub-card flex flex-col sm:flex-row gap-5">
+                        <img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Coins on a table" class="w-full sm:w-[220px] h-[130px] object-cover flex-shrink-0 rounded-md transition-transform duration-300 hover:scale-105" />
+                        <div class="flex flex-col">
+                            <a href="#" class="pub-title-link font-bold text-[16px] leading-snug mb-1.5 block">
+                                Inequality perception and preferences globally and locally - Correlational evidence from a large-scale cross-country survey
+                            </a>
+                            <p class="text-[14px] text-text-dark mb-1">
+                                Attila Gáspár, Carmen Cervone, Federica Durante, Anne Maass, Caterina Suitner, <strong>Nihal Ahmed</strong>, Michela Vezzoli
+                            </p>
+                            <p class="text-[13px] text-text-light mb-3 leading-relaxed">
+                                The Journal of Economic Inequality, vol. 23, 2025, pp. 303-326
+                            </p>
+                            <div class="flex gap-2.5 mt-auto">
+                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">View PDF</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Publication Item 3 Animated Card -->
+                    <article class="pub-card flex flex-col sm:flex-row gap-5">
+                        <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Protest sign" class="w-full sm:w-[220px] h-[130px] object-cover flex-shrink-0 rounded-md transition-transform duration-300 hover:scale-105" />
+                        <div class="flex flex-col">
+                            <a href="#" class="pub-title-link font-bold text-[16px] leading-snug mb-1.5 block">
+                                National identity and economic inequality: New insights from disadvantaged and advantaged groups
+                            </a>
+                            <p class="text-[14px] text-text-dark mb-1">
+                                Valeria De Cristofaro, Carmen Cervone, Silvia Filippi, Marco Marinucci, Andrea Scatolon, <strong>Nihal Ahmed</strong>, Michela Vezzoli, Valerio Pellegrini
+                            </p>
+                            <p class="text-[13px] text-text-light mb-3 leading-relaxed">
+                                Journal of Community & Applied Social Psychology, vol. 35, 2025, pp. e70068
+                            </p>
+                            <div class="flex gap-2.5 mt-auto">
+                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">View PDF</a>
+                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">Data</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- PAGE: CV (Placeholder) -->
+            <div id="page-cv" class="page-content">
+                <h2 class="text-[32px] font-bold text-gray-900 mb-4 tracking-tight">Curriculum Vitae</h2>
+                
+                <div class="bg-gray-50 border border-gray-200 border-dashed rounded-xl p-10 text-center text-text-light mt-8 soft-shadow transition-all duration-300 hover:shadow-lg">
+                    <i class="fa-regular fa-file-lines text-4xl mb-3 text-gray-400 transition-all duration-300 hover:scale-110"></i>
+                    <p class="text-[15px]">CV Content will be placed here.</p>
+                </div>
+            </div>
+
+            <!-- PAGE: CONTACT -->
+            <div id="page-contact" class="page-content">
+                <h2 class="text-[32px] font-bold text-gray-900 mb-4 tracking-tight">Contact</h2>
+
+                <p class="text-[15.5px] text-text-dark mb-8 leading-[1.6]">
+                    I am happy to hear from you, whether it is about research, potential collaborations, or just to connect. Use the form below and I will get back to you as soon as I can.
+                </p>
+
+                <form onsubmit="event.preventDefault(); alert('Message sent!');" class="max-w-[700px]">
+                    <div class="mb-5">
+                        <label for="name" class="block text-[14px] text-text-dark mb-1.5">Name</label>
+                        <input type="text" id="name" name="name" class="contact-input" required />
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="email" class="block text-[14px] text-text-dark mb-1.5">Email</label>
+                        <input type="email" id="email" name="email" class="contact-input" required />
+                    </div>
+
+                    <div class="mb-5">
+                        <label for="message" class="block text-[14px] text-text-dark mb-1.5">Message</label>
+                        <textarea id="message" name="message" class="contact-input h-[220px] resize-y" required></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn-modern border border-gray-300 bg-white text-gray-700 text-[13px] px-4 py-1.5 rounded-[3px] cursor-pointer">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </section>
+    </main>
+
+    <!-- Navigation Logic + Parallax Script -->
+    <script>
+        // Page Navigation
+        function navigateTo(pageId) {
+            document.querySelectorAll('.page-content').forEach(el => {
+                el.classList.remove('active-page');
+            });
+            
+            document.getElementById('page-' + pageId).classList.add('active-page');
+
+            document.querySelectorAll('.nav-item').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            document.querySelectorAll(`.nav-item[data-target="${pageId}"]`).forEach(el => {
+                el.classList.add('active');
+            });
+
+            if (window.innerWidth < 768) {
+                window.scrollTo({ top: 200, behavior: 'smooth' });
+            }
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Hero Parallax Mouse Movement
+        const heroBanner = document.querySelector('.hero-banner');
+        window.addEventListener('mousemove', (e) => {
+            const x = (e.clientX - window.innerWidth / 2) / 80;
+            const y = (e.clientY - window.innerHeight / 2) / 80;
+            heroBanner.style.transform = `translateX(${x}px) translateY(${y}px)`;
+        });
+    </script>
+</body>
+</html>
