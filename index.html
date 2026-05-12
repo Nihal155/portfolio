@@ -3,491 +3,396 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nihal Ahmed - Academic Profile</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Open Sans -->
+    <title>Nihal Ahmed | Ecological Economics & Sustainability</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
-    
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- Tailwind Configuration -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Open Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        'brand-red': '#892323',
-                        'bg-header': '#fcfcfc',
-                        'bg-award': '#f4f5f7',
-                        'text-dark': '#222222',
-                        'text-med': '#444444',
-                        'text-light': '#666666'
-                    }
-                }
-            }
-        }
-    </script>
-
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Global Smooth Scroll */
-        html {
-            scroll-behavior: smooth;
+        :root {
+            --bg: #fafaf7;
+            --text: #2c2c2c;
+            --text-light: #5c5c5c;
+            --accent: #2d6a4f;
+            --accent-glow: #40916c;
+            --card-bg: #ffffff;
+            --border: #e0e0d8;
+            --shadow: 0 8px 30px rgba(0,0,0,0.04);
+            --radius: 12px;
+            --transition: 0.3s cubic-bezier(0.25,0.8,0.25,1.2);
+            --max-width: 1100px;
+            --header-height: 70px;
         }
-
-        /* Animated Nav Underline */
-        .nav-link {
-            position: relative;
-            color: #555;
-            transition: color 0.3s ease;
-            cursor: pointer;
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 17px;
+            -webkit-font-smoothing: antialiased;
         }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #892323;
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-        .nav-link:hover {
-            color: #111;
-        }
-        .nav-link.active {
-            color: #111;
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
+            letter-spacing: -0.02em;
         }
-        
-        /* Inline Link Modern Animation */
-        .inline-link {
-            color: #892323;
+        .container { max-width: var(--max-width); margin: 0 auto; padding: 0 24px; }
+        header {
+            position: sticky; top: 0; z-index: 100;
+            background: rgba(250,250,247,0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            height: var(--header-height);
+            display: flex; align-items: center;
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--text); text-decoration: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.95rem; position: relative; padding-bottom: 4px; }
+        .nav-links a::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--accent); transition: width 0.3s ease; }
+        .nav-links a:hover { color: var(--text); }
+        .nav-links a:hover::after { width: 100%; }
+
+        #about-top { padding: 5rem 0 6rem; background: linear-gradient(135deg, #f4f8f4 0%, #fafaf7 50%, #e9f0e9 100%); border-bottom: 1px solid var(--border); }
+        .about-hero-grid { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: center; }
+        .profile-picture { width: 100%; border-radius: 20px; box-shadow: 0 12px 40px rgba(0,0,0,0.06); aspect-ratio: 3/4; object-fit: cover; background: #d4e0d4; transition: transform 0.4s ease; }
+        .profile-picture:hover { transform: scale(1.02); }
+        .about-hero-text h1 { font-size: clamp(3.5rem, 7vw, 4.5rem); line-height: 1.05; margin-bottom: 1rem; color: #1e1e1e; }
+        .tagline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.6rem; font-weight: 400; color: var(--text-light); margin-bottom: 2rem; line-height: 1.4; }
+        .bio-text p { color: var(--text-light); margin-bottom: 1.2rem; font-size: 1.05rem; line-height: 1.8; }
+
+        /* Metrics & links */
+        .metrics-section {
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+        }
+        .metrics {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            background: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border: 1px solid var(--border);
+        }
+        .metric-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.3;
+        }
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .metric-label {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .profile-links {
+            display: flex;
+            gap: 1.2rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .profile-links a {
             text-decoration: none;
-            border-bottom: 1px solid rgba(137, 35, 35, 0.4);
-            transition: all 0.3s ease;
+            font-weight: 500;
+            color: var(--accent);
+            font-size: 0.9rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.2s;
         }
-        .inline-link:hover {
-            border-bottom-color: #892323;
-            padding-left: 2px;
-            padding-right: 2px;
-        }
-
-        /* Sidebar Link Hover Animation */
-        .sidebar-link {
-            color: #666;
-            text-decoration: none;
-            border-bottom: 1px dashed #ccc;
-            transition: all 0.3s ease;
-        }
-        .sidebar-link:hover {
-            color: #892323;
-            border-bottom-color: #892323;
-            padding-left: 4px;
+        .profile-links a:hover {
+            border-bottom: 1px solid var(--accent);
         }
 
-        /* Publication Title Link Animation */
-        .pub-title-link {
-            color: #892323;
-            text-decoration: underline;
-            text-decoration-color: rgba(137, 35, 35, 0.4);
-            text-underline-offset: 3px;
-            text-decoration-thickness: 1.5px;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-        .pub-title-link:hover {
-            text-decoration-color: #892323;
-            transform: translateX(3px);
-        }
+        section { padding: 5rem 0; border-bottom: 1px solid var(--border); }
+        .section-title { font-size: 2.6rem; margin-bottom: 3rem; color: #1e1e1e; display: inline-block; position: relative; }
+        .section-title::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 50px; height: 3px; background: var(--accent); border-radius: 2px; }
 
-        /* Form Input Modern Animation */
-        .contact-input {
-            width: 100%;
-            border: 1px solid #e2e8f0;
-            border-radius: 6px;
-            padding: 8px 12px;
-            font-size: 14px;
-            color: #333;
-            outline: none;
-            transition: all 0.3s ease;
-        }
-        .contact-input:focus {
-            border-color: #892323;
-            box-shadow: 0 0 0 3px rgba(137, 35, 35, 0.1);
-            transform: scale(1.01);
-        }
+        .research-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 2rem; }
+        .research-card { background: var(--card-bg); border-radius: var(--radius); padding: 2rem; box-shadow: var(--shadow); transition: all 0.3s ease; border: 1px solid transparent; cursor: pointer; }
+        .research-card:hover { transform: translateY(-6px); box-shadow: 0 18px 35px rgba(0,0,0,0.07); border-color: var(--accent-glow); }
+        .card-icon { font-size: 2rem; margin-bottom: 1rem; color: var(--accent); }
+        .research-card h3 { font-size: 1.5rem; margin-bottom: 0.8rem; color: #1e1e1e; }
+        .research-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; }
 
-        /* Page Transition Animation */
-        .page-content {
-            opacity: 0;
-            transform: translateY(15px);
-            display: none;
-            transition: all 0.4s ease-out;
-        }
-        .page-content.active-page {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .pub-list { display: flex; flex-direction: column; gap: 1.8rem; }
+        .pub-item { padding: 1.2rem 0; border-bottom: 1px solid var(--border); transition: background 0.2s; }
+        .pub-item:hover { background: rgba(45,106,79,0.02); }
+        .pub-title { font-weight: 600; font-size: 1.1rem; margin-bottom: 0.3rem; color: #1e1e1e; }
+        .pub-authors { font-size: 0.9rem; color: var(--text-light); margin-bottom: 0.3rem; }
+        .pub-journal { font-style: italic; font-size: 0.9rem; color: var(--accent); }
+        .pub-link { margin-left: 0.5rem; color: var(--accent); text-decoration: none; font-weight: 500; font-size: 0.85rem; }
+        .pub-link:hover { text-decoration: underline; }
 
-        /* Floating Profile Photo Animation */
-        .profile-float {
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-8px); }
-        }
+        .cv-box { background: var(--card-bg); border-radius: var(--radius); padding: 3rem; text-align: center; box-shadow: var(--shadow); }
+        .cv-box p { color: var(--text-light); margin-bottom: 1.8rem; }
 
-        /* Publication Card Hover Lift */
-        .pub-card {
-            transition: all 0.4s ease;
-            border-radius: 8px;
-            padding: 12px;
-            margin-left: -12px;
-            margin-right: -12px;
-        }
-        .pub-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-        }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.85rem 2rem; border-radius: 40px; font-weight: 500; font-size: 0.95rem; text-decoration: none; transition: all 0.3s ease; cursor: pointer; border: none; font-family: 'Inter', sans-serif; }
+        .btn-primary { background: var(--accent); color: white; box-shadow: 0 4px 15px rgba(45,106,79,0.3); }
+        .btn-primary:hover { background: var(--accent-glow); transform: translateY(-2px); box-shadow: 0 8px 25px rgba(45,106,79,0.4); }
 
-        /* Button Modern Hover Animation */
-        .btn-modern {
-            transition: all 0.3s ease;
-            border-radius: 4px;
-        }
-        .btn-modern:hover {
-            background-color: #892323;
-            color: white;
-            border-color: #892323;
-            transform: translateY(-2px);
-        }
+        footer { background: #1e2d24; color: #d4e0d4; padding: 3rem 0; text-align: center; }
+        .social-links { display: flex; justify-content: center; gap: 2.5rem; margin-bottom: 2rem; flex-wrap: wrap; }
+        .social-links a { color: #d4e0d4; text-decoration: none; font-weight: 500; font-size: 1rem; display: flex; align-items: center; gap: 0.4rem; transition: color 0.2s; }
+        .social-links a:hover { color: white; }
+        .copyright { font-size: 0.85rem; opacity: 0.7; }
 
-        /* Hero Parallax Effect */
-        .hero-banner {
-            transition: transform 0.25s ease-out;
-        }
+        .fade-in { opacity: 0; transform: translateY(25px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
 
-        /* Social Icon Bounce Hover */
-        .social-icon {
-            transition: all 0.3s ease;
-        }
-        .social-icon:hover {
-            transform: translateY(-3px) scale(1.1);
-        }
-
-        /* General Soft Shadow Upgrade */
-        .soft-shadow {
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        @media (max-width: 768px) {
+            .about-hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .nav-links { gap: 1rem; }
+            .about-hero-text h1 { font-size: 2.8rem; }
+            .tagline { font-size: 1.3rem; }
+            .metrics-section { flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .metrics { flex-wrap: wrap; gap: 1.2rem; }
         }
     </style>
 </head>
-<body class="bg-white text-text-dark antialiased font-sans flex flex-col min-h-screen">
-
-    <!-- Header Navigation -->
-    <header class="bg-bg-header py-4 border-b border-gray-100 relative z-50 soft-shadow">
-        <div class="max-w-[1100px] mx-auto px-6 flex justify-between items-center flex-wrap">
-            <div class="font-bold text-[17px] tracking-tight">Nihal Ahmed</div>
-            
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center space-x-6 text-[14px]">
-                <a onclick="navigateTo('home')" class="nav-link nav-item active" data-target="home">Home</a>
-                <a onclick="navigateTo('publications')" class="nav-link nav-item" data-target="publications">Publications</a>
-                <a onclick="navigateTo('cv')" class="nav-link nav-item" data-target="cv">CV</a>
-                <a onclick="navigateTo('contact')" class="nav-link nav-item" data-target="contact">Contact</a>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="nav-logo">Nihal Ahmed</a>
+                <ul class="nav-links">
+                    <li><a href="#about-top">About</a></li>
+                    <li><a href="#research">Research</a></li>
+                    <li><a href="#publications">Publications</a></li>
+                    <li><a href="#cv">CV</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
             </nav>
-            
-            <!-- Mobile Menu Button -->
-            <button onclick="toggleMobileMenu()" class="md:hidden text-gray-600 focus:outline-none transition-transform duration-300 hover:scale-110">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
-            
-            <!-- Mobile Navigation (Hidden by default) -->
-            <div id="mobile-menu" class="hidden w-full md:hidden flex flex-col space-y-3 mt-4 text-[15px] pb-2">
-                <a onclick="navigateTo('home'); toggleMobileMenu()" class="nav-link nav-item active" data-target="home">Home</a>
-                <a onclick="navigateTo('publications'); toggleMobileMenu()" class="nav-link nav-item" data-target="publications">Publications</a>
-                <a onclick="navigateTo('cv'); toggleMobileMenu()" class="nav-link nav-item" data-target="cv">CV</a>
-                <a onclick="navigateTo('contact'); toggleMobileMenu()" class="nav-link nav-item" data-target="contact">Contact</a>
-            </div>
         </div>
     </header>
 
-    <!-- Hero Banner Image with Parallax -->
-    <div class="w-full h-[260px] bg-gray-200 overflow-hidden relative">
-        <img class="hero-banner w-full h-full object-cover" src="https://images.unsplash.com/photo-1604871000636-074fa5117945?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Banner background" />
-    </div>
-
-    <!-- Main Content Container -->
-    <main class="max-w-[1100px] mx-auto w-full px-6 flex flex-col md:flex-row gap-12 relative -mt-[110px] z-10 pb-20 flex-grow">
-
-        <!-- Left Sidebar Column (Persistent across all pages) -->
-        <aside class="w-full md:w-[280px] flex-shrink-0">
-            <!-- Profile Picture with Float Animation -->
-            <div class="bg-white p-1.5 inline-block mb-3 soft-shadow profile-float rounded-md overflow-hidden">
-                 <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Nihal Ahmed" class="w-[190px] h-[190px] object-cover" />
-            </div>
-
-            <h1 class="text-[22px] font-bold text-gray-900 leading-[1.2] mb-1">Nihal Ahmed</h1>
-            <p class="text-[14px] text-text-light mb-4">Postdoctoral Researcher</p>
-
-            <a href="mailto:nihal.ahmed@unimib.it" class="inline-link text-[14px] mb-6 inline-block pb-0.5">nihal.ahmed@unimib.it</a>
-
-            <div class="text-[13px] text-text-med leading-relaxed mb-8">
-                Department of Psychology<br/>
-                University of Milano-Bicocca
-            </div>
-
-            <!-- Social/Academic Links -->
-            <ul class="space-y-3.5 text-[13px]">
-                <li>
-                    <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">Google Scholar</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-brands fa-researchgate"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">ResearchGate</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-brands fa-orcid"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">ORCID</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-brands fa-twitter"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">Twitter</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-gray-400 group-hover:text-brand-red transition-colors social-icon"><i class="fa-brands fa-linkedin-in"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">LinkedIn</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-
-        <!-- Right Main Content Area (Dynamic) -->
-        <section class="w-full pt-[130px] md:pr-10">
-
-            <!-- PAGE: HOME (About me) -->
-            <div id="page-home" class="page-content active-page">
-                <h2 class="text-[32px] font-bold text-gray-900 mb-5 tracking-tight">About me</h2>
-
-                <p class="text-[15.5px] text-text-dark mb-6 leading-[1.6]">
-                    Social psychologist exploring how we perceive others and what that means for attitudes, behaviors, and social dynamics.
-                </p>
-
-                <div class="space-y-5 text-[14px] text-text-dark leading-[1.7]">
-                    <p>
-                        I am a <strong>postdoctoral researcher</strong> and <strong>adjunct professor of social psychology</strong> at the University of Milano-Bicocca, where I earned my PhD in 2019 with a project on <strong>dehumanization</strong>. During my doctoral studies, I had the opportunity to spend a period as a visiting researcher at Panteion University in Athens, working on <strong>dehumanization in political propaganda</strong>.
-                    </p>
-
-                    <p>
-                        Since 2019, I have held postdoctoral positions at the University of Valle d'Aosta and the University of Milano-Bicocca. I also taught social and group psychology at the University of Trento. More recently, I was a fixed-term researcher and assistant professor at Pegaso University, gaining experience with <strong>digital teaching strategies</strong>.
-                    </p>
-
-                    <p>
-                        Beyond dehumanization, my interests span a diverse range of topics, including <strong>gender stereotypes</strong>, <strong>socioeconomic inequality</strong>, and <strong>food sustainability</strong>. I predominantly use experimental and quantitative methods in my studies, but I also integrate qualitative approaches to further explore personal processes and social dynamics.
-                    </p>
-
-                    <p class="pb-4">
-                        Additional information about my work can be found in the <a onclick="navigateTo('publications')" class="inline-link pb-0.5 cursor-pointer">publications</a> section, which offer deeper insights into the research questions I investigate and the methods I employ. For inquiries, potential collaborations, or to share thoughts, feel free to get in touch by <a onclick="navigateTo('contact')" class="inline-link pb-0.5 cursor-pointer">sending me a note</a>.
-                    </p>
-                </div>
-
-                <!-- Award Callout Box Modernized -->
-                <div class="bg-bg-award p-5 rounded-lg flex items-start gap-4 mt-6 mb-12 border border-gray-100 soft-shadow transition-all duration-300 hover:shadow-lg">
-                    <div class="text-[1.25rem] leading-[1] pt-0.5">🥇</div> 
-                    <p class="text-[13px] text-text-dark m-0 leading-[1.6]">
-                        This website received the 2025 <strong>Overall Best Personal Academic Website</strong><br>
-                        award from <a href="#" class="inline-link pb-0.5">The Academic Designer LLC</a>.
-                    </p>
-                </div>
-
-                <!-- Share Buttons Row -->
-                <div class="flex items-center gap-4 text-[13px] text-text-light pt-4">
-                    <span>Share</span>
-                    <div class="flex gap-3.5 text-brand-red text-[15px]">
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125"><i class="fa-solid fa-envelope"></i></a>
+    <!-- TOP: ABOUT ME (name, photo, bio, metrics, links) -->
+    <section id="about-top">
+        <div class="container">
+            <div class="about-hero-grid fade-in">
+                <img src="profile.jpg" alt="Nihal Ahmed" class="profile-picture">
+                <div class="about-hero-text">
+                    <h1>Nihal Ahmed</h1>
+                    <p class="tagline">Quantifying the pathways to a sustainable future: from carbon peaking to ecological security, using econometrics, deep learning, and cross-country evidence.</p>
+                    <div class="bio-text">
+                        <p>Nihal Ahmed is an environmental economist dedicated to measuring and modelling ecological security, land‑use transitions, and carbon neutrality. His research fuses deep learning with spatial econometrics to evaluate how policies shape green economic restructuring, from China’s provincial carbon targets to cross‑border energy indices in BRICS and Nordic countries.</p>
+                        <p>His core work revolves around building novel composite indicators of energy‑environment synergy and applying neural network approaches to land ecological security. With a PhD underway at Northwest A&F University, Nihal has authored over 18 journal articles in high‑impact environmental and energy journals, consistently bridging rigorous data science with actionable sustainability policy.</p>
                     </div>
-                </div>
-            </div>
 
-            <!-- PAGE: PUBLICATIONS -->
-            <div id="page-publications" class="page-content">
-                <h2 class="text-[32px] font-bold text-gray-900 mb-4 tracking-tight">Publications</h2>
-
-                <p class="text-[15.5px] text-text-dark mb-10 leading-[1.6]">
-                    This section presents my research publications, linked to their full texts and, when available, accompanying posters. Additional information can be accessed by clicking on each publication.
-                </p>
-
-                <div class="space-y-10">
-                    <!-- Publication Item 1 Animated Card -->
-                    <article class="pub-card flex flex-col sm:flex-row gap-5">
-                        <img src="https://images.unsplash.com/photo-1517486808906-6ca8b3f04846?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Collage of faces" class="w-full sm:w-[220px] h-[130px] object-cover flex-shrink-0 rounded-md transition-transform duration-300 hover:scale-105" />
-                        <div class="flex flex-col">
-                            <a href="#" class="pub-title-link font-bold text-[16px] leading-snug mb-1.5 block">
-                                Agency attribution and biological dehumanization: Preliminary evidence
-                            </a>
-                            <p class="text-[14px] text-text-dark mb-1">
-                                <strong>Nihal Ahmed</strong>, Cristina Baldissarri, Nicola Palena, Chiara Volpato
-                            </p>
-                            <p class="text-[13px] text-text-light mb-3 leading-relaxed">
-                                Journal of Community & Applied Social Psychology, vol. 35, 2025, pp. e70146
-                            </p>
-                            <div class="flex gap-2.5 mt-auto">
-                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">View PDF</a>
-                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">Data</a>
+                    <!-- Metrics and professional links (no badges) -->
+                    <div class="metrics-section">
+                        <div class="metrics">
+                            <div class="metric-item">
+                                <span class="metric-value">594</span>
+                                <span class="metric-label">Citations</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">12</span>
+                                <span class="metric-label">h-index</span>
+                            </div>
+                            <div class="metric-item">
+                                <span class="metric-value">13</span>
+                                <span class="metric-label">i10-index</span>
                             </div>
                         </div>
-                    </article>
-
-                    <!-- Publication Item 2 Animated Card -->
-                    <article class="pub-card flex flex-col sm:flex-row gap-5">
-                        <img src="https://images.unsplash.com/photo-1621504450181-5d356f61d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Coins on a table" class="w-full sm:w-[220px] h-[130px] object-cover flex-shrink-0 rounded-md transition-transform duration-300 hover:scale-105" />
-                        <div class="flex flex-col">
-                            <a href="#" class="pub-title-link font-bold text-[16px] leading-snug mb-1.5 block">
-                                Inequality perception and preferences globally and locally - Correlational evidence from a large-scale cross-country survey
-                            </a>
-                            <p class="text-[14px] text-text-dark mb-1">
-                                Attila Gáspár, Carmen Cervone, Federica Durante, Anne Maass, Caterina Suitner, <strong>Nihal Ahmed</strong>, Michela Vezzoli
-                            </p>
-                            <p class="text-[13px] text-text-light mb-3 leading-relaxed">
-                                The Journal of Economic Inequality, vol. 23, 2025, pp. 303-326
-                            </p>
-                            <div class="flex gap-2.5 mt-auto">
-                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">View PDF</a>
-                            </div>
+                        <div class="profile-links">
+                            <a href="https://scholar.google.com/citations?user=YOUR_ID" target="_blank">Google Scholar ↗</a>
+                            <a href="https://www.researchgate.net/profile/Nihal_Ahmed" target="_blank">ResearchGate ↗</a>
+                            <a href="https://www.scopus.com/authid/detail.uri?authorId=57297347200" target="_blank">Scopus ↗</a>
                         </div>
-                    </article>
-
-                    <!-- Publication Item 3 Animated Card -->
-                    <article class="pub-card flex flex-col sm:flex-row gap-5">
-                        <img src="https://images.unsplash.com/photo-1595273670150-bd0c3c392e46?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Protest sign" class="w-full sm:w-[220px] h-[130px] object-cover flex-shrink-0 rounded-md transition-transform duration-300 hover:scale-105" />
-                        <div class="flex flex-col">
-                            <a href="#" class="pub-title-link font-bold text-[16px] leading-snug mb-1.5 block">
-                                National identity and economic inequality: New insights from disadvantaged and advantaged groups
-                            </a>
-                            <p class="text-[14px] text-text-dark mb-1">
-                                Valeria De Cristofaro, Carmen Cervone, Silvia Filippi, Marco Marinucci, Andrea Scatolon, <strong>Nihal Ahmed</strong>, Michela Vezzoli, Valerio Pellegrini
-                            </p>
-                            <p class="text-[13px] text-text-light mb-3 leading-relaxed">
-                                Journal of Community & Applied Social Psychology, vol. 35, 2025, pp. e70068
-                            </p>
-                            <div class="flex gap-2.5 mt-auto">
-                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">View PDF</a>
-                                <a href="#" class="btn-modern inline-flex items-center justify-center border border-gray-300 bg-white text-gray-600 text-[12px] px-3 py-1">Data</a>
-                            </div>
-                        </div>
-                    </article>
+                    </div>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <!-- PAGE: CV (Placeholder) -->
-            <div id="page-cv" class="page-content">
-                <h2 class="text-[32px] font-bold text-gray-900 mb-4 tracking-tight">Curriculum Vitae</h2>
-                
-                <div class="bg-gray-50 border border-gray-200 border-dashed rounded-xl p-10 text-center text-text-light mt-8 soft-shadow transition-all duration-300 hover:shadow-lg">
-                    <i class="fa-regular fa-file-lines text-4xl mb-3 text-gray-400 transition-all duration-300 hover:scale-110"></i>
-                    <p class="text-[15px]">CV Content will be placed here.</p>
+    <!-- FULL PUBLICATIONS LIST -->
+    <section id="publications">
+        <div class="container">
+            <h2 class="section-title">Publications</h2>
+            <div class="pub-list fade-in">
+
+                <!-- 1 -->
+                <div class="pub-item">
+                    <div class="pub-title">Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers</div>
+                    <div class="pub-authors">Nihal Ahmed; Józef Ober; Jianjun Huai</div>
+                    <div class="pub-journal">Environmental and Sustainability Indicators, 2026 <a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="pub-link">DOI ↗</a></div>
                 </div>
+
+                <!-- 2 -->
+                <div class="pub-item">
+                    <div class="pub-title">Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios</div>
+                    <div class="pub-authors">Nihal Ahmed; Nisar Ahmed Khan; Józef Ober; Muhammad Farrukh Shahzad</div>
+                    <div class="pub-journal">Resources, Environment and Sustainability, 2026 <a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 3 -->
+                <div class="pub-item">
+                    <div class="pub-title">The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans</div>
+                    <div class="pub-authors">Nihal Ahmed; Nisar Ahmed Khan; Józef Ober</div>
+                    <div class="pub-journal">Global Transitions, 2025 <a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 4 -->
+                <div class="pub-item">
+                    <div class="pub-title">Quantifying China's ecological assets: A carbon-based assessment of climate change and land use change effects using generalized additive models</div>
+                    <div class="pub-authors">Nihal Ahmed; Nisar Ahmed Khan; Józef Ober; Jianjun Huai</div>
+                    <div class="pub-journal">Sustainable Futures, 2025 <a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 5 -->
+                <div class="pub-item">
+                    <div class="pub-title">Social Capital, Crop Differences, and Farmers' Climate Change Adaptation Behaviors: Evidence from Yellow River, China</div>
+                    <div class="pub-authors">Ziying Chang; Nihal Ahmed; Ruxue Li; Jianjun Huai</div>
+                    <div class="pub-journal">Agriculture, 2025 <a href="https://doi.org/10.3390/agriculture15131399" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 6 -->
+                <div class="pub-item">
+                    <div class="pub-title">Synergistic evaluation of energy security and environmental sustainability in BRICS geo-political entities: An integrated index framework</div>
+                    <div class="pub-authors">Ahmed Nihal; Franklin Ore Areche; Jesús Manuel More López; Víctor Guillermo Sánchez Araujo; José Antonio Legua Cárdenas; Józef Ober</div>
+                    <div class="pub-journal">Equilibrium. Quarterly Journal of Economics and Economic Policy, 2024 <a href="https://doi.org/10.24136/eq.3088" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 7 -->
+                <div class="pub-item">
+                    <div class="pub-title">Environmental Regulation, Fiscal Decentralization, and Agricultural Carbon Intensity: A Challenge to Ecological Sustainability Policies in the United States</div>
+                    <div class="pub-authors">Nihal Ahmed; Zeeshan Hamid; Khalil Ur Rehman; Piotr Senkus; Nisar Ahmed Khan; Aneta Wysokińska-Senkus; Barbara Hadryjańska</div>
+                    <div class="pub-journal">Sustainability, 2023 <a href="https://doi.org/10.3390/su15065145" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 8 -->
+                    <div class="pub-item">
+                    <div class="pub-title">Assessing the Impact of Policy Measures in Reducing the COVID-19 Pandemic: A Case Study of South Asia</div>
+                    <div class="pub-authors">Nihal Ahmed</div>
+                    <div class="pub-journal">Sustainability, 2021 <a href="https://doi.org/10.3390/su132011315" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 9 -->
+                <div class="pub-item">
+                    <div class="pub-title">Intensifying Effects of Climate Change in Food Loss: A Threat to Food Security in Turkey</div>
+                    <div class="pub-authors">Nihal Ahmed; Franklin Ore Areche; Guillermo Gomer Cotrina Cabello; Pedro David Córdova Trujillo; Adnan Ahmed Sheikh; Mohamad G. Abiad</div>
+                    <div class="pub-journal">Sustainability, 2022 <a href="https://doi.org/10.3390/su15010350" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 10 -->
+                <div class="pub-item">
+                    <div class="pub-title">Technical Efficiency Analysis of Layer and Broiler Poultry Farmers in Pakistan</div>
+                    <div class="pub-authors">Nisar Ahmed Khan; Majid Ali; Nihal Ahmad; Muhammad Ali Abid; Sigrid Kusch-Brandt</div>
+                    <div class="pub-journal">Agriculture, 2022 <a href="https://doi.org/10.3390/agriculture12101742" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 11 -->
+                <div class="pub-item">
+                    <div class="pub-title">The Role of Educating the Labor Force in Sustaining a Green Economy in MINT Countries: Panel Symmetric and Asymmetric Approach</div>
+                    <div class="pub-authors">Nihal Ahmed; Adnan Ahmed Sheikh; Bilal Hassan; Sajjad Nawaz Khan; Ricardo Cosio Borda; Juan Martín Campos Huamán; Piotr Senkus</div>
+                    <div class="pub-journal">Sustainability, 2022 <a href="https://doi.org/10.3390/su141912067" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 12 -->
+                <div class="pub-item">
+                    <div class="pub-title">Nexus between Nuclear Energy Consumption and Carbon Footprint in Asia Pacific Region: Policy toward Environmental Sustainability</div>
+                    <div class="pub-authors">Nihal Ahmed; Farhan Mahboob; Zeeshan Hamid; Adnan Ahmed Sheikh; Muhammad Sibt e Ali; Waldemar Glabiszewski; Aneta Wysokińska-Senkus; Piotr Senkus; Szymon Cyfert</div>
+                    <div class="pub-journal">Energies, 2022 <a href="https://doi.org/10.3390/en15196956" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 13 -->
+                <div class="pub-item">
+                    <div class="pub-title">Nexus between Cyclical Innovation in Green Technologies and CO2 Emissions in Nordic Countries: Consent toward Environmental Sustainability</div>
+                    <div class="pub-authors">Nihal Ahmed; Franklin Ore Areche; Dante Daniel Cruz Nieto; Ricardo Fernando Cosio Borda; Berenice Cajavilca Gonzales; Piotr Senkus; Paweł Siemiński; Adam Skrzypek</div>
+                    <div class="pub-journal">Sustainability, 2022 <a href="https://doi.org/10.3390/su141811768" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 14 -->
+                <div class="pub-item">
+                    <div class="pub-title">Causal Linkage among Agricultural Insurance, Air Pollution, and Agricultural Green Total Factor Productivity in United States: Pairwise Granger Causality Approach</div>
+                    <div class="pub-authors">Nihal Ahmed; Zeeshan Hamid; Farhan Mahboob; Khalil Ur Rehman; Muhammad Sibt e Ali; Piotr Senkus; Aneta Wysokińska-Senkus; Paweł Siemiński; Adam Skrzypek</div>
+                    <div class="pub-journal">Agriculture, 2022 <a href="https://doi.org/10.3390/agriculture12091320" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 15 -->
+                <div class="pub-item">
+                    <div class="pub-title">Energy Diversification: A Friend or Foe to Economic Growth in Nordic Countries? A Novel Energy Diversification Approach</div>
+                    <div class="pub-authors">Nihal Ahmed; Adnan Ahmed Sheikh; Farhan Mahboob; Muhammad Sibt e Ali; Elżbieta Jasińska; Michał Jasiński; Zbigniew Leonowicz; Alessandro Burgio</div>
+                    <div class="pub-journal">Energies, 2022 <a href="https://doi.org/10.3390/en15155422" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 16 -->
+                <div class="pub-item">
+                    <div class="pub-title">Exploring the Causal Relationship among Green Taxes, Energy Intensity, and Energy Consumption in Nordic Countries: Dumitrescu and Hurlin Causality Approach</div>
+                    <div class="pub-authors">Nihal Ahmed; Adnan Ahmed Sheikh; Zeeshan Hamid; Piotr Senkus; Ricardo Cosio Borda; Aneta Wysokińska-Senkus; Waldemar Glabiszewski</div>
+                    <div class="pub-journal">Energies, 2022 <a href="https://doi.org/10.3390/en15145199" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
+                <!-- 17 -->
+                <div class="pub-item">
+                    <div class="pub-title">Green Finance and Green Energy Nexus in ASEAN Countries: A Bootstrap Panel Causality Test</div>
+                    <div class="pub-authors">Nihal Ahmed</div>
+                    <div class="pub-journal">Energies, 2022 <a href="https://doi.org/10.3390/en15145068" target="_blank" class="pub-link">DOI ↗</a></div>
+                </div>
+
             </div>
+        </div>
+    </section>
 
-            <!-- PAGE: CONTACT -->
-            <div id="page-contact" class="page-content">
-                <h2 class="text-[32px] font-bold text-gray-900 mb-4 tracking-tight">Contact</h2>
-
-                <p class="text-[15.5px] text-text-dark mb-8 leading-[1.6]">
-                    I am happy to hear from you, whether it is about research, potential collaborations, or just to connect. Use the form below and I will get back to you as soon as I can.
-                </p>
-
-                <form onsubmit="event.preventDefault(); alert('Message sent!');" class="max-w-[700px]">
-                    <div class="mb-5">
-                        <label for="name" class="block text-[14px] text-text-dark mb-1.5">Name</label>
-                        <input type="text" id="name" name="name" class="contact-input" required />
-                    </div>
-
-                    <div class="mb-5">
-                        <label for="email" class="block text-[14px] text-text-dark mb-1.5">Email</label>
-                        <input type="email" id="email" name="email" class="contact-input" required />
-                    </div>
-
-                    <div class="mb-5">
-                        <label for="message" class="block text-[14px] text-text-dark mb-1.5">Message</label>
-                        <textarea id="message" name="message" class="contact-input h-[220px] resize-y" required></textarea>
-                    </div>
-
-                    <div>
-                        <button type="submit" class="btn-modern border border-gray-300 bg-white text-gray-700 text-[13px] px-4 py-1.5 rounded-[3px] cursor-pointer">
-                            Send
-                        </button>
-                    </div>
-                </form>
+    <!-- CV Section -->
+    <section id="cv">
+        <div class="container">
+            <h2 class="section-title">Curriculum Vitae</h2>
+            <div class="cv-box fade-in">
+                <p>Detailed academic CV including education, employment, and full publication list.</p>
+                <a href="#" class="btn btn-primary"><span class="download-icon">📄</span> Download CV (PDF)</a>
+                <p style="margin-top:1.8rem; font-size:0.9rem;">ORCID: <a href="https://orcid.org/0000-0002-0183-9583" style="color:var(--accent);" target="_blank">0000-0002-0183-9583</a></p>
             </div>
+        </div>
+    </section>
 
-        </section>
-    </main>
+    <footer id="contact">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://orcid.org/0000-0002-0183-9583" target="_blank">🔬 ORCID</a>
+                <a href="https://www.scopus.com/authid/detail.uri?authorId=57297347200" target="_blank">📊 Scopus</a>
+                <a href="mailto:Nihalahmad.nak99@gmail.com">✉️ Email</a>
+                <a href="mailto:NihalAhmed@nwafu.edu.cn">🏛️ University Email</a>
+            </div>
+            <p class="copyright">© 2026 Nihal Ahmed. Northwest A&F University, China.</p>
+        </div>
+    </footer>
 
-    <!-- Navigation Logic + Parallax Script -->
     <script>
-        // Page Navigation
-        function navigateTo(pageId) {
-            document.querySelectorAll('.page-content').forEach(el => {
-                el.classList.remove('active-page');
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) entry.target.classList.add('visible');
             });
-            
-            document.getElementById('page-' + pageId).classList.add('active-page');
+        }, { threshold: 0.15 });
+        fadeElements.forEach(el => observer.observe(el));
 
-            document.querySelectorAll('.nav-item').forEach(el => {
-                el.classList.remove('active');
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if(href === "#") return;
+                const target = document.querySelector(href);
+                if(target) {
+                    e.preventDefault();
+                    const offset = 80;
+                    const position = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                    window.scrollTo({ top: position, behavior: 'smooth' });
+                }
             });
-
-            document.querySelectorAll(`.nav-item[data-target="${pageId}"]`).forEach(el => {
-                el.classList.add('active');
-            });
-
-            if (window.innerWidth < 768) {
-                window.scrollTo({ top: 200, behavior: 'smooth' });
-            }
-        }
-
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Hero Parallax Mouse Movement
-        const heroBanner = document.querySelector('.hero-banner');
-        window.addEventListener('mousemove', (e) => {
-            const x = (e.clientX - window.innerWidth / 2) / 80;
-            const y = (e.clientY - window.innerHeight / 2) / 80;
-            heroBanner.style.transform = `translateX(${x}px) translateY(${y}px)`;
         });
     </script>
 </body>
