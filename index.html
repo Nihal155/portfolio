@@ -1,15 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nihal Ahmed - Academic Profile</title>
-
-    <!-- ADD THIS LINE HERE -->
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Apply saved theme immediately to prevent flash of wrong theme -->
+    <script>
+        (function() {
+            var saved = localStorage.getItem('theme') || 'light';
+            document.documentElement.setAttribute('data-theme', saved);
+        })();
+    </script>
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Google Fonts: Open Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,44 +25,69 @@
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Tailwind Configuration -->
+    <!-- Tailwind config -->
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    fontFamily: {
-                        sans: ['"Open Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            DEFAULT: '#8B2635',
-                            light: '#A64D5A',
-                            dark: '#6E1C28',
-                            muted: 'rgba(139, 38, 53, 0.08)'
-                        },
-                        surface: {
-                            DEFAULT: '#FAFAF9',
-                            elevated: '#FFFFFF',
-                            subtle: '#F2F0EB'
-                        },
-                        ink: {
-                            DEFAULT: '#1C1917',
-                            secondary: '#57534E',
-                            tertiary: '#A8A29E'
-                        }
-                    }
+                    fontFamily: { sans: ['"Open Sans"', 'sans-serif'] },
                 }
             }
         }
     </script>
 
     <style>
-        html { scroll-behavior: smooth; }
-        ::selection { background-color: rgba(139, 38, 53, 0.15); color: #6E1C28; }
+        /* ===== CSS Variables: Light & Dark ===== */
+        :root {
+            --bg:           #FAFAF9;
+            --bg-elevated:  #FFFFFF;
+            --bg-subtle:    #F2F0EB;
+            --ink:          #1C1917;
+            --ink-2:        #57534E;
+            --ink-3:        #A8A29E;
+            --border:       #E7E5E4;
+            --border-light: #D6D3D1;
+            --brand:        #8B2635;
+            --brand-muted:  rgba(139, 38, 53, 0.08);
+            --shadow:       rgba(0,0,0,0.06);
+            --shadow-md:    rgba(0,0,0,0.10);
+        }
+        [data-theme="dark"] {
+            --bg:           #1C1917;
+            --bg-elevated:  #292524;
+            --bg-subtle:    #292524;
+            --ink:          #F5F5F4;
+            --ink-2:        #D6D3D1;
+            --ink-3:        #78716C;
+            --border:       #44403C;
+            --border-light: #57534E;
+            --brand:        #C04B5D;
+            --brand-muted:  rgba(192, 75, 93, 0.12);
+            --shadow:       rgba(0,0,0,0.30);
+            --shadow-md:    rgba(0,0,0,0.45);
+        }
 
+        /* ===== Base ===== */
+        html { scroll-behavior: smooth; }
+        body {
+            background-color: var(--bg);
+            color: var(--ink);
+            transition: background-color 0.3s ease, color 0.3s ease;
+            font-family: 'Open Sans', sans-serif;
+        }
+        ::selection { background-color: rgba(139,38,53,0.15); color: #6E1C28; }
+
+        /* ===== Header ===== */
+        header {
+            background-color: var(--bg);
+            border-color: var(--border);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        /* ===== Navigation ===== */
         .nav-link {
             position: relative;
-            color: #57534E;
+            color: var(--ink-2);
             transition: color 0.3s ease;
             cursor: pointer;
             font-size: 0.875rem;
@@ -63,174 +95,62 @@
         .nav-link::after {
             content: '';
             position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 0;
-            background-color: #8B2635;
+            width: 0; height: 2px;
+            bottom: -4px; left: 0;
+            background-color: var(--brand);
             transition: width 0.3s ease;
             border-radius: 2px;
         }
         .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-link:hover { color: #1C1917; }
-        .nav-link.active { color: #1C1917; font-weight: 600; }
+        .nav-link:hover { color: var(--ink); }
+        .nav-link.active { color: var(--ink); font-weight: 600; }
 
+        /* ===== Theme Toggle ===== */
+        .theme-toggle {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background-color: var(--bg-elevated);
+            color: var(--ink-2);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        .theme-toggle:hover {
+            border-color: var(--brand);
+            color: var(--brand);
+            transform: rotate(20deg);
+        }
+
+        /* ===== Links ===== */
         .inline-link {
-            color: #8B2635;
+            color: var(--brand);
             text-decoration: none;
-            border-bottom: 1px solid rgba(139, 38, 53, 0.4);
+            border-bottom: 1px solid rgba(139,38,53,0.4);
             transition: all 0.3s ease;
         }
         .inline-link:hover {
-            border-bottom-color: #8B2635;
-            padding-left: 2px;
-            padding-right: 2px;
+            border-bottom-color: var(--brand);
+            padding-left: 2px; padding-right: 2px;
         }
 
         .sidebar-link {
-            color: #57534E;
+            color: var(--ink-2);
             text-decoration: none;
-            border-bottom: 1px dashed #D6D3D1;
+            border-bottom: 1px dashed var(--border-light);
             transition: all 0.3s ease;
         }
         .sidebar-link:hover {
-            color: #8B2635;
-            border-bottom-color: #8B2635;
+            color: var(--brand);
+            border-bottom-color: var(--brand);
             padding-left: 4px;
         }
 
-        .pub-title-link {
-            font-weight: 600;
-            font-size: 1.05rem;
-            line-height: 1.4;
-            color: #1C1917;
-            text-decoration: none;
-            display: inline;
-            background-image: linear-gradient(#8B2635, #8B2635);
-            background-size: 0% 1.5px;
-            background-position: left bottom;
-            background-repeat: no-repeat;
-            transition: background-size 0.5s ease;
-            padding-bottom: 2px;
-        }
-        .pub-title-link:hover {
-            background-size: 100% 1.5px;
-            color: #8B2635;
-        }
-
-        .contact-input {
-            width: 100%;
-            background-color: #FAFAF9;
-            border: 1px solid #E7E5E4;
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 14px;
-            color: #1C1917;
-            outline: none;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .contact-input:focus {
-            background-color: #FFFFFF;
-            border-color: #8B2635;
-            box-shadow: 0 0 0 4px rgba(139, 38, 53, 0.08), 0 1px 2px rgba(0,0,0,0.05);
-            transform: scale(1.01);
-        }
-        .contact-label {
-            font-size: 13px;
-            font-weight: 600;
-            color: #57534E;
-            margin-bottom: 6px;
-            display: block;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .page-content {
-            opacity: 0;
-            transform: translateY(20px);
-            display: none;
-            transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .page-content.active-page {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .pub-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 12px;
-            padding: 20px;
-            margin-left: -20px;
-            margin-right: -20px;
-            border: 1px solid transparent;
-        }
-        .pub-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.06);
-            border-color: #E7E5E4;
-            background-color: #FFFFFF;
-        }
-
-        .btn-modern {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 6px;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .btn-modern:hover {
-            background-color: #8B2635;
-            color: white;
-            border-color: #8B2635;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(139, 38, 53, 0.2);
-        }
-        .btn-modern:active { transform: scale(0.98); }
-
-        .hero-banner {
-            transition: transform 0.1s linear;
-            will-change: transform;
-        }
-
-        .social-icon { transition: all 0.3s ease; }
-        .social-icon:hover {
-            transform: translateY(-2px);
-            color: #8B2635;
-        }
-
-        .soft-shadow { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-
-        .award-box {
-            position: relative;
-            overflow: hidden;
-            border-radius: 12px;
-            background-color: #F2F0EB;
-            border: 1px solid #E7E5E4;
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-        .award-box:hover {
-            box-shadow: 0 8px 30px rgba(0,0,0,0.06);
-            border-color: #D6D3D1;
-        }
-        .award-box .bg-blob {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 128px;
-            height: 128px;
-            background-color: rgba(139, 38, 53, 0.05);
-            border-radius: 50%;
-            margin-top: -40px;
-            margin-right: -40px;
-        }
-
+        /* ===== Profile ===== */
         .profile-glow {
-            position: absolute;
-            inset: -8px;
-            background: linear-gradient(to bottom right, rgba(139, 38, 53, 0.15), transparent);
+            position: absolute; inset: -8px;
+            background: linear-gradient(to bottom right, rgba(139,38,53,0.15), transparent);
             border-radius: 16px;
             filter: blur(8px);
             z-index: -1;
@@ -239,103 +159,408 @@
         }
         .profile-wrapper:hover .profile-glow { opacity: 1; }
 
-        .btn-send {
-            background-color: #1C1917;
-            color: white;
-            padding: 10px 24px;
+        /* ===== Metric Cards ===== */
+        .metric-card {
+            background-color: var(--bg-elevated);
+            border: 1px solid var(--border);
             border-radius: 8px;
-            font-size: 13px;
+            padding: 8px 12px;
+            text-align: center;
+            flex: 1;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+        .metric-val {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: var(--brand);
+            line-height: 1;
+        }
+        .metric-lbl {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--ink-3);
             font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            cursor: pointer;
-            border: none;
+            margin-top: 4px;
         }
-        .btn-send:hover {
-            background-color: #8B2635;
-            box-shadow: 0 4px 12px rgba(139, 38, 53, 0.25);
-            transform: translateY(-1px);
-        }
-        .btn-send:active { transform: scale(0.98); }
 
+        /* ===== Email Pill ===== */
         .email-pill {
             display: inline-flex;
             align-items: center;
             gap: 8px;
             padding: 8px 16px;
-            background-color: rgba(139, 38, 53, 0.08);
-            color: #8B2635;
-            font-size: 13px;
-            font-weight: 600;
+            background-color: var(--brand-muted);
+            color: var(--brand);
+            font-size: 13px; font-weight: 600;
             border-radius: 9999px;
             transition: all 0.3s ease;
             text-decoration: none;
         }
         .email-pill:hover {
-            background-color: #8B2635;
+            background-color: var(--brand);
             color: white;
-            box-shadow: 0 4px 12px rgba(139, 38, 53, 0.2);
+            box-shadow: 0 4px 12px rgba(139,38,53,0.2);
             transform: translateY(-1px);
         }
 
+        /* ===== Social Icons ===== */
+        .sidebar-social-icon {
+            width: 24px; text-align: center;
+            color: var(--ink-3);
+            transition: color 0.3s ease;
+        }
+        .sidebar-social-item:hover .sidebar-social-icon { color: var(--brand); }
+
+        /* ===== Section Label ===== */
+        .section-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-weight: 600;
+            color: var(--ink-3);
+            margin-bottom: 16px;
+        }
+
+        /* ===== Tag Chips ===== */
         .tag-chip {
             display: inline-flex;
             align-items: center;
             padding: 6px 14px;
-            background-color: #F2F0EB;
-            color: #57534E;
-            font-size: 12px;
-            font-weight: 600;
+            background-color: var(--bg-subtle);
+            color: var(--ink-2);
+            font-size: 12px; font-weight: 600;
             border-radius: 9999px;
-            border: 1px solid #E7E5E4;
+            border: 1px solid var(--border);
             transition: all 0.3s ease;
         }
         .tag-chip:hover {
-            background-color: rgba(139, 38, 53, 0.08);
-            color: #8B2635;
-            border-color: rgba(139, 38, 53, 0.2);
+            background-color: var(--brand-muted);
+            color: var(--brand);
+            border-color: rgba(139,38,53,0.2);
         }
 
-        .cv-entry {
+        /* ===== Publication Carousel ===== */
+        .carousel-wrapper {
             position: relative;
-            padding-left: 24px;
-            border-left: 2px solid #E7E5E4;
-            padding-bottom: 24px;
+            overflow: hidden;
+            border-radius: 16px;
+            background: linear-gradient(135deg, var(--brand) 0%, #5C141F 100%);
+            padding: 28px 0 24px;
+            margin-bottom: 32px;
+            touch-action: pan-y;
+            user-select: none;
         }
-        .cv-entry::before {
-            content: '';
+        .carousel-track {
+            position: relative;
+            min-height: 200px;
+        }
+        .carousel-slide {
             position: absolute;
-            left: -5px;
-            top: 6px;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background-color: #8B2635;
+            top: 0; left: 0;
+            width: 100%;
+            padding: 0 52px;
+            box-sizing: border-box;
+            opacity: 0;
+            transition: opacity 0.7s ease;
+            pointer-events: none;
+            visibility: hidden;
         }
-        .cv-entry:last-child {
-            border-left-color: transparent;
-            padding-bottom: 0;
+        .carousel-slide.active-slide {
+            position: relative;
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+        }
+        .carousel-badge {
+            display: inline-block;
+            background-color: rgba(255,255,255,0.18);
+            color: rgba(255,255,255,0.95);
+            font-size: 10px; font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            padding: 3px 10px;
+            border-radius: 9999px;
+            margin-bottom: 14px;
+        }
+        .carousel-title {
+            font-size: 1rem; font-weight: 700;
+            line-height: 1.45;
+            color: white;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: block;
+            transition: opacity 0.2s;
+        }
+        .carousel-title:hover { opacity: 0.85; }
+        .carousel-authors {
+            font-size: 13px;
+            color: rgba(255,255,255,0.72);
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+        .carousel-journal {
+            font-size: 11px;
+            color: rgba(255,255,255,0.48);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 600;
+            margin-bottom: 22px;
+        }
+        .btn-carousel-all {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 8px 20px;
+            background-color: white;
+            color: var(--brand);
+            font-size: 12px; font-weight: 700;
+            border-radius: 9999px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            font-family: 'Open Sans', sans-serif;
+            transition: all 0.3s ease;
+            letter-spacing: 0.03em;
+        }
+        .btn-carousel-all:hover {
+            background-color: rgba(255,255,255,0.88);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
+        }
+        .carousel-nav {
+            position: absolute;
+            top: 50%; transform: translateY(-50%);
+            width: 30px; height: 30px;
+            background-color: rgba(255,255,255,0.15);
+            border: none; border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px;
+            transition: background-color 0.2s ease;
+            backdrop-filter: blur(4px);
+            z-index: 10;
+        }
+        .carousel-nav:hover { background-color: rgba(255,255,255,0.3); }
+        .carousel-nav.prev { left: 12px; }
+        .carousel-nav.next { right: 12px; }
+        .carousel-dots {
+            display: flex;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .carousel-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.35);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .carousel-dot.active {
+            background-color: white;
+            width: 18px; border-radius: 3px;
         }
 
+        /* ===== Award Box ===== */
+        .award-box {
+            position: relative; overflow: hidden;
+            border-radius: 12px;
+            background-color: var(--bg-subtle);
+            border: 1px solid var(--border);
+            padding: 24px;
+            transition: all 0.3s ease;
+        }
+        .award-box:hover {
+            box-shadow: 0 8px 30px var(--shadow);
+            border-color: var(--border-light);
+        }
+        .award-box .bg-blob {
+            position: absolute; top: 0; right: 0;
+            width: 128px; height: 128px;
+            background-color: var(--brand-muted);
+            border-radius: 50%;
+            margin-top: -40px; margin-right: -40px;
+        }
+
+        /* ===== Page transitions ===== */
+        .page-content {
+            opacity: 0;
+            transform: translateY(20px);
+            display: none;
+            transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
+                        transform 0.5s cubic-bezier(0.4,0,0.2,1);
+        }
+        .page-content.active-page {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== Publication Cards ===== */
         .pub-card {
             opacity: 0;
             transform: translateY(20px);
+            border-radius: 12px;
+            padding: 20px;
+            margin-left: -20px; margin-right: -20px;
+            border: 1px solid transparent;
         }
         .pub-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
-                        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
-                        box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+            opacity: 1; transform: translateY(0);
+            transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
+                        transform 0.6s cubic-bezier(0.4,0,0.2,1),
+                        box-shadow 0.4s ease, border-color 0.4s ease,
+                        background-color 0.4s ease;
         }
+        .pub-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px var(--shadow-md);
+            border-color: var(--border);
+            background-color: var(--bg-elevated);
+        }
+
+        /* ===== Pub title link ===== */
+        .pub-title-link {
+            font-weight: 600;
+            font-size: 1.05rem;
+            line-height: 1.4;
+            color: var(--ink);
+            text-decoration: none;
+            display: inline;
+            background-image: linear-gradient(var(--brand), var(--brand));
+            background-size: 0% 1.5px;
+            background-position: left bottom;
+            background-repeat: no-repeat;
+            transition: background-size 0.5s ease, color 0.3s ease;
+            padding-bottom: 2px;
+        }
+        .pub-title-link:hover {
+            background-size: 100% 1.5px;
+            color: var(--brand);
+        }
+
+        /* ===== Btn Modern ===== */
+        .btn-modern {
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            border-radius: 6px;
+            display: inline-flex; align-items: center; gap: 6px;
+            border: 1px solid var(--border);
+            background-color: var(--bg-elevated);
+            color: var(--ink-2);
+            font-size: 0.75rem;
+            padding: 6px 12px;
+            text-decoration: none;
+        }
+        .btn-modern:hover {
+            background-color: var(--brand);
+            color: white;
+            border-color: var(--brand);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(139,38,53,0.2);
+        }
+        .btn-modern:active { transform: scale(0.98); }
+
+        /* ===== Contact ===== */
+        .contact-input {
+            width: 100%;
+            background-color: var(--bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 12px 16px;
+            font-size: 14px;
+            color: var(--ink);
+            outline: none;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            font-family: 'Open Sans', sans-serif;
+        }
+        .contact-input:focus {
+            background-color: var(--bg-elevated);
+            border-color: var(--brand);
+            box-shadow: 0 0 0 4px var(--brand-muted), 0 1px 2px rgba(0,0,0,0.05);
+            transform: scale(1.01);
+        }
+        .contact-label {
+            font-size: 13px; font-weight: 600;
+            color: var(--ink-2);
+            margin-bottom: 6px;
+            display: block;
+            text-transform: uppercase; letter-spacing: 0.05em;
+        }
+        .btn-send {
+            background-color: var(--ink);
+            color: white;
+            padding: 10px 24px; border-radius: 8px;
+            font-size: 13px; font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            cursor: pointer; border: none;
+            font-family: 'Open Sans', sans-serif;
+        }
+        .btn-send:hover {
+            background-color: var(--brand);
+            box-shadow: 0 4px 12px rgba(139,38,53,0.25);
+            transform: translateY(-1px);
+        }
+
+        /* ===== Hero Banner ===== */
+        .hero-banner {
+            transition: transform 0.1s linear;
+            will-change: transform;
+        }
+
+        /* ===== Soft shadow util ===== */
+        .soft-shadow { box-shadow: 0 4px 20px var(--shadow); }
+
+        /* ===== Mobile Bottom Navigation ===== */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            background-color: var(--bg-elevated);
+            border-top: 1px solid var(--border);
+            z-index: 100;
+            padding: 6px 0 max(6px, env(safe-area-inset-bottom));
+            box-shadow: 0 -4px 20px var(--shadow);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        @media (max-width: 767px) {
+            .mobile-bottom-nav { display: flex; }
+            body { padding-bottom: 70px; }
+        }
+        .mobile-bottom-nav-btn {
+            flex: 1;
+            display: flex; flex-direction: column;
+            align-items: center; gap: 3px;
+            padding: 6px 8px;
+            cursor: pointer; border: none;
+            background: transparent;
+            color: var(--ink-3);
+            font-size: 11px; font-weight: 600;
+            font-family: 'Open Sans', sans-serif;
+            transition: color 0.2s ease;
+            text-transform: uppercase; letter-spacing: 0.04em;
+        }
+        .mobile-bottom-nav-btn .bn-icon {
+            font-size: 19px;
+            transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+        }
+        .mobile-bottom-nav-btn:hover { color: var(--brand); }
+        .mobile-bottom-nav-btn:hover .bn-icon { transform: translateY(-3px); }
+        .mobile-bottom-nav-btn.active { color: var(--brand); }
+        .mobile-bottom-nav-btn.active .bn-icon { transform: translateY(-3px); }
     </style>
 </head>
-<body class="bg-surface text-ink antialiased font-sans flex flex-col min-h-screen">
 
-    <!-- Header Navigation -->
-    <header class="bg-surface py-4 border-b border-stone-200/80 relative z-50 soft-shadow">
-        <div class="max-w-[1140px] mx-auto px-6 md:px-12 flex justify-between items-center flex-wrap">
-            <div class="font-bold text-[17px] tracking-tight text-ink">Nihal Ahmed</div>
+<body class="antialiased flex flex-col min-h-screen">
 
+    <!-- ===== Header ===== -->
+    <header class="py-4 border-b relative z-50 soft-shadow">
+        <div class="max-w-[1140px] mx-auto px-6 md:px-12 flex justify-between items-center flex-wrap gap-3">
+
+            <div class="font-bold text-[17px] tracking-tight" style="color: var(--ink);">Nihal Ahmed</div>
+
+            <!-- Desktop nav -->
             <nav class="hidden md:flex items-center space-x-8">
                 <a onclick="navigateTo('home')" class="nav-link nav-item active" data-target="home">Home</a>
                 <a onclick="navigateTo('publications')" class="nav-link nav-item" data-target="publications">Publications</a>
@@ -343,97 +568,104 @@
                 <a onclick="navigateTo('contact')" class="nav-link nav-item" data-target="contact">Contact</a>
             </nav>
 
-            <button onclick="toggleMobileMenu()" class="md:hidden text-stone-500 focus:outline-none transition-transform duration-300 hover:scale-110 hover:text-ink">
-                <i class="fa-solid fa-bars text-xl"></i>
-            </button>
+            <div class="flex items-center gap-3">
+                <!-- Theme toggle -->
+                <button onclick="toggleTheme()" class="theme-toggle" id="theme-toggle-btn" title="Toggle dark/light mode">
+                    <i id="theme-icon" class="fa-solid fa-sun"></i>
+                </button>
 
-            <div id="mobile-menu" class="hidden w-full md:hidden flex flex-col space-y-3 mt-4 text-[15px] pb-2">
-                <a onclick="navigateTo('home'); toggleMobileMenu()" class="nav-link nav-item active" data-target="home">Home</a>
-                <a onclick="navigateTo('publications'); toggleMobileMenu()" class="nav-link nav-item" data-target="publications">Publications</a>
+                <!-- Mobile hamburger: CV + Contact only -->
+                <button onclick="toggleMobileMenu()" class="md:hidden focus:outline-none transition-all hover:scale-110" style="color: var(--ink-2);" aria-label="Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+
+            <!-- Mobile dropdown (CV + Contact only) -->
+            <div id="mobile-menu" class="hidden w-full md:hidden flex flex-col space-y-3 mt-2 text-[15px] pb-2 border-t pt-4" style="border-color: var(--border);">
                 <a onclick="navigateTo('cv'); toggleMobileMenu()" class="nav-link nav-item" data-target="cv">CV</a>
                 <a onclick="navigateTo('contact'); toggleMobileMenu()" class="nav-link nav-item" data-target="contact">Contact</a>
             </div>
         </div>
     </header>
 
-    <!-- Hero Banner -->
-    <div class="w-full h-[280px] bg-stone-200 overflow-hidden relative">
+    <!-- ===== Hero Banner ===== -->
+    <div class="w-full h-[280px] overflow-hidden relative" style="background-color: var(--bg-subtle);">
         <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 z-10 pointer-events-none"></div>
         <img class="hero-banner w-full h-[120%] object-cover" src="background.png" alt="Banner background" />
     </div>
 
-    <!-- Main Content -->
+    <!-- ===== Main Content ===== -->
     <main class="max-w-[1140px] mx-auto w-full px-6 md:px-12 flex flex-col md:flex-row gap-16 relative -mt-[100px] z-10 pb-24 flex-grow">
 
         <!-- Left Sidebar -->
         <aside class="w-full md:w-[280px] flex-shrink-0 md:sticky md:top-8 md:self-start">
+
+            <!-- Profile image (fixed HTML) -->
             <div class="relative inline-block mb-5 profile-wrapper">
-               <div class="profile-glow"></div>
-               <div class="relative rounded-xl soft-shadow overflow-hidden bg-white p-2.5 border border-stone-100 inline-block">
-                <img src="profile00.png" alt="Nihal Ahmed" class="max-w-[220px] w-full h-auto block rounded-lg">
+                <div class="profile-glow"></div>
+                <div class="relative rounded-xl soft-shadow overflow-hidden p-2.5 border inline-block" style="background-color: var(--bg-elevated); border-color: var(--border);">
+                    <img src="profile00.png" alt="Nihal Ahmed" class="max-w-[220px] w-full h-auto block rounded-lg">
                 </div>
-               </div>
-              </div>
             </div>
 
             <div class="mb-6">
-                <h1 class="text-[26px] font-bold text-ink tracking-tight leading-none mb-2">Nihal Ahmed</h1>
-                <p class="text-xs uppercase tracking-[0.15em] font-semibold text-brand">PhD Researcher &middot; Economics</p>
+                <h1 class="text-[26px] font-bold tracking-tight leading-none mb-2" style="color: var(--ink);">Nihal Ahmed</h1>
+                <p class="text-xs uppercase tracking-[0.15em] font-semibold" style="color: var(--brand);">PhD Researcher &middot; Economics</p>
             </div>
 
-            <a href="mailto:Nihalahmad.nak99@gmail.com" class="email-pill mb-6">
+            <a href="mailto:Nihalahmad.nak99@gmail.com" class="email-pill mb-6 inline-flex">
                 <i class="fa-solid fa-envelope text-xs"></i>
                 Email me
             </a>
 
-            <!-- Metrics -->
+            <!-- Metrics with count-up -->
             <div class="flex gap-3 mb-6">
-                <div class="bg-white border border-stone-200 rounded-lg px-3 py-2 text-center flex-1 soft-shadow">
-                    <p class="text-[1.125rem] font-bold text-brand leading-none">607</p>
-                    <p class="text-[10px] uppercase tracking-wider text-ink-tertiary font-semibold mt-1">Citations</p>
+                <div class="metric-card">
+                    <p class="metric-val" id="stat-citations">0</p>
+                    <p class="metric-lbl">Citations</p>
                 </div>
-                <div class="bg-white border border-stone-200 rounded-lg px-3 py-2 text-center flex-1 soft-shadow">
-                    <p class="text-[1.125rem] font-bold text-brand leading-none">13</p>
-                    <p class="text-[10px] uppercase tracking-wider text-ink-tertiary font-semibold mt-1">h-index</p>
+                <div class="metric-card">
+                    <p class="metric-val" id="stat-hindex">0</p>
+                    <p class="metric-lbl">h-index</p>
                 </div>
-                <div class="bg-white border border-stone-200 rounded-lg px-3 py-2 text-center flex-1 soft-shadow">
-                    <p class="text-[1.125rem] font-bold text-brand leading-none">14</p>
-                    <p class="text-[10px] uppercase tracking-wider text-ink-tertiary font-semibold mt-1">i10-index</p>
+                <div class="metric-card">
+                    <p class="metric-val" id="stat-i10">0</p>
+                    <p class="metric-lbl">i10-index</p>
                 </div>
             </div>
 
-            <div class="text-[13px] text-ink-secondary leading-relaxed mb-8">
-                Northwest A&F University, Xian, China
+            <div class="text-[13px] leading-relaxed mb-8" style="color: var(--ink-2);">
+                Northwest A&amp;F University, Xian, China
             </div>
 
             <ul class="space-y-3.5 text-[13px]">
-                <li>
+                <li class="sidebar-social-item">
                     <a href="https://orcid.org/0000-0002-0183-9583" target="_blank" class="flex items-center group">
-                        <span class="w-6 text-center text-stone-400 group-hover:text-brand transition-colors social-icon"><i class="fa-brands fa-orcid"></i></span>
+                        <span class="sidebar-social-icon"><i class="fa-brands fa-orcid"></i></span>
                         <span class="sidebar-link pb-0.5 ml-1">ORCID</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-social-item">
                     <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-stone-400 group-hover:text-brand transition-colors social-icon"><i class="fa-solid fa-graduation-cap"></i></span>
+                        <span class="sidebar-social-icon"><i class="fa-solid fa-graduation-cap"></i></span>
                         <span class="sidebar-link pb-0.5 ml-1">Google Scholar</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-social-item">
                     <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-stone-400 group-hover:text-brand transition-colors social-icon"><i class="fa-brands fa-researchgate"></i></span>
+                        <span class="sidebar-social-icon"><i class="fa-brands fa-researchgate"></i></span>
                         <span class="sidebar-link pb-0.5 ml-1">ResearchGate</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-social-item">
                     <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-stone-400 group-hover:text-brand transition-colors social-icon"><i class="fa-brands fa-linkedin-in"></i></span>
+                        <span class="sidebar-social-icon"><i class="fa-brands fa-linkedin-in"></i></span>
                         <span class="sidebar-link pb-0.5 ml-1">LinkedIn</span>
                     </a>
                 </li>
-                <li>
+                <li class="sidebar-social-item">
                     <a href="#" class="flex items-center group">
-                        <span class="w-6 text-center text-stone-400 group-hover:text-brand transition-colors social-icon"><i class="fa-brands fa-twitter"></i></span>
+                        <span class="sidebar-social-icon"><i class="fa-brands fa-twitter"></i></span>
                         <span class="sidebar-link pb-0.5 ml-1">Twitter</span>
                     </a>
                 </li>
@@ -443,46 +675,104 @@
         <!-- Right Main Content -->
         <section class="w-full pt-[120px] md:pr-6">
 
-            <!-- PAGE: HOME -->
+            <!-- ===== PAGE: HOME ===== -->
             <div id="page-home" class="page-content active-page">
-                <h2 class="text-[2.25rem] font-bold text-ink tracking-tight mb-5 leading-[1.1]">About me</h2>
 
-                <p class="text-[1.125rem] text-ink leading-[1.6] mb-8">
-                    Environmental and agricultural economist exploring the intersection of climate policy, energy transition, and sustainable development.
+                <h2 class="text-[2.25rem] font-bold tracking-tight mb-5 leading-[1.1]" style="color: var(--ink);">About me</h2>
+
+                <p class="text-[1.125rem] leading-[1.6] mb-8" style="color: var(--ink);">
+                    Ecological economist working on how food systems and agricultural trade generate, displace, and obscure costs to land and soil ecosystems.
                 </p>
 
-                <div class="space-y-5 text-[0.9375rem] text-ink-secondary leading-[1.7]">
+                <div class="space-y-5 text-[0.9375rem] leading-[1.7]" style="color: var(--ink-2);">
                     <p>
-                        I am a <strong class="text-ink">PhD candidate</strong> in the Department of Economics and Management at <strong class="text-ink">Northwest A&F University</strong> in Xian, China. My research focuses on the economics of environmental sustainability, agricultural productivity, and climate adaptation.
+                        I am a <strong style="color:var(--ink)">PhD candidate in economics</strong> at Northwest A&amp;F University. My research is in <strong style="color:var(--ink)">ecological economics</strong>, where the central question is not only how land is used but what happens to the living systems within it. Soil biological communities, nutrient cycles, and landscape-level ecosystem functioning underpin global agricultural productivity yet remain outside every existing trade and environmental accounting framework. I study how agricultural production generates costs to these systems, how those costs are embodied in trade flows and displaced across borders, and how consumption-based accounting can be extended to make the belowground dimension of global food systems visible and governable.
                     </p>
-
-                    <p>
-                        My work spans a diverse range of topics including <strong class="text-ink">green finance</strong>, <strong class="text-ink">carbon regulation</strong>, <strong class="text-ink">energy security</strong>, <strong class="text-ink">ecological asset valuation</strong>, and <strong class="text-ink">agricultural technical efficiency</strong>. I employ advanced econometric techniques  including panel causality, ARDL, GMM, and generalized additive models  alongside emerging machine learning approaches for land-use and ecological security analysis.
-                    </p>
-
-                    <p>
-                        Geographically, my research covers <strong class="text-ink">China</strong>, <strong class="text-ink">Nordic countries</strong>, <strong class="text-ink">BRICS nations</strong>, <strong class="text-ink">ASEAN</strong>, the <strong class="text-ink">United States</strong>, <strong class="text-ink">Pakistan</strong>, and <strong class="text-ink">Turkey</strong>, offering comparative insights into how different institutional and policy contexts shape environmental and economic outcomes.
-                    </p>
-
                     <p class="pb-4">
-                        I have authored or co-authored <strong class="text-ink">18 peer-reviewed journal articles</strong> and actively contribute to the academic community as a reviewer for leading journals in environmental science, energy, and economics. You can explore my complete body of work in the <a onclick="navigateTo('publications')" class="inline-link pb-0.5 cursor-pointer">publications</a> section, or reach out via the <a onclick="navigateTo('contact')" class="inline-link pb-0.5 cursor-pointer">contact form</a> for collaborations and inquiries.
+                        My core interests are <strong style="color:var(--ink)">land ecological security</strong>, <strong style="color:var(--ink)">belowground ecosystem multifunctionality</strong>, <strong style="color:var(--ink)">consumption-based environmental accounting</strong>, and the <strong style="color:var(--ink)">equity dimensions of ecological burden displacement through trade</strong>. The thread connecting them is a conviction that the functional biology of landscapes is both foundational to food systems and systematically undervalued in the economic frameworks that govern how land and trade are managed. If your work touches on any of these themes, I welcome the conversation through the <a onclick="navigateTo('contact')" class="inline-link pb-0.5 cursor-pointer">contact form</a>.
                     </p>
                 </div>
 
-                <!-- Research Interests Tags -->
+                <!-- Research Interests -->
                 <div class="mt-8 mb-10">
-                    <h3 class="text-xs uppercase tracking-[0.15em] font-semibold text-ink-tertiary mb-4">Research Interests</h3>
+                    <h3 class="section-label">Research Interests</h3>
                     <div class="flex flex-wrap gap-2">
-                        <span class="tag-chip">Environmental Economics</span>
-                        <span class="tag-chip">Energy Policy</span>
-                        <span class="tag-chip">Green Finance</span>
-                        <span class="tag-chip">Climate Change Adaptation</span>
-                        <span class="tag-chip">Agricultural Productivity</span>
-                        <span class="tag-chip">Carbon Regulation</span>
-                        <span class="tag-chip">Ecological Security</span>
-                        <span class="tag-chip">Sustainable Development</span>
-                        <span class="tag-chip">Panel Econometrics</span>
-                        <span class="tag-chip">Deep Learning</span>
+                        <span class="tag-chip">Ecological Economics</span>
+                        <span class="tag-chip">Land Ecological Security</span>
+                        <span class="tag-chip">Consumption-based Accounting</span>
+                        <span class="tag-chip">Agricultural Trade Footprints</span>
+                        <span class="tag-chip">Belowground Ecosystem Multifunctionality</span>
+                        <span class="tag-chip">Planetary Boundaries</span>
+                        <span class="tag-chip">Ecological Trade Deficits</span>
+                        <span class="tag-chip">Soil Ecosystem Functioning</span>
+                        <span class="tag-chip">Sustainability Governance</span>
+                    </div>
+                </div>
+
+                <!-- ===== RECENT PUBLICATIONS CAROUSEL ===== -->
+                <div class="mb-10">
+                    <h3 class="section-label">Recent Publications</h3>
+
+                    <div class="carousel-wrapper" id="pub-carousel">
+
+                        <!-- Arrow buttons -->
+                        <button class="carousel-nav prev" onclick="carouselPrev(event)" aria-label="Previous paper">
+                            <i class="fa-solid fa-chevron-left"></i>
+                        </button>
+                        <button class="carousel-nav next" onclick="carouselNext(event)" aria-label="Next paper">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </button>
+
+                        <div class="carousel-track" id="carousel-track">
+
+                            <!-- Slide 1 -->
+                            <div class="carousel-slide active-slide">
+                                <span class="carousel-badge">2026 &middot; Latest</span>
+                                <a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="carousel-title">
+                                    Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios
+                                </a>
+                                <p class="carousel-authors">Nihal Ahmed, Nisar Ahmed Khan, Józef Ober, Muhammad Farrukh Shahzad</p>
+                                <p class="carousel-journal">Resources, Environment and Sustainability &middot; DOI: 10.1016/j.resenv.2026.100345</p>
+                                <button onclick="navigateTo('publications')" class="btn-carousel-all">
+                                    See all publications <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </div>
+
+                            <!-- Slide 2 -->
+                            <div class="carousel-slide">
+                                <span class="carousel-badge">2026</span>
+                                <a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="carousel-title">
+                                    Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers
+                                </a>
+                                <p class="carousel-authors">Nihal Ahmed, Józef Ober, Jianjun Huai</p>
+                                <p class="carousel-journal">Environmental and Sustainability Indicators &middot; DOI: 10.1016/j.indic.2026.101224</p>
+                                <button onclick="navigateTo('publications')" class="btn-carousel-all">
+                                    See all publications <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </div>
+
+                            <!-- Slide 3 -->
+                            <div class="carousel-slide">
+                                <span class="carousel-badge">2025</span>
+                                <a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="carousel-title">
+                                    The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans
+                                </a>
+                                <p class="carousel-authors">Nihal Ahmed, Nisar Ahmed Khan, Józef Ober</p>
+                                <p class="carousel-journal">Global Transitions &middot; DOI: 10.1016/j.glt.2025.01.002</p>
+                                <button onclick="navigateTo('publications')" class="btn-carousel-all">
+                                    See all publications <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                                </button>
+                            </div>
+
+                        </div>
+
+                        <!-- Dot indicators -->
+                        <div class="carousel-dots">
+                            <div class="carousel-dot active" onclick="carouselGoTo(0, event)"></div>
+                            <div class="carousel-dot" onclick="carouselGoTo(1, event)"></div>
+                            <div class="carousel-dot" onclick="carouselGoTo(2, event)"></div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -490,391 +780,226 @@
                 <div class="award-box mt-2 mb-12">
                     <div class="bg-blob"></div>
                     <div class="relative flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 bg-brand-muted rounded-full flex items-center justify-center text-brand">
+                        <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style="background-color: var(--brand-muted); color: var(--brand);">
                             <i class="fa-solid fa-gavel text-sm"></i>
                         </div>
                         <div>
-                            <p class="text-[0.9375rem] text-ink font-medium mb-1 leading-snug">
+                            <p class="text-[0.9375rem] font-medium mb-3 leading-snug" style="color: var(--ink);">
                                 Active Peer Reviewer
                             </p>
-                            <p class="text-[13px] text-ink-tertiary leading-relaxed">
-                                83 reviews completed for 17 journals including <em>Agricultural Systems</em>, <em>Climatic Change</em>, <em>Environmental and Sustainability Indicators</em>, <em>Ecological Indicators</em>, and <em>Environmental Science & Policy</em>.
+                            <div class="flex gap-6 mb-3">
+                                <div>
+                                    <span class="text-[1.4rem] font-bold leading-none" style="color: var(--brand);" id="stat-reviews">0</span>
+                                    <span class="text-[12px] ml-1 font-medium" style="color: var(--ink-2);">reviews</span>
+                                </div>
+                                <div>
+                                    <span class="text-[1.4rem] font-bold leading-none" style="color: var(--brand);" id="stat-journals">0</span>
+                                    <span class="text-[12px] ml-1 font-medium" style="color: var(--ink-2);">journals</span>
+                                </div>
+                            </div>
+                            <p class="text-[13px] leading-relaxed" style="color: var(--ink-3);">
+                                Including <em>Agricultural Systems</em>, <em>Climatic Change</em>, <em>Environmental and Sustainability Indicators</em>, <em>Ecological Indicators</em>, and <em>Environmental Science &amp; Policy</em>.
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Share Buttons -->
-                <div class="flex items-center gap-4 text-[13px] text-ink-tertiary pt-4 border-t border-stone-200/60">
+                <!-- Share -->
+                <div class="flex items-center gap-4 text-[13px] pt-4" style="border-top: 1px solid var(--border); color: var(--ink-3);">
                     <span class="font-medium uppercase tracking-wider text-xs">Share</span>
-                    <div class="flex gap-3.5 text-brand text-[15px]">
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all duration-300 hover:scale-125 hover:-translate-y-0.5"><i class="fa-solid fa-envelope"></i></a>
+                    <div class="flex gap-3.5 text-[15px]" style="color: var(--brand);">
+                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-solid fa-envelope"></i></a>
                     </div>
                 </div>
-            </div>
 
-            <!-- PAGE: PUBLICATIONS -->
+            </div><!-- /page-home -->
+
+            <!-- ===== PAGE: PUBLICATIONS ===== -->
             <div id="page-publications" class="page-content">
-                <h2 class="text-[2.25rem] font-bold text-ink tracking-tight mb-4 leading-[1.1]">Publications</h2>
+                <h2 class="text-[2.25rem] font-bold tracking-tight mb-4 leading-[1.1]" style="color: var(--ink);">Publications</h2>
 
-                    <div class="space-y-2">
-                    <!-- Publication 1 -->
+                <div class="space-y-2">
+
                     <article class="pub-card">
                         <a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="pub-title-link mb-2 block">
                             Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober, Muhammad Farrukh Shahzad
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Resources, Environment and Sustainability &middot; 2026 &middot; DOI: 10.1016/j.resenv.2026.100345
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
-                    </article>             
-                    
-                    <!-- Publication 2 -->
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober, Muhammad Farrukh Shahzad</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Resources, Environment and Sustainability &middot; 2026 &middot; DOI: 10.1016/j.resenv.2026.100345</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
+                    </article>
+
                     <article class="pub-card">
                         <a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="pub-title-link mb-2 block">
                             Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Józef Ober, Jianjun Huai
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Environmental and Sustainability Indicators &middot; 2026 &middot; DOI: 10.1016/j.indic.2026.101224
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Józef Ober, Jianjun Huai</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Environmental and Sustainability Indicators &middot; 2026 &middot; DOI: 10.1016/j.indic.2026.101224</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 3 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="pub-title-link mb-2 block">
                             The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Global Transitions &middot; 2025 &middot; DOI: 10.1016/j.glt.2025.01.002
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Global Transitions &middot; 2025 &middot; DOI: 10.1016/j.glt.2025.01.002</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 4 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank" class="pub-title-link mb-2 block">
                             Quantifying China's ecological assets: A carbon-based assessment of climate change and land use change effects using generalized additive models
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober, Jianjun Huai
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Sustainable Futures &middot; 2025 &middot; DOI: 10.1016/j.sftr.2025.101350
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober, Jianjun Huai</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainable Futures &middot; 2025 &middot; DOI: 10.1016/j.sftr.2025.101350</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 5 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/agriculture15131399" target="_blank" class="pub-title-link mb-2 block">
                             Social Capital, Crop Differences, and Farmers' Climate Change Adaptation Behaviors: Evidence from Yellow River, China
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            Ziying Chang, <strong class="text-ink">Nihal Ahmed</strong>, Ruxue Li, Jianjun Huai
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Agriculture &middot; 2025 &middot; DOI: 10.3390/agriculture15131399
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/agriculture15131399" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)">Ziying Chang, <strong style="color:var(--ink)">Nihal Ahmed</strong>, Ruxue Li, Jianjun Huai</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Agriculture &middot; 2025 &middot; DOI: 10.3390/agriculture15131399</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/agriculture15131399" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 6 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.24136/eq.3088" target="_blank" class="pub-title-link mb-2 block">
                             Synergistic evaluation of energy security and environmental sustainability in BRICS geo-political entities: An integrated index framework
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Ahmed Nihal</strong>, Franklin Ore Areche, Jesús Manuel More López, Víctor Guillermo Sánchez Araujo, José Antonio Legua Cárdenas, Józef Ober
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Equilibrium. Quarterly Journal of Economics and Economic Policy &middot; 2024 &middot; DOI: 10.24136/eq.3088
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.24136/eq.3088" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Ahmed Nihal</strong>, Franklin Ore Areche, Jesús Manuel More López, Víctor Guillermo Sánchez Araujo, José Antonio Legua Cárdenas, Józef Ober</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Equilibrium. Quarterly Journal of Economics and Economic Policy &middot; 2024 &middot; DOI: 10.24136/eq.3088</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.24136/eq.3088" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 7 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/su15065145" target="_blank" class="pub-title-link mb-2 block">
                             Environmental Regulation, Fiscal Decentralization, and Agricultural Carbon Intensity: A Challenge to Ecological Sustainability Policies in the United States
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Zeeshan Hamid, Khalil Ur Rehman, Piotr Senkus, Nisar Ahmed Khan, Aneta Wysokińska-Senkus, Barbara Hadryjańska
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Sustainability &middot; 2023 &middot; DOI: 10.3390/su15065145
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/su15065145" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Zeeshan Hamid, Khalil Ur Rehman, Piotr Senkus, Nisar Ahmed Khan, Aneta Wysokińska-Senkus, Barbara Hadryjańska</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2023 &middot; DOI: 10.3390/su15065145</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su15065145" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 8 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.1371/journal.pone.0276973" target="_blank" class="pub-title-link mb-2 block">
                             A comparative study of the policy response to COVID-19 in the ASEAN region: A dynamic simulated ARDL approach
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Stefan Cristian Gherghina, Dilawar Khan, Judit Oláh, József Popp
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            PLOS ONE &middot; 2023 &middot; DOI: 10.1371/journal.pone.0276973
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.1371/journal.pone.0276973" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Stefan Cristian Gherghina, Dilawar Khan, Judit Oláh, József Popp</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">PLOS ONE &middot; 2023 &middot; DOI: 10.1371/journal.pone.0276973</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.1371/journal.pone.0276973" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 9 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/su15010350" target="_blank" class="pub-title-link mb-2 block">
                             Intensifying Effects of Climate Change in Food Loss: A Threat to Food Security in Turkey
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Franklin Ore Areche, Guillermo Gomer Cotrina Cabello, Pedro David Córdova Trujillo, Adnan Ahmed Sheikh, Mohamad G. Abiad
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Sustainability &middot; 2022 &middot; DOI: 10.3390/su15010350
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/su15010350" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Franklin Ore Areche, Guillermo Gomer Cotrina Cabello, Pedro David Córdova Trujillo, Adnan Ahmed Sheikh, Mohamad G. Abiad</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2022 &middot; DOI: 10.3390/su15010350</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su15010350" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 10 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/agriculture12101742" target="_blank" class="pub-title-link mb-2 block">
                             Technical Efficiency Analysis of Layer and Broiler Poultry Farmers in Pakistan
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            Nisar Ahmed Khan, Majid Ali, <strong class="text-ink">Nihal Ahmad</strong>, Muhammad Ali Abid, Sigrid Kusch-Brandt
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Agriculture &middot; 2022 &middot; DOI: 10.3390/agriculture12101742
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/agriculture12101742" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)">Nisar Ahmed Khan, Majid Ali, <strong style="color:var(--ink)">Nihal Ahmad</strong>, Muhammad Ali Abid, Sigrid Kusch-Brandt</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Agriculture &middot; 2022 &middot; DOI: 10.3390/agriculture12101742</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/agriculture12101742" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 11 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/su141912067" target="_blank" class="pub-title-link mb-2 block">
                             The Role of Educating the Labor Force in Sustaining a Green Economy in MINT Countries: Panel Symmetric and Asymmetric Approach
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Bilal Hassan, Sajjad Nawaz Khan, Ricardo Cosio Borda, Juan Martín Campos Huamán, Piotr Senkus
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Sustainability &middot; 2022 &middot; DOI: 10.3390/su141912067
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/su141912067" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Bilal Hassan, Sajjad Nawaz Khan, Ricardo Cosio Borda, Juan Martín Campos Huamán, Piotr Senkus</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2022 &middot; DOI: 10.3390/su141912067</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su141912067" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 12 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/en15196956" target="_blank" class="pub-title-link mb-2 block">
                             Nexus between Nuclear Energy Consumption and Carbon Footprint in Asia Pacific Region: Policy toward Environmental Sustainability
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Farhan Mahboob, Zeeshan Hamid, Adnan Ahmed Sheikh, Muhammad Sibt e Ali, Waldemar Glabiszewski, Aneta Wysokińska-Senkus, Piotr Senkus, Szymon Cyfert
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Energies &middot; 2022 &middot; DOI: 10.3390/en15196956
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/en15196956" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Farhan Mahboob, Zeeshan Hamid, Adnan Ahmed Sheikh, Muhammad Sibt e Ali, Waldemar Glabiszewski, Aneta Wysokińska-Senkus, Piotr Senkus, Szymon Cyfert</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Energies &middot; 2022 &middot; DOI: 10.3390/en15196956</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/en15196956" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 13 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/su141811768" target="_blank" class="pub-title-link mb-2 block">
                             Nexus between Cyclical Innovation in Green Technologies and CO2 Emissions in Nordic Countries: Consent toward Environmental Sustainability
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Franklin Ore Areche, Dante Daniel Cruz Nieto, Ricardo Fernando Cosio Borda, Berenice Cajavilca Gonzales, Piotr Senkus, Paweł Siemiński, Adam Skrzypek
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Sustainability &middot; 2022 &middot; DOI: 10.3390/su141811768
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/su141811768" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Franklin Ore Areche, Dante Daniel Cruz Nieto, Ricardo Fernando Cosio Borda, Berenice Cajavilca Gonzales, Piotr Senkus, Paweł Siemiński, Adam Skrzypek</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2022 &middot; DOI: 10.3390/su141811768</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su141811768" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 14 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/agriculture12091320" target="_blank" class="pub-title-link mb-2 block">
                             Causal Linkage among Agricultural Insurance, Air Pollution, and Agricultural Green Total Factor Productivity in United States: Pairwise Granger Causality Approach
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Zeeshan Hamid, Farhan Mahboob, Khalil Ur Rehman, Muhammad Sibt e Ali, Piotr Senkus, Aneta Wysokińska-Senkus, Paweł Siemiński, Adam Skrzypek
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Agriculture &middot; 2022 &middot; DOI: 10.3390/agriculture12091320
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/agriculture12091320" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Zeeshan Hamid, Farhan Mahboob, Khalil Ur Rehman, Muhammad Sibt e Ali, Piotr Senkus, Aneta Wysokińska-Senkus, Paweł Siemiński, Adam Skrzypek</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Agriculture &middot; 2022 &middot; DOI: 10.3390/agriculture12091320</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/agriculture12091320" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 15 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/en15155422" target="_blank" class="pub-title-link mb-2 block">
                             Energy Diversification: A Friend or Foe to Economic Growth in Nordic Countries? A Novel Energy Diversification Approach
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Farhan Mahboob, Muhammad Sibt e Ali, Elżbieta Jasińska, Michał Jasiński, Zbigniew Leonowicz, Alessandro Burgio
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Energies &middot; 2022 &middot; DOI: 10.3390/en15155422
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/en15155422" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Farhan Mahboob, Muhammad Sibt e Ali, Elżbieta Jasińska, Michał Jasiński, Zbigniew Leonowicz, Alessandro Burgio</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Energies &middot; 2022 &middot; DOI: 10.3390/en15155422</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/en15155422" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 16 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/en15145199" target="_blank" class="pub-title-link mb-2 block">
                             Exploring the Causal Relationship among Green Taxes, Energy Intensity, and Energy Consumption in Nordic Countries: Dumitrescu and Hurlin Causality Approach
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Zeeshan Hamid, Piotr Senkus, Ricardo Cosio Borda, Aneta Wysokińska-Senkus, Waldemar Glabiszewski
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Energies &middot; 2022 &middot; DOI: 10.3390/en15145199
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/en15145199" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Zeeshan Hamid, Piotr Senkus, Ricardo Cosio Borda, Aneta Wysokińska-Senkus, Waldemar Glabiszewski</p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Energies &middot; 2022 &middot; DOI: 10.3390/en15145199</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/en15145199" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 17 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/en15145068" target="_blank" class="pub-title-link mb-2 block">
                             Green Finance and Green Energy Nexus in ASEAN Countries: A Bootstrap Panel Causality Test
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Energies &middot; 2022 &middot; DOI: 10.3390/en15145068
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/en15145068" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong></p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Energies &middot; 2022 &middot; DOI: 10.3390/en15145068</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/en15145068" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
 
-                    <!-- Publication 18 -->
                     <article class="pub-card">
                         <a href="https://doi.org/10.3390/su132011315" target="_blank" class="pub-title-link mb-2 block">
                             Assessing the Impact of Policy Measures in Reducing the COVID-19 Pandemic: A Case Study of South Asia
                         </a>
-                        <p class="text-[0.9375rem] text-ink mb-1">
-                            <strong class="text-ink">Nihal Ahmed</strong>
-                        </p>
-                        <p class="text-[13px] text-ink-tertiary mb-3 leading-relaxed uppercase tracking-wide font-medium">
-                            Sustainability &middot; 2021 &middot; DOI: 10.3390/su132011315
-                        </p>
-                        <div class="flex gap-2.5 mt-auto">
-                            <a href="https://doi.org/10.3390/su132011315" target="_blank" class="btn-modern border border-stone-200 bg-white text-ink-secondary text-xs px-3 py-1.5">
-                                <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                                View Article
-                            </a>
-                        </div>
+                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong></p>
+                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2021 &middot; DOI: 10.3390/su132011315</p>
+                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su132011315" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
                     </article>
+
                 </div>
+            </div><!-- /page-publications -->
+
+            <!-- ===== PAGE: CV ===== -->
+            <div id="page-cv" class="page-content">
+                <h2 class="text-[2.25rem] font-bold tracking-tight mb-8 leading-[1.1]" style="color: var(--ink);">Curriculum Vitae</h2>
+                <p class="text-[0.9375rem] leading-relaxed" style="color: var(--ink-2);">CV content coming soon.</p>
             </div>
 
-            <!-- PAGE: CV -->
-            <div id="page-cv" class="page-content">
-                <h2 class="text-[2.25rem] font-bold text-ink tracking-tight mb-8 leading-[1.1]">Curriculum Vitae</h2>
-
-            <!-- PAGE: CONTACT -->
+            <!-- ===== PAGE: CONTACT ===== -->
             <div id="page-contact" class="page-content">
-                <h2 class="text-[2.25rem] font-bold text-ink tracking-tight mb-4 leading-[1.1]">Contact</h2>
+                <h2 class="text-[2.25rem] font-bold tracking-tight mb-4 leading-[1.1]" style="color: var(--ink);">Contact</h2>
 
-                <p class="text-[1.125rem] text-ink mb-8 leading-[1.6]">
+                <p class="text-[1.125rem] mb-8 leading-[1.6]" style="color: var(--ink);">
                     I am happy to hear from you, whether it is about research collaborations, peer review invitations, or general inquiries. Use the form below or reach out directly via email.
                 </p>
 
@@ -883,57 +1008,74 @@
                         <label for="name" class="contact-label">Name</label>
                         <input type="text" id="name" name="name" class="contact-input" required />
                     </div>
-
                     <div class="mb-5">
                         <label for="email" class="contact-label">Email</label>
                         <input type="email" id="email" name="email" class="contact-input" required />
                     </div>
-
                     <div class="mb-5">
                         <label for="subject" class="contact-label">Subject</label>
                         <input type="text" id="subject" name="subject" class="contact-input" placeholder="Research collaboration, peer review, general inquiry..." />
                     </div>
-
                     <div class="mb-6">
                         <label for="message" class="contact-label">Message</label>
                         <textarea id="message" name="message" class="contact-input h-[180px] resize-y" required></textarea>
                     </div>
-
                     <div>
-                        <button type="submit" class="btn-send">
-                            Send Message
-                        </button>
+                        <button type="submit" class="btn-send">Send Message</button>
                     </div>
                 </form>
-            </div>
+            </div><!-- /page-contact -->
 
         </section>
     </main>
 
+    <!-- ===== Mobile Bottom Navigation (phone only) ===== -->
+    <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Primary navigation">
+        <button class="mobile-bottom-nav-btn active" data-target="home" onclick="navigateTo('home')">
+            <span class="bn-icon"><i class="fa-solid fa-house"></i></span>
+            <span>Home</span>
+        </button>
+        <button class="mobile-bottom-nav-btn" data-target="publications" onclick="navigateTo('publications')">
+            <span class="bn-icon"><i class="fa-solid fa-book-open"></i></span>
+            <span>Publications</span>
+        </button>
+    </nav>
+
     <script>
+        // ===== Theme =====
+        function updateThemeIcon() {
+            const theme = document.documentElement.getAttribute('data-theme');
+            document.getElementById('theme-icon').className =
+                theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
+        }
+        function toggleTheme() {
+            const cur = document.documentElement.getAttribute('data-theme');
+            const next = cur === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateThemeIcon();
+        }
+        updateThemeIcon();
+
+        // ===== Navigation =====
         function navigateTo(pageId) {
-            document.querySelectorAll('.page-content').forEach(el => {
-                el.classList.remove('active-page');
-            });
+            document.querySelectorAll('.page-content').forEach(el => el.classList.remove('active-page'));
+            const target = document.getElementById('page-' + pageId);
+            if (target) target.classList.add('active-page');
 
-            const targetPage = document.getElementById('page-' + pageId);
-            targetPage.classList.add('active-page');
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll(`.nav-item[data-target="${pageId}"]`).forEach(el => el.classList.add('active'));
 
-            document.querySelectorAll('.nav-item').forEach(el => {
-                el.classList.remove('active');
-            });
-
-            document.querySelectorAll(`.nav-item[data-target="${pageId}"]`).forEach(el => {
-                el.classList.add('active');
-            });
+            // Update bottom nav active state
+            document.querySelectorAll('.mobile-bottom-nav-btn').forEach(btn => btn.classList.remove('active'));
+            const activeBtn = document.querySelector(`.mobile-bottom-nav-btn[data-target="${pageId}"]`);
+            if (activeBtn) activeBtn.classList.add('active');
 
             if (pageId === 'publications') {
                 const cards = document.querySelectorAll('#page-publications .pub-card');
-                cards.forEach((card) => { card.classList.remove('visible'); });
+                cards.forEach(c => c.classList.remove('visible'));
                 setTimeout(() => {
-                    cards.forEach((card, i) => {
-                        setTimeout(() => { card.classList.add('visible'); }, i * 80);
-                    });
+                    cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 80));
                 }, 100);
             }
 
@@ -943,26 +1085,122 @@
         }
 
         function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+            document.getElementById('mobile-menu').classList.toggle('hidden');
         }
 
+        // ===== Parallax =====
         const heroBanner = document.querySelector('.hero-banner');
         window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            if (heroBanner && scrolled < 500) {
-                heroBanner.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
+            const s = window.pageYOffset;
+            if (heroBanner && s < 500) heroBanner.style.transform = `translateY(${s * 0.3}px)`;
+        }, { passive: true });
 
+        // ===== Count-up =====
+        function animateCount(id, target, duration) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            const start = performance.now();
+            function step(now) {
+                const progress = Math.min((now - start) / duration, 1);
+                const eased = 1 - Math.pow(1 - progress, 3);
+                el.textContent = Math.floor(eased * target);
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = target;
+            }
+            requestAnimationFrame(step);
+        }
+
+        let statsAnimated = false;
+        function runStats() {
+            if (statsAnimated) return;
+            statsAnimated = true;
+            animateCount('stat-citations', 607, 1800);
+            setTimeout(() => animateCount('stat-hindex', 13, 1000), 200);
+            setTimeout(() => animateCount('stat-i10', 14, 1000), 350);
+            setTimeout(() => animateCount('stat-reviews', 83, 1400), 500);
+            setTimeout(() => animateCount('stat-journals', 17, 1000), 700);
+        }
+
+        const statsTarget = document.getElementById('stat-citations');
+        if (statsTarget && 'IntersectionObserver' in window) {
+            const obs = new IntersectionObserver(entries => {
+                if (entries[0].isIntersecting) { runStats(); obs.disconnect(); }
+            }, { threshold: 0.5 });
+            obs.observe(statsTarget);
+        } else {
+            // Fallback: run after 500ms
+            setTimeout(runStats, 500);
+        }
+
+        // ===== Carousel =====
+        let currentSlide = 0;
+        const TOTAL_SLIDES = 3;
+        let autoTimer = null;
+
+        function updateCarousel() {
+            document.querySelectorAll('.carousel-slide').forEach((slide, i) => {
+                slide.classList.toggle('active-slide', i === currentSlide);
+            });
+            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
+                dot.classList.toggle('active', i === currentSlide);
+            });
+        }
+
+        function carouselNext(e) {
+            if (e) e.stopPropagation();
+            currentSlide = (currentSlide + 1) % TOTAL_SLIDES;
+            updateCarousel();
+            resetAuto();
+        }
+
+        function carouselPrev(e) {
+            if (e) e.stopPropagation();
+            currentSlide = (currentSlide - 1 + TOTAL_SLIDES) % TOTAL_SLIDES;
+            updateCarousel();
+            resetAuto();
+        }
+
+        function carouselGoTo(index, e) {
+            if (e) e.stopPropagation();
+            currentSlide = index;
+            updateCarousel();
+            resetAuto();
+        }
+
+        function startAuto() { autoTimer = setInterval(() => { currentSlide = (currentSlide + 1) % TOTAL_SLIDES; updateCarousel(); }, 5000); }
+        function resetAuto() { clearInterval(autoTimer); startAuto(); }
+
+        startAuto();
+
+        // Touch swipe for carousel
+        let touchX0 = 0;
+        const carouselEl = document.getElementById('pub-carousel');
+        if (carouselEl) {
+            carouselEl.addEventListener('touchstart', e => {
+                touchX0 = e.changedTouches[0].clientX;
+                clearInterval(autoTimer);
+            }, { passive: true });
+
+            carouselEl.addEventListener('touchend', e => {
+                const diff = touchX0 - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 35) {
+                    currentSlide = diff > 0
+                        ? (currentSlide + 1) % TOTAL_SLIDES
+                        : (currentSlide - 1 + TOTAL_SLIDES) % TOTAL_SLIDES;
+                    updateCarousel();
+                }
+                resetAuto();
+            }, { passive: true });
+        }
+
+        // Init pubs animation if active on load
         document.addEventListener('DOMContentLoaded', () => {
             if (document.getElementById('page-publications').classList.contains('active-page')) {
                 const cards = document.querySelectorAll('#page-publications .pub-card');
-                cards.forEach((card, i) => {
-                    setTimeout(() => { card.classList.add('visible'); }, i * 80);
-                });
+                cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 80));
             }
         });
     </script>
+
 </body>
 </html>
