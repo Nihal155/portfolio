@@ -1056,11 +1056,25 @@
                 }, 100);
             }
 
+            // --- UPDATED MOBILE SCROLL LOGIC ---
             if (window.innerWidth < 768) {
+                // First, scroll to top like a normal tab change
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // If it's publications, wait 0.5s then smoothly drag down to the content
+                if (pageId === 'publications') {
+                    setTimeout(() => {
+                        const pubSection = document.getElementById('page-publications');
+                        if (pubSection) {
+                            // Calculate position, subtracting 20px for a clean visual margin
+                            const offsetTop = pubSection.getBoundingClientRect().top + window.scrollY - 20;
+                            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                        }
+                    }, 500); // 0.5 second delay
+                }
             }
         }
-
+        
         function toggleMobileMenu() {
             document.getElementById('mobile-menu').classList.toggle('hidden');
         }
