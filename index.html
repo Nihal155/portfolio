@@ -1,1197 +1,676 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nihal Ahmed - Academic Profile</title>
-    <link rel="icon" type="image/png" href="favicon.png">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Nihal Ahmed — Ecological Economist | PhD Researcher</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --primary:#1a4d3e;
+  --primary-dark:#0f2e26;
+  --primary-light:#2d6a56;
+  --accent:#c9a961;
+  --accent-dark:#a88a45;
+  --text:#1f2937;
+  --text-light:#6b7280;
+  --bg:#f7f5f0;
+  --bg-alt:#efece4;
+  --white:#ffffff;
+  --border:#e5e2d8;
+  --shadow:0 4px 20px rgba(15,46,38,.08);
+  --shadow-hover:0 12px 32px rgba(15,46,38,.15);
+  --radius:12px;
+  --transition:all .3s ease;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',-apple-system,sans-serif;
+  color:var(--text);
+  background:var(--bg);
+  line-height:1.7;
+  font-size:16px;
+}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;color:var(--primary-dark);line-height:1.3;font-weight:600}
+a{text-decoration:none;color:inherit;transition:var(--transition)}
+img{max-width:100%;display:block}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
 
-    <script>
-        (function() {
-            var saved = localStorage.getItem('theme') || 'light';
-            document.documentElement.setAttribute('data-theme', saved);
-        })();
-    </script>
+/* ---------- NAV ---------- */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);
+}
+.nav-wrap{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;max-width:1200px;margin:0 auto}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--primary-dark);letter-spacing:-.5px}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-weight:500;font-size:.95rem;color:var(--text);position:relative}
+.nav-links a:hover{color:var(--primary)}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--accent);transition:var(--transition)}
+.nav-links a:hover::after{width:100%}
+.btn{
+  display:inline-block;padding:12px 28px;border-radius:50px;
+  font-weight:600;font-size:.95rem;cursor:pointer;border:none;
+  transition:var(--transition);
+}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.btn-accent{background:var(--accent);color:var(--primary-dark)}
+.btn-accent:hover{background:var(--accent-dark);transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--primary);border:2px solid var(--primary)}
+.btn-outline:hover{background:var(--primary);color:#fff}
+.mobile-toggle{display:none;background:none;border:none;font-size:1.5rem;color:var(--primary-dark);cursor:pointer}
 
-    <script src="https://cdn.tailwindcss.com"></script>
+/* ---------- HERO ---------- */
+.hero{
+  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,var(--primary-light) 100%);
+  color:#fff;padding:100px 0 80px;position:relative;overflow:hidden;
+}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 20% 30%,rgba(201,169,97,.15) 0%,transparent 50%),
+                   radial-gradient(circle at 80% 70%,rgba(255,255,255,.08) 0%,transparent 50%);
+}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:860px;margin:0 auto}
+.hero-badge{
+  display:inline-block;padding:8px 20px;border-radius:50px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
+  font-size:.85rem;letter-spacing:1px;text-transform:uppercase;
+  margin-bottom:24px;font-weight:500;
+}
+.hero h1{
+  color:#fff;font-size:clamp(2.2rem,5vw,3.8rem);
+  margin-bottom:20px;font-weight:700;
+}
+.hero h1 span{color:var(--accent);font-style:italic}
+.hero-sub{font-size:1.15rem;opacity:.9;margin-bottom:16px;max-width:680px;margin-left:auto;margin-right:auto}
+.hero-role{font-size:1.05rem;opacity:.8;margin-bottom:36px;font-weight:400}
+.hero-role i{color:var(--accent);margin-right:8px}
+.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
+.stats-bar{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:40px;
+  max-width:700px;margin:0 auto;padding-top:40px;
+  border-top:1px solid rgba(255,255,255,.2);
+}
+.stat{text-align:center}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--accent);display:block;line-height:1}
+.stat-label{font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.85;margin-top:8px}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+/* ---------- SECTION ---------- */
+section{padding:90px 0}
+.section-label{
+  display:inline-block;color:var(--accent-dark);font-weight:600;
+  text-transform:uppercase;letter-spacing:2px;font-size:.85rem;
+  margin-bottom:14px;
+}
+.section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:18px}
+.section-intro{max-width:720px;color:var(--text-light);font-size:1.05rem;margin-bottom:50px}
+.section-head{text-align:center;margin-bottom:60px}
+.section-head .section-intro{margin-left:auto;margin-right:auto}
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+/* ---------- ABOUT ---------- */
+.about{background:var(--white)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.about-text h2{font-size:2.2rem;margin-bottom:20px}
+.about-text p{margin-bottom:18px;color:var(--text-light)}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
+.highlight-card{
+  background:var(--bg);padding:24px;border-radius:var(--radius);
+  border-left:4px solid var(--accent);
+}
+.highlight-card h4{font-size:1.05rem;margin-bottom:8px;font-family:'Inter',sans-serif;font-weight:600;color:var(--primary-dark)}
+.highlight-card p{font-size:.9rem;color:var(--text-light);margin:0}
+.about-visual{
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);
+  border-radius:var(--radius);padding:40px;color:#fff;
+  box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.about-visual::before{
+  content:'';position:absolute;top:-50px;right:-50px;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(201,169,97,.2);
+}
+.about-visual h3{color:#fff;font-size:1.6rem;margin-bottom:24px;position:relative}
+.experience-badge{
+  display:flex;align-items:center;gap:20px;margin-bottom:30px;
+  padding:20px;background:rgba(255,255,255,.1);border-radius:var(--radius);
+  position:relative;
+}
+.exp-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--accent);line-height:1}
+.exp-text{font-size:.95rem;opacity:.9}
+.academic-links{display:flex;flex-wrap:wrap;gap:12px;position:relative}
+.academic-links a{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 16px;background:rgba(255,255,255,.15);
+  border-radius:50px;font-size:.85rem;font-weight:500;
+  transition:var(--transition);
+}
+.academic-links a:hover{background:var(--accent);color:var(--primary-dark)}
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['"Open Sans"', 'sans-serif'] },
-                }
-            }
-        }
-    </script>
+/* ---------- RESEARCH INTERESTS (TAG CLOUD) ---------- */
+.interests{background:var(--bg-alt)}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:900px;margin:0 auto}
+.tag{
+  padding:12px 24px;background:var(--white);
+  border:1px solid var(--border);border-radius:50px;
+  font-weight:500;font-size:.95rem;color:var(--primary-dark);
+  transition:var(--transition);cursor:default;
+}
+.tag:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-3px);box-shadow:var(--shadow)}
+.tag i{color:var(--accent);margin-right:8px}
+.tag:hover i{color:var(--accent)}
 
-    <style>
-        /* ===== CSS Variables: Light & Dark ===== */
-        :root {
-            --bg:           #FAFAF9;
-            --bg-elevated:  #FFFFFF;
-            --bg-subtle:    #F2F0EB;
-            --ink:          #1C1917;
-            --ink-2:        #57534E;
-            --ink-3:        #A8A29E;
-            --border:       #E7E5E4;
-            --border-light: #D6D3D1;
-            --brand:        #8B2635;
-            --brand-muted:  rgba(139, 38, 53, 0.08);
-            --shadow:       rgba(0,0,0,0.06);
-            --shadow-md:    rgba(0,0,0,0.10);
-        }
-        [data-theme="dark"] {
-            --bg:           #1C1917;
-            --bg-elevated:  #292524;
-            --bg-subtle:    #292524;
-            --ink:          #F5F5F4;
-            --ink-2:        #D6D3D1;
-            --ink-3:        #78716C;
-            --border:       #44403C;
-            --border-light: #57534E;
-            --brand:        #C04B5D;
-            --brand-muted:  rgba(192, 75, 93, 0.12);
-            --shadow:       rgba(0,0,0,0.30);
-            --shadow-md:    rgba(0,0,0,0.45);
-        }
+/* ---------- PUBLICATIONS (CARDS) ---------- */
+.publications{background:var(--white)}
+.pub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
+.pub-card{
+  background:var(--white);border:1px solid var(--border);
+  border-radius:var(--radius);padding:28px;
+  transition:var(--transition);display:flex;flex-direction:column;
+  position:relative;overflow:hidden;
+}
+.pub-card::before{
+  content:'';position:absolute;top:0;left:0;width:4px;height:100%;
+  background:var(--accent);transform:scaleY(0);transform-origin:top;
+  transition:transform .4s ease;
+}
+.pub-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:transparent}
+.pub-card:hover::before{transform:scaleY(1)}
+.pub-year{
+  display:inline-block;padding:4px 12px;background:var(--bg-alt);
+  color:var(--primary);border-radius:50px;font-size:.78rem;
+  font-weight:600;letter-spacing:.5px;margin-bottom:16px;width:fit-content;
+}
+.pub-card h3{
+  font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:600;
+  color:var(--primary-dark);margin-bottom:14px;line-height:1.5;
+  flex-grow:1;
+}
+.pub-meta{font-size:.85rem;color:var(--text-light);margin-bottom:6px}
+.pub-meta i{color:var(--accent);margin-right:6px;width:14px}
+.pub-journal{font-style:italic;color:var(--primary);font-weight:500}
+.pub-link{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:18px;color:var(--primary);font-weight:600;
+  font-size:.9rem;padding-top:14px;border-top:1px solid var(--border);
+}
+.pub-link:hover{color:var(--accent-dark);gap:12px}
 
-        /* ===== Base ===== */
-        html { scroll-behavior: smooth; }
-        body {
-            background-color: var(--bg);
-            color: var(--ink);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            font-family: 'Open Sans', sans-serif;
-        }
-        ::selection { background-color: rgba(139,38,53,0.15); color: #6E1C28; }
+/* ---------- RESEARCH THEMES (WHY CHOOSE US STYLE) ---------- */
+.themes{background:var(--bg)}
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.theme-card{
+  background:var(--white);padding:32px 28px;border-radius:var(--radius);
+  text-align:center;transition:var(--transition);
+  border:1px solid var(--border);
+}
+.theme-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:var(--accent)}
+.theme-icon{
+  width:64px;height:64px;border-radius:50%;
+  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;color:#fff;font-size:1.5rem;
+}
+.theme-card h4{font-size:1.15rem;margin-bottom:12px;font-family:'Inter',sans-serif;font-weight:600;color:var(--primary-dark)}
+.theme-card p{font-size:.92rem;color:var(--text-light)}
 
-        /* ===== Header ===== */
-        header {
-            background-color: var(--bg);
-            border-color: var(--border);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
+/* ---------- PEER REVIEW ---------- */
+.peer-review{
+  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);
+  color:#fff;
+}
+.peer-review .section-title{color:#fff}
+.peer-review .section-intro{color:rgba(255,255,255,.85)}
+.peer-review .section-label{color:var(--accent)}
+.peer-stats{
+  display:flex;justify-content:center;gap:60px;margin-bottom:50px;flex-wrap:wrap;
+}
+.peer-stat{text-align:center}
+.peer-stat .num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:var(--accent);display:block;line-height:1}
+.peer-stat .lbl{font-size:.9rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.85;margin-top:8px}
+.journal-list{
+  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto;
+}
+.journal-tag{
+  padding:10px 20px;background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.25);border-radius:50px;
+  font-size:.88rem;font-weight:500;
+}
 
-        /* ===== Navigation ===== */
-        .nav-link {
-            position: relative;
-            color: var(--ink-2);
-            transition: color 0.3s ease;
-            cursor: pointer;
-            font-size: 0.875rem;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0; height: 2px;
-            bottom: -4px; left: 0;
-            background-color: var(--brand);
-            transition: width 0.3s ease;
-            border-radius: 2px;
-        }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-link:hover { color: var(--ink); }
-        .nav-link.active { color: var(--ink); font-weight: 600; }
+/* ---------- CONTACT ---------- */
+.contact{background:var(--white)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
+.contact-info h2{font-size:2.2rem;margin-bottom:20px}
+.contact-info p{color:var(--text-light);margin-bottom:30px}
+.contact-item{
+  display:flex;align-items:center;gap:16px;margin-bottom:20px;
+  padding:16px;background:var(--bg);border-radius:var(--radius);
+}
+.contact-item i{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--primary);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.contact-item h4{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;margin-bottom:2px;color:var(--primary-dark)}
+.contact-item p{font-size:.9rem;color:var(--text-light);margin:0}
+.contact-form{
+  background:var(--bg);padding:40px;border-radius:var(--radius);
+  border:1px solid var(--border);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.form-group{margin-bottom:16px}
+.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--primary-dark)}
+.form-group input,.form-group textarea{
+  width:100%;padding:12px 16px;border:1px solid var(--border);
+  border-radius:8px;font-family:inherit;font-size:.95rem;
+  background:var(--white);transition:var(--transition);
+}
+.form-group input:focus,.form-group textarea:focus{
+  outline:none;border-color:var(--primary);
+  box-shadow:0 0 0 3px rgba(26,77,62,.1);
+}
+.form-group textarea{resize:vertical;min-height:120px}
+.contact-form .btn{width:100%;padding:14px}
 
-        /* ===== Theme Toggle ===== */
-        .theme-toggle {
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            border: 1px solid var(--border);
-            background-color: var(--bg-elevated);
-            color: var(--ink-2);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 14px;
-        }
-        .theme-toggle:hover {
-            border-color: var(--brand);
-            color: var(--brand);
-            transform: rotate(20deg);
-        }
+/* ---------- CTA BANNER ---------- */
+.cta-banner{
+  background:var(--accent);padding:70px 0;text-align:center;
+  position:relative;overflow:hidden;
+}
+.cta-banner::before{
+  content:'';position:absolute;inset:0;
+  background-image:radial-gradient(circle at 10% 50%,rgba(26,77,62,.1) 0%,transparent 40%),
+                   radial-gradient(circle at 90% 50%,rgba(26,77,62,.1) 0%,transparent 40%);
+}
+.cta-banner h2{color:var(--primary-dark);font-size:2.2rem;margin-bottom:16px;position:relative}
+.cta-banner p{color:var(--primary-dark);opacity:.85;max-width:640px;margin:0 auto 30px;position:relative}
+.cta-banner .btn{position:relative}
 
-        /* ===== Links ===== */
-        .inline-link {
-            color: var(--brand);
-            text-decoration: none;
-            border-bottom: 1px solid rgba(139,38,53,0.4);
-            transition: all 0.3s ease;
-        }
-        .inline-link:hover {
-            border-bottom-color: var(--brand);
-            padding-left: 2px; padding-right: 2px;
-        }
+/* ---------- FOOTER ---------- */
+.footer{background:var(--primary-dark);color:rgba(255,255,255,.85);padding:70px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
+.footer-col h4{color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;margin-bottom:20px;position:relative;padding-bottom:12px}
+.footer-col h4::after{content:'';position:absolute;bottom:0;left:0;width:30px;height:2px;background:var(--accent)}
+.footer-col p{font-size:.9rem;opacity:.75;margin-bottom:20px}
+.footer-col ul{list-style:none}
+.footer-col ul li{margin-bottom:10px}
+.footer-col ul a{font-size:.9rem;opacity:.75;transition:var(--transition)}
+.footer-col ul a:hover{opacity:1;color:var(--accent);padding-left:5px}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;font-weight:700;margin-bottom:16px}
+.footer-logo span{color:var(--accent)}
+.social-row{display:flex;gap:12px;margin-top:20px}
+.social-row a{
+  width:38px;height:38px;border-radius:50%;
+  background:rgba(255,255,255,.1);
+  display:flex;align-items:center;justify-content:center;
+  color:#fff;transition:var(--transition);
+}
+.social-row a:hover{background:var(--accent);color:var(--primary-dark);transform:translateY(-3px)}
+.footer-bottom{
+  padding-top:30px;border-top:1px solid rgba(255,255,255,.1);
+  text-align:center;font-size:.85rem;opacity:.6;
+}
 
-        .sidebar-link {
-            color: var(--ink-2);
-            text-decoration: none;
-            border-bottom: 1px dashed var(--border-light);
-            transition: all 0.3s ease;
-        }
-        .sidebar-link:hover {
-            color: var(--brand);
-            border-bottom-color: var(--brand);
-            padding-left: 4px;
-        }
-
-        /* ===== Profile ===== */
-        .profile-glow {
-            position: absolute; inset: -8px;
-            background: linear-gradient(to bottom right, rgba(139,38,53,0.15), transparent);
-            border-radius: 16px;
-            filter: blur(8px);
-            z-index: -1;
-            opacity: 0.6;
-            transition: opacity 0.3s ease;
-        }
-        .profile-wrapper:hover .profile-glow { opacity: 1; }
-
-        /* ===== Metric Cards ===== */
-        .metric-card {
-            background-color: var(--bg-elevated);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 8px 12px;
-            text-align: center;
-            flex: 1;
-            box-shadow: 0 4px 20px var(--shadow);
-        }
-        .metric-val {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: var(--brand);
-            line-height: 1;
-        }
-        .metric-lbl {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--ink-3);
-            font-weight: 600;
-            margin-top: 4px;
-        }
-
-        /* ===== Email Pill ===== */
-        .email-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 16px;
-            background-color: var(--brand-muted);
-            color: var(--brand);
-            font-size: 13px; font-weight: 600;
-            border-radius: 9999px;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        .email-pill:hover {
-            background-color: var(--brand);
-            color: white;
-            box-shadow: 0 4px 12px rgba(139,38,53,0.2);
-            transform: translateY(-1px);
-        }
-
-        /* ===== Social Icons ===== */
-        .sidebar-social-icon {
-            width: 24px; text-align: center;
-            color: var(--ink-3);
-            transition: color 0.3s ease;
-        }
-        .sidebar-social-item:hover .sidebar-social-icon { color: var(--brand); }
-
-        /* ===== Section Label ===== */
-        .section-label {
-            font-size: 10px;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            font-weight: 600;
-            color: var(--ink-3);
-            margin-bottom: 16px;
-        }
-
-        /* ===== Tag Chips ===== */
-        .tag-chip {
-            display: inline-flex;
-            align-items: center;
-            padding: 6px 14px;
-            background-color: var(--bg-subtle);
-            color: var(--ink-2);
-            font-size: 12px; font-weight: 600;
-            border-radius: 9999px;
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-        .tag-chip:hover {
-            background-color: var(--brand-muted);
-            color: var(--brand);
-            border-color: rgba(139,38,53,0.2);
-        }
-
-        /* ===== Publication Carousel ===== */
-        .carousel-wrapper {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            background: linear-gradient(135deg, var(--brand) 0%, #5C141F 100%);
-            padding: 28px 0 24px;
-            margin-bottom: 32px;
-            touch-action: pan-y;
-            user-select: none;
-        }
-        .carousel-track {
-            position: relative;
-            min-height: 200px;
-        }
-        .carousel-slide {
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            padding: 0 52px;
-            box-sizing: border-box;
-            opacity: 0;
-            transition: opacity 0.7s ease;
-            pointer-events: none;
-            visibility: hidden;
-        }
-        .carousel-slide.active-slide {
-            position: relative;
-            opacity: 1;
-            pointer-events: auto;
-            visibility: visible;
-        }
-        .carousel-badge {
-            display: inline-block;
-            background-color: rgba(255,255,255,0.18);
-            color: rgba(255,255,255,0.95);
-            font-size: 10px; font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            padding: 3px 10px;
-            border-radius: 9999px;
-            margin-bottom: 14px;
-        }
-        .carousel-title {
-            font-size: 1rem; font-weight: 700;
-            line-height: 1.45;
-            color: white;
-            margin-bottom: 10px;
-            text-decoration: none;
-            display: block;
-            transition: opacity 0.2s;
-        }
-        .carousel-title:hover { opacity: 0.85; }
-        .carousel-authors {
-            font-size: 13px;
-            color: rgba(255,255,255,0.72);
-            margin-bottom: 5px;
-            line-height: 1.5;
-        }
-        .carousel-journal {
-            font-size: 11px;
-            color: rgba(255,255,255,0.48);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            font-weight: 600;
-            margin-bottom: 22px;
-        }
-        .btn-carousel-all {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 8px 20px;
-            background-color: white;
-            color: var(--brand);
-            font-size: 12px; font-weight: 700;
-            border-radius: 9999px;
-            text-decoration: none;
-            cursor: pointer;
-            border: none;
-            font-family: 'Open Sans', sans-serif;
-            transition: all 0.3s ease;
-            letter-spacing: 0.03em;
-        }
-        .btn-carousel-all:hover {
-            background-color: rgba(255,255,255,0.88);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 14px rgba(0,0,0,0.2);
-        }
-        .carousel-nav {
-            position: absolute;
-            top: 50%; transform: translateY(-50%);
-            width: 30px; height: 30px;
-            background-color: rgba(255,255,255,0.15);
-            border: none; border-radius: 50%;
-            color: white;
-            cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 11px;
-            transition: background-color 0.2s ease;
-            backdrop-filter: blur(4px);
-            z-index: 10;
-        }
-        .carousel-nav:hover { background-color: rgba(255,255,255,0.3); }
-        .carousel-nav.prev { left: 12px; }
-        .carousel-nav.next { right: 12px; }
-        .carousel-dots {
-            display: flex;
-            gap: 6px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-        .carousel-dot {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.35);
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .carousel-dot.active {
-            background-color: white;
-            width: 18px; border-radius: 3px;
-        }
-
-        /* ===== Award Box ===== */
-        .award-box {
-            position: relative; overflow: hidden;
-            border-radius: 12px;
-            background-color: var(--bg-subtle);
-            border: 1px solid var(--border);
-            padding: 24px;
-            transition: all 0.3s ease;
-        }
-        .award-box:hover {
-            box-shadow: 0 8px 30px var(--shadow);
-            border-color: var(--border-light);
-        }
-        .award-box .bg-blob {
-            position: absolute; top: 0; right: 0;
-            width: 128px; height: 128px;
-            background-color: var(--brand-muted);
-            border-radius: 50%;
-            margin-top: -40px; margin-right: -40px;
-        }
-
-        /* ===== Page transitions ===== */
-        .page-content {
-            opacity: 0;
-            transform: translateY(20px);
-            display: none;
-            transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1),
-                        transform 0.5s cubic-bezier(0.4,0,0.2,1);
-        }
-        .page-content.active-page {
-            display: block;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* ===== Publication Cards ===== */
-        .pub-card {
-            opacity: 0;
-            transform: translateY(20px);
-            border-radius: 12px;
-            padding: 20px;
-            margin-left: -20px; margin-right: -20px;
-            border: 1px solid transparent;
-        }
-        .pub-card.visible {
-            opacity: 1; transform: translateY(0);
-            transition: opacity 0.6s cubic-bezier(0.4,0,0.2,1),
-                        transform 0.6s cubic-bezier(0.4,0,0.2,1),
-                        box-shadow 0.4s ease, border-color 0.4s ease,
-                        background-color 0.4s ease;
-        }
-        .pub-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 40px var(--shadow-md);
-            border-color: var(--border);
-            background-color: var(--bg-elevated);
-        }
-
-        /* ===== Pub title link ===== */
-        .pub-title-link {
-            font-weight: 600;
-            font-size: 1.05rem;
-            line-height: 1.4;
-            color: var(--ink);
-            text-decoration: none;
-            display: inline;
-            background-image: linear-gradient(var(--brand), var(--brand));
-            background-size: 0% 1.5px;
-            background-position: left bottom;
-            background-repeat: no-repeat;
-            transition: background-size 0.5s ease, color 0.3s ease;
-            padding-bottom: 2px;
-        }
-        .pub-title-link:hover {
-            background-size: 100% 1.5px;
-            color: var(--brand);
-        }
-
-        /* ===== Btn Modern ===== */
-        .btn-modern {
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            border-radius: 6px;
-            display: inline-flex; align-items: center; gap: 6px;
-            border: 1px solid var(--border);
-            background-color: var(--bg-elevated);
-            color: var(--ink-2);
-            font-size: 0.75rem;
-            padding: 6px 12px;
-            text-decoration: none;
-        }
-        .btn-modern:hover {
-            background-color: var(--brand);
-            color: white;
-            border-color: var(--brand);
-            transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(139,38,53,0.2);
-        }
-        .btn-modern:active { transform: scale(0.98); }
-
-        /* ===== Contact ===== */
-        .contact-input {
-            width: 100%;
-            background-color: var(--bg);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            padding: 12px 16px;
-            font-size: 14px;
-            color: var(--ink);
-            outline: none;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            font-family: 'Open Sans', sans-serif;
-        }
-        .contact-input:focus {
-            background-color: var(--bg-elevated);
-            border-color: var(--brand);
-            box-shadow: 0 0 0 4px var(--brand-muted), 0 1px 2px rgba(0,0,0,0.05);
-            transform: scale(1.01);
-        }
-        .contact-label {
-            font-size: 13px; font-weight: 600;
-            color: var(--ink-2);
-            margin-bottom: 6px;
-            display: block;
-            text-transform: uppercase; letter-spacing: 0.05em;
-        }
-        .btn-send {
-            background-color: var(--ink);
-            color: white;
-            padding: 10px 24px; border-radius: 8px;
-            font-size: 13px; font-weight: 600;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            cursor: pointer; border: none;
-            font-family: 'Open Sans', sans-serif;
-        }
-        .btn-send:hover {
-            background-color: var(--brand);
-            box-shadow: 0 4px 12px rgba(139,38,53,0.25);
-            transform: translateY(-1px);
-        }
-
-        /* ===== Hero Banner ===== */
-        .hero-banner {
-            transition: transform 0.1s linear;
-            will-change: transform;
-        }
-
-        /* ===== Soft shadow util ===== */
-        .soft-shadow { box-shadow: 0 4px 20px var(--shadow); }
-
-        /* ===== Mobile Bottom Navigation ===== */
-        .mobile-bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            background-color: var(--bg-elevated);
-            border-top: 1px solid var(--border);
-            z-index: 100;
-            padding: 6px 0 max(6px, env(safe-area-inset-bottom));
-            box-shadow: 0 -4px 20px var(--shadow);
-            transition: background-color 0.3s ease, border-color 0.3s ease;
-        }
-        @media (max-width: 767px) {
-            .mobile-bottom-nav { display: flex; }
-            body { padding-bottom: 70px; }
-        }
-        .mobile-bottom-nav-btn {
-            flex: 1;
-            display: flex; flex-direction: column;
-            align-items: center; gap: 3px;
-            padding: 6px 8px;
-            cursor: pointer; border: none;
-            background: transparent;
-            color: var(--ink-3);
-            font-size: 11px; font-weight: 600;
-            font-family: 'Open Sans', sans-serif;
-            transition: color 0.2s ease;
-            text-transform: uppercase; letter-spacing: 0.04em;
-        }
-        .mobile-bottom-nav-btn .bn-icon {
-            font-size: 19px;
-            transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
-        }
-        .mobile-bottom-nav-btn:hover { color: var(--brand); }
-        .mobile-bottom-nav-btn:hover .bn-icon { transform: translateY(-3px); }
-        .mobile-bottom-nav-btn.active { color: var(--brand); }
-        .mobile-bottom-nav-btn.active .bn-icon { transform: translateY(-3px); }
-    </style>
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:900px){
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;box-shadow:var(--shadow)}
+  .nav-links.open{display:flex}
+  .nav .btn{display:none}
+  .mobile-toggle{display:block}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .stats-bar{grid-template-columns:1fr;gap:24px}
+  .form-row{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
+  .about-highlights{grid-template-columns:1fr}
+  section{padding:60px 0}
+  .hero{padding:70px 0 60px}
+}
+@media(max-width:560px){
+  .footer-grid{grid-template-columns:1fr}
+  .contact-form{padding:24px}
+  .peer-stats{gap:30px}
+}
+</style>
 </head>
+<body>
 
-<body class="antialiased flex flex-col min-h-screen">
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-wrap">
+    <div class="logo">Nihal<span>.</span>Ahmed</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#interests">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#peer-review">Peer Review</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-primary">Collaborate</a>
+    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
+  </div>
+</nav>
 
-    <header class="py-4 border-b relative z-50 soft-shadow">
-        <div class="max-w-[1140px] mx-auto px-6 md:px-12 flex justify-between items-center flex-wrap gap-3">
-
-            <div class="font-bold text-[17px] tracking-tight" style="color: var(--ink);">Nihal Ahmed</div>
-
-            <nav class="hidden md:flex items-center space-x-8">
-                <a onclick="navigateTo('home')" class="nav-link nav-item active" data-target="home">Home</a>
-                <a onclick="navigateTo('publications')" class="nav-link nav-item" data-target="publications">Publications</a>
-                <a onclick="navigateTo('cv')" class="nav-link nav-item" data-target="cv">CV</a>
-                <a onclick="navigateTo('contact')" class="nav-link nav-item" data-target="contact">Contact</a>
-            </nav>
-
-            <div class="flex items-center gap-3">
-                <button onclick="toggleTheme()" class="theme-toggle" id="theme-toggle-btn" title="Toggle dark/light mode">
-                    <i id="theme-icon" class="fa-solid fa-sun"></i>
-                </button>
-
-                <button onclick="toggleMobileMenu()" class="md:hidden focus:outline-none transition-all hover:scale-110" style="color: var(--ink-2);" aria-label="Menu">
-                    <i class="fa-solid fa-bars text-xl"></i>
-                </button>
-            </div>
-
-            <div id="mobile-menu" class="hidden w-full md:hidden flex flex-col space-y-3 mt-2 text-[15px] pb-2 border-t pt-4" style="border-color: var(--border);">
-                <a onclick="navigateTo('cv'); toggleMobileMenu()" class="nav-link nav-item" data-target="cv">CV</a>
-                <a onclick="navigateTo('contact'); toggleMobileMenu()" class="nav-link nav-item" data-target="contact">Contact</a>
-            </div>
-        </div>
-    </header>
-
-    <div class="hidden md:block w-full h-[280px] overflow-hidden relative" style="background-color: var(--bg-subtle);">
-        <div class="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20 z-10 pointer-events-none"></div>
-        <img class="hero-banner w-full h-[120%] object-cover" src="background.jpg" alt="Banner background" />
+<!-- HERO -->
+<header class="hero" id="home">
+  <div class="container hero-content">
+    <span class="hero-badge"><i class="fa-solid fa-leaf"></i> &nbsp;PhD Researcher · Ecological Economics</span>
+    <h1>Nihal <span>Ahmed</span></h1>
+    <p class="hero-sub">Studying how food systems and agricultural trade generate, displace, and obscure costs to land and soil ecosystems.</p>
+    <p class="hero-role"><i class="fa-solid fa-location-dot"></i> Northwest A&F University, Xian, China</p>
+    <div class="hero-ctas">
+      <a href="mailto:hello@nihalahmed.uk" class="btn btn-accent"><i class="fa-solid fa-envelope"></i> &nbsp;Email Me</a>
+      <a href="#publications" class="btn btn-outline" style="color:#fff;border-color:#fff">View Publications</a>
     </div>
-
-    <!-- MAIN WRAPPER: Reduced row gap from gap-16 to gap-6 on mobile to completely pull about me and citations close together -->
-    <main class="max-w-[1140px] mx-auto w-full px-6 md:px-12 flex flex-col md:flex-row gap-6 md:gap-16 relative mt-4 md:-mt-[100px] z-10 pb-24 flex-grow">
-
-        <aside class="w-full md:w-[280px] flex-shrink-0 md:sticky md:top-8 md:self-start">
-
-            <!-- PROFILE DIV: Made it flex-col & items-center on mobile so the avatar is beautifully centered above your name -->
-            <div class="flex flex-col md:flex-col items-center md:items-start gap-4 md:gap-0 mb-4 md:mb-5 text-center md:text-left">
-                <div class="relative inline-block profile-wrapper flex-shrink-0 md:mb-4">
-                    <div class="profile-glow"></div>
-                    <div class="relative rounded-xl soft-shadow overflow-hidden p-1.5 md:p-2.5 border inline-block" style="background-color: var(--bg-elevated); border-color: var(--border);">
-                        <!-- Adjusted mobile max-w from 90px to 120px for high-impact professional feel when centered -->
-                        <img src="profile00.png" alt="Nihal Ahmed" class="max-w-[220px] md:max-w-[220px] w-full h-auto block rounded-lg">
-                    </div>
-                </div>
-
-                <div>
-                    <h1 class="text-[22px] md:text-[26px] font-bold tracking-tight leading-none mb-2" style="color: var(--ink);">Nihal Ahmed</h1>
-                    <p class="text-[11px] md:text-xs uppercase tracking-[0.15em] font-semibold" style="color: var(--brand);">PhD Researcher </p>
-                </div>
-            </div>
-
-            <a href="mailto:hello@nihalahmed.uk" class="hidden md:inline-flex email-pill mb-6">
-                <i class="fa-solid fa-envelope text-xs"></i>
-                Email me
-            </a>
-
-            <!-- CITATION METRICS: Reduced mobile margin bottom to remove empty spaces before "About me" -->
-            <div class="flex gap-3 mb-2 md:mb-6">
-                <div class="metric-card">
-                    <p class="metric-val" id="stat-citations">0</p>
-                    <p class="metric-lbl">Citations</p>
-                </div>
-                <div class="metric-card">
-                    <p class="metric-val" id="stat-hindex">0</p>
-                    <p class="metric-lbl">h-index</p>
-                </div>
-                <div class="metric-card">
-                    <p class="metric-val" id="stat-i10">0</p>
-                    <p class="metric-lbl">i10-index</p>
-                </div>
-            </div>
-
-            <div class="hidden md:block text-[13px] leading-relaxed mb-8" style="color: var(--ink-2);">
-                Northwest A&amp;F University, Xian, China
-            </div>
-
-            <ul class="hidden md:block space-y-3.5 text-[13px]">
-                <li class="sidebar-social-item">
-                    <a href="https://orcid.org/0000-0002-0183-9583" target="_blank" class="flex items-center group">
-                        <span class="sidebar-social-icon"><i class="fa-brands fa-orcid"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">ORCID</span>
-                    </a>
-                </li>
-                <li class="sidebar-social-item">
-                    <a href="#" class="flex items-center group">
-                        <span class="sidebar-social-icon"><i class="fa-solid fa-graduation-cap"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">Google Scholar</span>
-                    </a>
-                </li>
-                <li class="sidebar-social-item">
-                    <a href="#" class="flex items-center group">
-                        <span class="sidebar-social-icon"><i class="fa-brands fa-researchgate"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">ResearchGate</span>
-                    </a>
-                </li>
-                <li class="sidebar-social-item">
-                    <a href="#" class="flex items-center group">
-                        <span class="sidebar-social-icon"><i class="fa-brands fa-linkedin-in"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">LinkedIn</span>
-                    </a>
-                </li>
-                <li class="sidebar-social-item">
-                    <a href="#" class="flex items-center group">
-                        <span class="sidebar-social-icon"><i class="fa-brands fa-twitter"></i></span>
-                        <span class="sidebar-link pb-0.5 ml-1">Twitter</span>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-
-        <section class="w-full pt-0 md:pt-[120px] md:pr-6">
-
-            <div id="page-home" class="page-content active-page">
-
-                <h2 class="text-[1.75rem] md:text-[2.25rem] font-bold tracking-tight mb-4 md:mb-5 leading-[1.1]" style="color: var(--ink);">About me</h2>
-
-                <p class="text-[1.05rem] md:text-[1.125rem] leading-[1.6] mb-6 md:mb-8" style="color: var(--ink);">
-                    Ecological economist working on how food systems and agricultural trade generate, displace, and obscure costs to land and soil ecosystems.
-                </p>
-
-                <div class="space-y-5 text-[0.9375rem] leading-[1.7]" style="color: var(--ink-2);">
-                    <p>
-                        I am a <strong style="color:var(--ink)">PhD candidate in economics</strong> at Northwest A&amp;F University. My research is in <strong style="color:var(--ink)">ecological economics</strong>, where the central question is not only how land is used but what happens to the living systems within it. Soil biological communities, nutrient cycles, and landscape-level ecosystem functioning underpin global agricultural productivity yet remain outside every existing trade and environmental accounting framework. I study how agricultural production generates costs to these systems, how those costs are embodied in trade flows and displaced across borders, and how consumption-based accounting can be extended to make the belowground dimension of global food systems visible and governable.
-                    </p>
-                    <p class="pb-4">
-                        My core interests are <strong style="color:var(--ink)">land ecological security</strong>, <strong style="color:var(--ink)">belowground ecosystem multifunctionality</strong>, <strong style="color:var(--ink)">consumption-based environmental accounting</strong>, and the <strong style="color:var(--ink)">equity dimensions of ecological burden displacement through trade</strong>. The thread connecting them is a conviction that the functional biology of landscapes is both foundational to food systems and systematically undervalued in the economic frameworks that govern how land and trade are managed. If your work touches on any of these themes, I welcome the conversation through the <a onclick="navigateTo('contact')" class="inline-link pb-0.5 cursor-pointer">contact form</a>.
-                    </p>
-                </div>
-
-                <div class="mt-8 mb-10">
-                    <h3 class="section-label">Research Interests</h3>
-                    <div class="flex flex-wrap gap-2">
-                        <span class="tag-chip">Ecological Economics</span>
-                        <span class="tag-chip">Land Ecological Security</span>
-                        <span class="tag-chip">Consumption-based Accounting</span>
-                        <span class="tag-chip">Agricultural Trade Footprints</span>
-                        <span class="tag-chip">Belowground Ecosystem Multifunctionality</span>
-                        <span class="tag-chip">Planetary Boundaries</span>
-                        <span class="tag-chip">Ecological Trade Deficits</span>
-                        <span class="tag-chip">Soil Ecosystem Functioning</span>
-                        <span class="tag-chip">Sustainability Governance</span>
-                    </div>
-                </div>
-
-                <div class="mb-10">
-                    <h3 class="section-label">Recent Publications</h3>
-
-                    <div class="carousel-wrapper" id="pub-carousel">
-
-                        <button class="carousel-nav prev" onclick="carouselPrev(event)" aria-label="Previous paper">
-                            <i class="fa-solid fa-chevron-left"></i>
-                        </button>
-                        <button class="carousel-nav next" onclick="carouselNext(event)" aria-label="Next paper">
-                            <i class="fa-solid fa-chevron-right"></i>
-                        </button>
-
-                        <div class="carousel-track" id="carousel-track">
-
-                            <div class="carousel-slide active-slide">
-                                <span class="carousel-badge">2026 &middot; Latest</span>
-                                <a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="carousel-title">
-                                    Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios
-                                </a>
-                                <p class="carousel-authors">Nihal Ahmed, Nisar Ahmed Khan, Józef Ober, Muhammad Farrukh Shahzad</p>
-                                <p class="carousel-journal">Resources, Environment and Sustainability &middot; DOI: 10.1016/j.resenv.2026.100345</p>
-                                <button onclick="navigateTo('publications')" class="btn-carousel-all">
-                                    See all publications <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                                </button>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <span class="carousel-badge">2026</span>
-                                <a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="carousel-title">
-                                    Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers
-                                </a>
-                                <p class="carousel-authors">Nihal Ahmed, Józef Ober, Jianjun Huai</p>
-                                <p class="carousel-journal">Environmental and Sustainability Indicators &middot; DOI: 10.1016/j.indic.2026.101224</p>
-                                <button onclick="navigateTo('publications')" class="btn-carousel-all">
-                                    See all publications <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                                </button>
-                            </div>
-
-                            <div class="carousel-slide">
-                                <span class="carousel-badge">2025</span>
-                                <a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="carousel-title">
-                                    The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans
-                                </a>
-                                <p class="carousel-authors">Nihal Ahmed, Nisar Ahmed Khan, Józef Ober</p>
-                                <p class="carousel-journal">Global Transitions &middot; DOI: 10.1016/j.glt.2025.01.002</p>
-                                <button onclick="navigateTo('publications')" class="btn-carousel-all">
-                                    See all publications <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                                </button>
-                            </div>
-
-                        </div>
-
-                        <div class="carousel-dots">
-                            <div class="carousel-dot active" onclick="carouselGoTo(0, event)"></div>
-                            <div class="carousel-dot" onclick="carouselGoTo(1, event)"></div>
-                            <div class="carousel-dot" onclick="carouselGoTo(2, event)"></div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="award-box mt-2 mb-12">
-                    <div class="bg-blob"></div>
-                    <div class="relative flex items-start gap-4">
-                        <div class="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center" style="background-color: var(--brand-muted); color: var(--brand);">
-                            <i class="fa-solid fa-gavel text-sm"></i>
-                        </div>
-                        <div>
-                            <p class="text-[0.9375rem] font-medium mb-3 leading-snug" style="color: var(--ink);">
-                                Active Peer Reviewer
-                            </p>
-                            <div class="flex gap-6 mb-3">
-                                <div>
-                                    <span class="text-[1.4rem] font-bold leading-none" style="color: var(--brand);" id="stat-reviews">0</span>
-                                    <span class="text-[12px] ml-1 font-medium" style="color: var(--ink-2);">reviews</span>
-                                </div>
-                                <div>
-                                    <span class="text-[1.4rem] font-bold leading-none" style="color: var(--brand);" id="stat-journals">0</span>
-                                    <span class="text-[12px] ml-1 font-medium" style="color: var(--ink-2);">journals</span>
-                                </div>
-                            </div>
-                            <p class="text-[13px] leading-relaxed" style="color: var(--ink-3);">
-                                Including <em>Agricultural Systems</em>, <em>Climatic Change</em>, <em>Environmental and Sustainability Indicators</em>, <em>Ecological Indicators</em>, and <em>Environmental Science &amp; Policy</em>.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex items-center gap-4 text-[13px] pt-4" style="border-top: 1px solid var(--border); color: var(--ink-3);">
-                    <span class="font-medium uppercase tracking-wider text-xs">Share</span>
-                    <div class="flex gap-3.5 text-[15px]" style="color: var(--brand);">
-                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-brands fa-whatsapp"></i></a>
-                        <a href="#" class="hover:opacity-70 transition-all hover:scale-125 hover:-translate-y-0.5"><i class="fa-solid fa-envelope"></i></a>
-                    </div>
-                </div>
-
-            </div>
-            
-            <div id="page-publications" class="page-content">
-                <h2 class="text-[2.25rem] font-bold tracking-tight mb-4 leading-[1.1]" style="color: var(--ink);">Publications</h2>
-
-                <div class="space-y-2">
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="pub-title-link mb-2 block">
-                            Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober, Muhammad Farrukh Shahzad</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Resources, Environment and Sustainability &middot; 2026 &middot; DOI: 10.1016/j.resenv.2026.100345</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="pub-title-link mb-2 block">
-                            Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Józef Ober, Jianjun Huai</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Environmental and Sustainability Indicators &middot; 2026 &middot; DOI: 10.1016/j.indic.2026.101224</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="pub-title-link mb-2 block">
-                            The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Global Transitions &middot; 2025 &middot; DOI: 10.1016/j.glt.2025.01.002</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank" class="pub-title-link mb-2 block">
-                            Quantifying China's ecological assets: A carbon-based assessment of climate change and land use change effects using generalized additive models
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Nisar Ahmed Khan, Józef Ober, Jianjun Huai</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainable Futures &middot; 2025 &middot; DOI: 10.1016/j.sftr.2025.101350</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/agriculture15131399" target="_blank" class="pub-title-link mb-2 block">
-                            Social Capital, Crop Differences, and Farmers' Climate Change Adaptation Behaviors: Evidence from Yellow River, China
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)">Ziying Chang, <strong style="color:var(--ink)">Nihal Ahmed</strong>, Ruxue Li, Jianjun Huai</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Agriculture &middot; 2025 &middot; DOI: 10.3390/agriculture15131399</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/agriculture15131399" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.24136/eq.3088" target="_blank" class="pub-title-link mb-2 block">
-                            Synergistic evaluation of energy security and environmental sustainability in BRICS geo-political entities: An integrated index framework
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Ahmed Nihal</strong>, Franklin Ore Areche, Jesús Manuel More López, Víctor Guillermo Sánchez Araujo, José Antonio Legua Cárdenas, Józef Ober</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Equilibrium. Quarterly Journal of Economics and Economic Policy &middot; 2024 &middot; DOI: 10.24136/eq.3088</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.24136/eq.3088" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/su15065145" target="_blank" class="pub-title-link mb-2 block">
-                            Environmental Regulation, Fiscal Decentralization, and Agricultural Carbon Intensity: A Challenge to Ecological Sustainability Policies in the United States
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Zeeshan Hamid, Khalil Ur Rehman, Piotr Senkus, Nisar Ahmed Khan, Aneta Wysokińska-Senkus, Barbara Hadryjańska</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2023 &middot; DOI: 10.3390/su15065145</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su15065145" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.1371/journal.pone.0276973" target="_blank" class="pub-title-link mb-2 block">
-                            A comparative study of the policy response to COVID-19 in the ASEAN region: A dynamic simulated ARDL approach
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Stefan Cristian Gherghina, Dilawar Khan, Judit Oláh, József Popp</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">PLOS ONE &middot; 2023 &middot; DOI: 10.1371/journal.pone.0276973</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.1371/journal.pone.0276973" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/su15010350" target="_blank" class="pub-title-link mb-2 block">
-                            Intensifying Effects of Climate Change in Food Loss: A Threat to Food Security in Turkey
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Franklin Ore Areche, Guillermo Gomer Cotrina Cabello, Pedro David Córdova Trujillo, Adnan Ahmed Sheikh, Mohamad G. Abiad</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2022 &middot; DOI: 10.3390/su15010350</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su15010350" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/agriculture12101742" target="_blank" class="pub-title-link mb-2 block">
-                            Technical Efficiency Analysis of Layer and Broiler Poultry Farmers in Pakistan
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)">Nisar Ahmed Khan, Majid Ali, <strong style="color:var(--ink)">Nihal Ahmad</strong>, Muhammad Ali Abid, Sigrid Kusch-Brandt</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Agriculture &middot; 2022 &middot; DOI: 10.3390/agriculture12101742</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/agriculture12101742" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/su141912067" target="_blank" class="pub-title-link mb-2 block">
-                            The Role of Educating the Labor Force in Sustaining a Green Economy in MINT Countries: Panel Symmetric and Asymmetric Approach
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Bilal Hassan, Sajjad Nawaz Khan, Ricardo Cosio Borda, Juan Martín Campos Huamán, Piotr Senkus</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2022 &middot; DOI: 10.3390/su141912067</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su141912067" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/en15196956" target="_blank" class="pub-title-link mb-2 block">
-                            Nexus between Nuclear Energy Consumption and Carbon Footprint in Asia Pacific Region: Policy toward Environmental Sustainability
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Farhan Mahboob, Zeeshan Hamid, Adnan Ahmed Sheikh, Muhammad Sibt e Ali, Waldemar Glabiszewski, Aneta Wysokińska-Senkus, Piotr Senkus, Szymon Cyfert</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Energies &middot; 2022 &middot; DOI: 10.3390/en15196956</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/en15196956" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/su141811768" target="_blank" class="pub-title-link mb-2 block">
-                            Nexus between Cyclical Innovation in Green Technologies and CO2 Emissions in Nordic Countries: Consent toward Environmental Sustainability
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Franklin Ore Areche, Dante Daniel Cruz Nieto, Ricardo Fernando Cosio Borda, Berenice Cajavilca Gonzales, Piotr Senkus, Paweł Siemiński, Adam Skrzypek</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2022 &middot; DOI: 10.3390/su141811768</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su141811768" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/agriculture12091320" target="_blank" class="pub-title-link mb-2 block">
-                            Causal Linkage among Agricultural Insurance, Air Pollution, and Agricultural Green Total Factor Productivity in United States: Pairwise Granger Causality Approach
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Zeeshan Hamid, Farhan Mahboob, Khalil Ur Rehman, Muhammad Sibt e Ali, Piotr Senkus, Aneta Wysokińska-Senkus, Paweł Siemiński, Adam Skrzypek</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Agriculture &middot; 2022 &middot; DOI: 10.3390/agriculture12091320</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/agriculture12091320" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/en15155422" target="_blank" class="pub-title-link mb-2 block">
-                            Energy Diversification: A Friend or Foe to Economic Growth in Nordic Countries? A Novel Energy Diversification Approach
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Farhan Mahboob, Muhammad Sibt e Ali, Elżbieta Jasińska, Michał Jasiński, Zbigniew Leonowicz, Alessandro Burgio</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Energies &middot; 2022 &middot; DOI: 10.3390/en15155422</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/en15155422" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/en15145199" target="_blank" class="pub-title-link mb-2 block">
-                            Exploring the Causal Relationship among Green Taxes, Energy Intensity, and Energy Consumption in Nordic Countries: Dumitrescu and Hurlin Causality Approach
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong>, Adnan Ahmed Sheikh, Zeeshan Hamid, Piotr Senkus, Ricardo Cosio Borda, Aneta Wysokińska-Senkus, Waldemar Glabiszewski</p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Energies &middot; 2022 &middot; DOI: 10.3390/en15145199</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/en15145199" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/en15145068" target="_blank" class="pub-title-link mb-2 block">
-                            Green Finance and Green Energy Nexus in ASEAN Countries: A Bootstrap Panel Causality Test
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong></p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Energies &middot; 2022 &middot; DOI: 10.3390/en15145068</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/en15145068" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                    <article class="pub-card">
-                        <a href="https://doi.org/10.3390/su132011315" target="_blank" class="pub-title-link mb-2 block">
-                            Assessing the Impact of Policy Measures in Reducing the COVID-19 Pandemic: A Case Study of South Asia
-                        </a>
-                        <p class="text-[0.9375rem] mb-1" style="color:var(--ink)"><strong style="color:var(--ink)">Nihal Ahmed</strong></p>
-                        <p class="text-[13px] mb-3 leading-relaxed uppercase tracking-wide font-medium" style="color:var(--ink-3)">Sustainability &middot; 2021 &middot; DOI: 10.3390/su132011315</p>
-                        <div class="flex gap-2.5"><a href="https://doi.org/10.3390/su132011315" target="_blank" class="btn-modern"><i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>View Article</a></div>
-                    </article>
-
-                </div>
-            </div>
-            
-            <div id="page-cv" class="page-content">
-                <h2 class="text-[2.25rem] font-bold tracking-tight mb-8 leading-[1.1]" style="color: var(--ink);">Curriculum Vitae</h2>
-                <p class="text-[0.9375rem] leading-relaxed" style="color: var(--ink-2);">CV content coming soon.</p>
-            </div>
-
-            <div id="page-contact" class="page-content">
-                <h2 class="text-[2.25rem] font-bold tracking-tight mb-4 leading-[1.1]" style="color: var(--ink);">Contact</h2>
-
-                <p class="text-[1.125rem] mb-8 leading-[1.6]" style="color: var(--ink);">
-                    I am happy to hear from you, whether it is about research collaborations, peer review invitations, or general inquiries. Use the form below or reach out directly via email.
-                </p>
-
-                <!-- Custom feedback modal instead of browser alert() standard compliance -->
-                <form onsubmit="event.preventDefault(); document.getElementById('success-toast').classList.remove('hidden'); setTimeout(() => document.getElementById('success-toast').classList.add('hidden'), 4000);" class="max-w-[700px]">
-                    <div class="mb-5">
-                        <label for="name" class="contact-label">Name</label>
-                        <input type="text" id="name" name="name" class="contact-input" required />
-                    </div>
-                    <div class="mb-5">
-                        <label for="email" class="contact-label">Email</label>
-                        <input type="email" id="email" name="email" class="contact-input" required />
-                    </div>
-                    <div class="mb-5">
-                        <label for="subject" class="contact-label">Subject</label>
-                        <input type="text" id="subject" name="subject" class="contact-input" placeholder="Research collaboration, peer review, general inquiry..." />
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="contact-label">Message</label>
-                        <textarea id="message" name="message" class="contact-input h-[180px] resize-y" required></textarea>
-                    </div>
-                    <div class="flex items-center gap-4">
-                        <button type="submit" class="btn-send">Send Message</button>
-                        <span id="success-toast" class="hidden text-emerald-600 dark:text-emerald-400 font-semibold text-sm transition-all animate-pulse">✓ Message sent successfully!</span>
-                    </div>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <nav class="mobile-bottom-nav" id="mobile-bottom-nav" aria-label="Primary navigation">
-        <button class="mobile-bottom-nav-btn active" data-target="home" onclick="navigateTo('home')">
-            <span class="bn-icon"><i class="fa-solid fa-house"></i></span>
-            <span>Home</span>
-        </button>
-        <button class="mobile-bottom-nav-btn" data-target="publications" onclick="navigateTo('publications')">
-            <span class="bn-icon"><i class="fa-solid fa-book-open"></i></span>
-            <span>Publications</span>
-        </button>
-    </nav>
-
-    <script>
-        // ===== Theme =====
-        function updateThemeIcon() {
-            const theme = document.documentElement.getAttribute('data-theme');
-            document.getElementById('theme-icon').className =
-                theme === 'dark' ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-        }
-        function toggleTheme() {
-            const cur = document.documentElement.getAttribute('data-theme');
-            const next = cur === 'dark' ? 'light' : 'dark';
-            document.documentElement.setAttribute('data-theme', next);
-            localStorage.setItem('theme', next);
-            updateThemeIcon();
-        }
-        updateThemeIcon();
-
-        // ===== Navigation =====
-        function navigateTo(pageId) {
-            document.querySelectorAll('.page-content').forEach(el => el.classList.remove('active-page'));
-            const target = document.getElementById('page-' + pageId);
-            if (target) target.classList.add('active-page');
-
-            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
-            document.querySelectorAll(`.nav-item[data-target="${pageId}"]`).forEach(el => el.classList.add('active'));
-
-            // Update bottom nav active state
-            document.querySelectorAll('.mobile-bottom-nav-btn').forEach(btn => btn.classList.remove('active'));
-            const activeBtn = document.querySelector(`.mobile-bottom-nav-btn[data-target="${pageId}"]`);
-            if (activeBtn) activeBtn.classList.add('active');
-
-            if (pageId === 'publications') {
-                const cards = document.querySelectorAll('#page-publications .pub-card');
-                cards.forEach(c => c.classList.remove('visible'));
-                setTimeout(() => {
-                    cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 80));
-                }, 100);
-            }
-
-            // --- UPDATED MOBILE SCROLL LOGIC ---
-            if (window.innerWidth < 768) {
-                // First, scroll to top like a normal tab change
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                
-                // If it's publications, wait 0.5s then smoothly drag down to the content
-                if (pageId === 'publications') {
-                    setTimeout(() => {
-                        const pubSection = document.getElementById('page-publications');
-                        if (pubSection) {
-                            // Calculate position, subtracting 20px for a clean visual margin
-                            const offsetTop = pubSection.getBoundingClientRect().top + window.scrollY - 20;
-                            window.scrollTo({ top: offsetTop, behavior: 'smooth' });
-                        }
-                    }, 500); // 0.5 second delay
-                }
-            }
-        }
-        
-        function toggleMobileMenu() {
-            document.getElementById('mobile-menu').classList.toggle('hidden');
-        }
-
-        // ===== Parallax =====
-        const heroBanner = document.querySelector('.hero-banner');
-        window.addEventListener('scroll', () => {
-            const s = window.pageYOffset;
-            if (heroBanner && s < 500) heroBanner.style.transform = `translateY(${s * 0.3}px)`;
-        }, { passive: true });
-
-        // ===== Count-up =====
-        function animateCount(id, target, duration) {
-            const el = document.getElementById(id);
-            if (!el) return;
-            const start = performance.now();
-            function step(now) {
-                const progress = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - progress, 3);
-                el.textContent = Math.floor(eased * target);
-                if (progress < 1) requestAnimationFrame(step);
-                else el.textContent = target;
-            }
-            requestAnimationFrame(step);
-        }
-
-        let statsAnimated = false;
-        function runStats() {
-            if (statsAnimated) return;
-            statsAnimated = true;
-            animateCount('stat-citations', 657, 1800);
-            setTimeout(() => animateCount('stat-hindex', 13, 1000), 200);
-            setTimeout(() => animateCount('stat-i10', 14, 1000), 350);
-            setTimeout(() => animateCount('stat-reviews', 103, 1400), 500);
-            setTimeout(() => animateCount('stat-journals', 21, 1000), 700);
-        }
-
-        const statsTarget = document.getElementById('stat-citations');
-        if (statsTarget && 'IntersectionObserver' in window) {
-            const obs = new IntersectionObserver(entries => {
-                if (entries[0].isIntersecting) { runStats(); obs.disconnect(); }
-            }, { threshold: 0.5 });
-            obs.observe(statsTarget);
-        } else {
-            // Fallback: run after 500ms
-            setTimeout(runStats, 500);
-        }
-
-        // ===== Carousel =====
-        let currentSlide = 0;
-        const TOTAL_SLIDES = 3;
-        let autoTimer = null;
-
-        function updateCarousel() {
-            document.querySelectorAll('.carousel-slide').forEach((slide, i) => {
-                slide.classList.toggle('active-slide', i === currentSlide);
-            });
-            document.querySelectorAll('.carousel-dot').forEach((dot, i) => {
-                dot.classList.toggle('active', i === currentSlide);
-            });
-        }
-
-        function carouselNext(e) {
-            if (e) e.stopPropagation();
-            currentSlide = (currentSlide + 1) % TOTAL_SLIDES;
-            updateCarousel();
-            resetAuto();
-        }
-
-        function carouselPrev(e) {
-            if (e) e.stopPropagation();
-            currentSlide = (currentSlide - 1 + TOTAL_SLIDES) % TOTAL_SLIDES;
-            updateCarousel();
-            resetAuto();
-        }
-
-        function carouselGoTo(index, e) {
-            if (e) e.stopPropagation();
-            currentSlide = index;
-            updateCarousel();
-            resetAuto();
-        }
-
-        function startAuto() { autoTimer = setInterval(() => { currentSlide = (currentSlide + 1) % TOTAL_SLIDES; updateCarousel(); }, 5000); }
-        function resetAuto() { clearInterval(autoTimer); startAuto(); }
-
-        startAuto();
-
-        // Touch swipe for carousel
-        let touchX0 = 0;
-        const carouselEl = document.getElementById('pub-carousel');
-        if (carouselEl) {
-            carouselEl.addEventListener('touchstart', e => {
-                touchX0 = e.changedTouches[0].clientX;
-                clearInterval(autoTimer);
-            }, { passive: true });
-
-            carouselEl.addEventListener('touchend', e => {
-                const diff = touchX0 - e.changedTouches[0].clientX;
-                if (Math.abs(diff) > 35) {
-                    currentSlide = diff > 0
-                        ? (currentSlide + 1) % TOTAL_SLIDES
-                        : (currentSlide - 1 + TOTAL_SLIDES) % TOTAL_SLIDES;
-                    updateCarousel();
-                }
-                resetAuto();
-            }, { passive: true });
-        }
-
-        // Init pubs animation if active on load
-        document.addEventListener('DOMContentLoaded', () => {
-            if (document.getElementById('page-publications').classList.contains('active-page')) {
-                const cards = document.querySelectorAll('#page-publications .pub-card');
-                cards.forEach((c, i) => setTimeout(() => c.classList.add('visible'), i * 80));
-            }
-        });
-    </script>
-
+    <div class="stats-bar">
+      <div class="stat"><span class="stat-num" data-target="0">0</span><div class="stat-label">Citations</div></div>
+      <div class="stat"><span class="stat-num" data-target="0">0</span><div class="stat-label">h-index</div></div>
+      <div class="stat"><span class="stat-num" data-target="0">0</span><div class="stat-label">i10-index</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="section-label">About Me</span>
+        <h2>Ecological Economist Exploring the Hidden Costs of Global Food Systems</h2>
+        <p>I am a PhD candidate in economics at Northwest A&F University. My research is in ecological economics, where the central question is not only how land is used but what happens to the living systems within it.</p>
+        <p>Soil biological communities, nutrient cycles, and landscape-level ecosystem functioning underpin global agricultural productivity yet remain outside every existing trade and environmental accounting framework. I study how agricultural production generates costs to these systems, how those costs are embodied in trade flows and displaced across borders, and how consumption-based accounting can be extended to make the belowground dimension of global food systems visible and governable.</p>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <h4>Core Focus</h4>
+            <p>Land ecological security & belowground ecosystem multifunctionality</p>
+          </div>
+          <div class="highlight-card">
+            <h4>Methodology</h4>
+            <p>Consumption-based environmental accounting & trade flow analysis</p>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <h3>Research Identity</h3>
+        <div class="experience-badge">
+          <span class="exp-num">PhD</span>
+          <div class="exp-text">Candidate in Economics<br><small style="opacity:.7">Northwest A&F University</small></div>
+        </div>
+        <p style="opacity:.85;margin-bottom:24px;font-size:.92rem">The thread connecting my work is a conviction that the functional biology of landscapes is both foundational to food systems and systematically undervalued in the economic frameworks that govern how land and trade are managed.</p>
+        <div class="academic-links">
+          <a href="https://orcid.org/0000-0002-0183-9583" target="_blank"><i class="fa-brands fa-orcid"></i> ORCID</a>
+          <a href="#"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
+          <a href="#"><i class="fa-brands fa-researchgate"></i> ResearchGate</a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+          <a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH INTERESTS (TAG CLOUD) -->
+<section class="interests" id="interests">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Research Interests</span>
+      <h2 class="section-title">Areas of Inquiry</h2>
+      <p class="section-intro">The conceptual terrain where my research lives — at the intersection of ecological economics, trade accounting, and soil ecosystem governance.</p>
+    </div>
+    <div class="tag-cloud">
+      <div class="tag"><i class="fa-solid fa-seedling"></i> Ecological Economics</div>
+      <div class="tag"><i class="fa-solid fa-shield-halved"></i> Land Ecological Security</div>
+      <div class="tag"><i class="fa-solid fa-calculator"></i> Consumption-based Accounting</div>
+      <div class="tag"><i class="fa-solid fa-ship"></i> Agricultural Trade Footprints</div>
+      <div class="tag"><i class="fa-solid fa-worm"></i> Belowground Ecosystem Multifunctionality</div>
+      <div class="tag"><i class="fa-solid fa-globe"></i> Planetary Boundaries</div>
+      <div class="tag"><i class="fa-solid fa-scale-unbalanced"></i> Ecological Trade Deficits</div>
+      <div class="tag"><i class="fa-solid fa-mountain-sun"></i> Soil Ecosystem Functioning</div>
+      <div class="tag"><i class="fa-solid fa-landmark"></i> Sustainability Governance</div>
+    </div>
+  </div>
+</section>
+
+<!-- RECENT PUBLICATIONS -->
+<section class="publications" id="publications">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Recent Publications</span>
+      <h2 class="section-title">Selected Research Output</h2>
+      <p class="section-intro">Peer-reviewed contributions on land ecological security, agricultural innovation, and urban climate transitions.</p>
+    </div>
+    <div class="pub-grid">
+      <article class="pub-card">
+        <span class="pub-year">2026 · Latest</span>
+        <h3>Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios</h3>
+        <p class="pub-meta"><i class="fa-solid fa-users"></i> Nihal Ahmed, Nisar Ahmed Khan, Józef Ober, Muhammad Farrukh Shahzad</p>
+        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Resources, Environment and Sustainability</span></p>
+        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.1016/j.resenv.2026.100345</p>
+        <a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+
+      <article class="pub-card">
+        <span class="pub-year">2026</span>
+        <h3>Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers</h3>
+        <p class="pub-meta"><i class="fa-solid fa-users"></i> Nihal Ahmed, Józef Ober, Jianjun Huai</p>
+        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Environmental and Sustainability Indicators</span></p>
+        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.1016/j.indic.2026.101224</p>
+        <a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+
+      <article class="pub-card">
+        <span class="pub-year">2025</span>
+        <h3>The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans</h3>
+        <p class="pub-meta"><i class="fa-solid fa-users"></i> Nihal Ahmed, Nisar Ahmed Khan, Józef Ober</p>
+        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Global Transitions</span></p>
+        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.1016/j.glt.2025.01.002</p>
+        <a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+
+      <article class="pub-card">
+        <span class="pub-year">2025</span>
+        <h3>Quantifying China's ecological assets: A carbon-based assessment of climate change and land use change effects using generalized additive models</h3>
+        <p class="pub-meta"><i class="fa-solid fa-users"></i> Nihal Ahmed, Nisar Ahmed Khan, Józef Ober, Jianjun Huai</p>
+        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Sustainable Futures</span></p>
+        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.1016/j.sftr.2025.101350</p>
+        <a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+
+      <article class="pub-card">
+        <span class="pub-year">2025</span>
+        <h3>Social Capital, Crop Differences, and Farmers' Climate Change Adaptation Behaviors: Evidence from Yellow River, China</h3>
+        <p class="pub-meta"><i class="fa-solid fa-users"></i> Ziying Chang, Nihal Ahmed, Ruxue Li, Jianjun Huai</p>
+        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Agriculture</span></p>
+        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.3390/agriculture15131399</p>
+        <a href="https://doi.org/10.3390/agriculture15131399" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+
+      <article class="pub-card">
+        <span class="pub-year">2024</span>
+        <h3>Synergistic evaluation of energy security and environmental sustainability in BRICS geo-political entities: An integrated index framework</h3>
+        <p class="pub-meta"><i class="fa-solid fa-users"></i> Ahmed Nihal, Franklin Ore Areche, Jesús Manuel More López, et al.</p>
+        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Equilibrium. Quarterly Journal of Economics and Economic Policy</span></p>
+        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.24136/eq.3088</p>
+        <a href="https://doi.org/10.24136/eq.3088" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH THEMES -->
+<section class="themes">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">The Connecting Thread</span>
+      <h2 class="section-title">Four Pillars of My Research</h2>
+      <p class="section-intro">The conviction linking my work: the functional biology of landscapes is foundational to food systems and systematically undervalued in economic governance.</p>
+    </div>
+    <div class="theme-grid">
+      <div class="theme-card">
+        <div class="theme-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <h4>Land Ecological Security</h4>
+        <p>Mapping and modelling the integrity of landscapes that underpin agricultural systems across borders.</p>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon"><i class="fa-solid fa-worm"></i></div>
+        <h4>Belowground Multifunctionality</h4>
+        <p>Making visible the soil biological communities and nutrient cycles absent from current trade accounting.</p>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon"><i class="fa-solid fa-calculator"></i></div>
+        <h4>Consumption-based Accounting</h4>
+        <p>Extending environmental accounts to capture belowground costs embodied in agricultural trade flows.</p>
+      </div>
+      <div class="theme-card">
+        <div class="theme-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+        <h4>Equity of Burden Displacement</h4>
+        <p>Examining who bears the ecological cost when consumption in one place degrades land in another.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PEER REVIEW -->
+<section class="peer-review" id="peer-review">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-label">Academic Service</span>
+      <h2 class="section-title">Active Peer Reviewer</h2>
+      <p class="section-intro">Contributing to the rigor of the field through manuscript review for leading journals in sustainability, agriculture, and environmental policy.</p>
+    </div>
+    <div class="peer-stats">
+      <div class="peer-stat"><span class="num">0</span><div class="lbl">Reviews</div></div>
+      <div class="peer-stat"><span class="num">0</span><div class="lbl">Journals</div></div>
+    </div>
+    <div class="journal-list">
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Agricultural Systems</span>
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Climatic Change</span>
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Environmental and Sustainability Indicators</span>
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Ecological Indicators</span>
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Environmental Science & Policy</span>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Let's Build Knowledge Together</h2>
+    <p>If your work touches on ecological economics, land security, or consumption-based accounting, I welcome the conversation.</p>
+    <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-handshake"></i> &nbsp;Start a Collaboration</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <span class="section-label">Get in Touch</span>
+        <h2>Open to Research Collaboration</h2>
+        <p>I am happy to hear from you — whether it is about research collaborations, peer review invitations, or general inquiries. Use the form or reach out directly.</p>
+        <div class="contact-item">
+          <i class="fa-solid fa-envelope"></i>
+          <div><h4>Email</h4><p>hello@nihalahmed.uk</p></div>
+        </div>
+        <div class="contact-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <div><h4>Affiliation</h4><p>Northwest A&F University, Xian, China</p></div>
+        </div>
+        <div class="contact-item">
+          <i class="fa-brands fa-orcid"></i>
+          <div><h4>ORCID</h4><p>0000-0002-0183-9583</p></div>
+        </div>
+      </div>
+      <form class="contact-form" onsubmit="event.preventDefault();alert('Message sent successfully!');this.reset();">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" required></div>
+          <div class="form-group"><label>Email</label><input type="email" required></div>
+        </div>
+        <div class="form-group"><label>Subject</label><input type="text" required></div>
+        <div class="form-group"><label>Message</label><textarea required></textarea></div>
+        <button type="submit" class="btn btn-primary">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-logo">Nihal<span>.</span>Ahmed</div>
+        <p>PhD researcher in ecological economics, studying how agricultural trade displaces costs to land and soil ecosystems across borders.</p>
+        <div class="social-row">
+          <a href="https://orcid.org/0000-0002-0183-9583" target="_blank"><i class="fa-brands fa-orcid"></i></a>
+          <a href="#"><i class="fa-solid fa-graduation-cap"></i></a>
+          <a href="#"><i class="fa-brands fa-researchgate"></i></a>
+          <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="#"><i class="fa-brands fa-twitter"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#interests">Research Interests</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Research</h4>
+        <ul>
+          <li><a href="#interests">Ecological Economics</a></li>
+          <li><a href="#interests">Land Security</a></li>
+          <li><a href="#interests">Trade Footprints</a></li>
+          <li><a href="#interests">Soil Ecosystems</a></li>
+          <li><a href="#interests">Planetary Boundaries</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Profiles</h4>
+        <ul>
+          <li><a href="https://orcid.org/0000-0002-0183-9583" target="_blank">ORCID</a></li>
+          <li><a href="#">Google Scholar</a></li>
+          <li><a href="#">ResearchGate</a></li>
+          <li><a href="#">LinkedIn</a></li>
+          <li><a href="#">Twitter / X</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Nihal Ahmed · Built with care for the living systems beneath our feet.</div>
+  </div>
+</footer>
+
+<script>
+// Animated counters
+const counters = document.querySelectorAll('.stat-num, .peer-stat .num');
+const animate = (el) => {
+  const target = +el.dataset?.target || +el.textContent;
+  if(target === 0){ el.textContent = '0'; return; }
+  let cur = 0;
+  const step = Math.max(1, Math.ceil(target/40));
+  const tick = () => {
+    cur += step;
+    if(cur >= target){ el.textContent = target; return; }
+    el.textContent = cur;
+    requestAnimationFrame(tick);
+  };
+  tick();
+};
+const obs = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting){ animate(e.target); obs.unobserve(e.target); }});
+},{threshold:.4});
+counters.forEach(c=>obs.observe(c));
+</script>
 </body>
 </html>
