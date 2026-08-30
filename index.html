@@ -1,409 +1,309 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Nihal Ahmed — Ecological Economist | PhD Researcher</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
 :root{
-  --primary:#1a4d3e;
-  --primary-dark:#0f2e26;
-  --primary-light:#2d6a56;
-  --accent:#c9a961;
-  --accent-dark:#a88a45;
-  --text:#1f2937;
-  --text-light:#6b7280;
-  --bg:#f7f5f0;
-  --bg-alt:#efece4;
-  --white:#ffffff;
-  --border:#e5e2d8;
-  --shadow:0 4px 20px rgba(15,46,38,.08);
-  --shadow-hover:0 12px 32px rgba(15,46,38,.15);
-  --radius:12px;
-  --transition:all .3s ease;
+  --green-900:#0e3b2e;
+  --green-700:#175943;
+  --green-600:#1e6f54;
+  --green-500:#2a8a68;
+  --green-50:#eaf3ef;
+  --gold:#c9a227;
+  --gold-soft:#f0dfae;
+  --ink:#122820;
+  --text:#2b3a34;
+  --muted:#6b7a73;
+  --bg:#faf8f2;
+  --bg-alt:#f1eee3;
+  --card:#ffffff;
+  --line:#e6e2d4;
+  --shadow:0 6px 24px rgba(14,59,46,.08);
+  --shadow-lg:0 16px 40px rgba(14,59,46,.14);
+  --radius:14px;
+  --tr:all .3s ease;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  font-family:'Inter',-apple-system,sans-serif;
-  color:var(--text);
-  background:var(--bg);
-  line-height:1.7;
-  font-size:16px;
-}
-h1,h2,h3,h4{font-family:'Playfair Display',serif;color:var(--primary-dark);line-height:1.3;font-weight:600}
-a{text-decoration:none;color:inherit;transition:var(--transition)}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--bg);line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Playfair Display',serif;color:var(--ink);line-height:1.25;font-weight:700}
+a{text-decoration:none;color:inherit;transition:var(--tr)}
 img{max-width:100%;display:block}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+section{padding:80px 0}
+.section-label{display:inline-block;color:var(--gold);font-weight:700;text-transform:uppercase;letter-spacing:2.5px;font-size:.8rem;margin-bottom:14px}
+.section-title{font-size:clamp(1.7rem,3.5vw,2.5rem);margin-bottom:16px}
+.section-intro{max-width:700px;color:var(--muted);font-size:1.02rem}
+.section-head{text-align:center;margin-bottom:54px}
+.section-head .section-intro{margin:0 auto}
 
-/* ---------- NAV ---------- */
-.nav{
-  position:sticky;top:0;z-index:100;
-  background:rgba(255,255,255,.95);
-  backdrop-filter:blur(10px);
-  border-bottom:1px solid var(--border);
-}
-.nav-wrap{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;max-width:1200px;margin:0 auto}
-.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--primary-dark);letter-spacing:-.5px}
-.logo span{color:var(--accent)}
-.nav-links{display:flex;gap:32px;list-style:none}
-.nav-links a{font-weight:500;font-size:.95rem;color:var(--text);position:relative}
-.nav-links a:hover{color:var(--primary)}
-.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--accent);transition:var(--transition)}
+/* reveal animation */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.reveal.show{opacity:1;transform:none}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;border-radius:50px;font-weight:600;font-size:.95rem;cursor:pointer;border:none;transition:var(--tr)}
+.btn-green{background:var(--green-700);color:#fff}
+.btn-green:hover{background:var(--green-900);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-gold{background:var(--gold);color:var(--ink)}
+.btn-gold:hover{filter:brightness(1.06);transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+.btn-outline{background:transparent;color:var(--green-700);border:2px solid var(--green-700)}
+.btn-outline:hover{background:var(--green-700);color:#fff}
+.btn-ghost{background:var(--green-50);color:var(--green-700)}
+.btn-ghost:hover{background:var(--green-700);color:#fff}
+
+/* ============ NAV (Medimax-style, contained) ============ */
+.nav{position:sticky;top:0;z-index:100;background:rgba(250,248,242,.9);backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:var(--tr)}
+.nav.scrolled{background:#fff;box-shadow:0 2px 16px rgba(14,59,46,.08);border-bottom:1px solid var(--line)}
+.nav-inner{max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.logo{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:800;color:var(--green-900)}
+.logo span{color:var(--gold)}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{font-weight:500;font-size:.94rem;color:var(--text);position:relative}
+.nav-links a:hover{color:var(--green-700)}
+.nav-links a::after{content:'';position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--gold);transition:var(--tr)}
 .nav-links a:hover::after{width:100%}
-.btn{
-  display:inline-block;padding:12px 28px;border-radius:50px;
-  font-weight:600;font-size:.95rem;cursor:pointer;border:none;
-  transition:var(--transition);
-}
-.btn-primary{background:var(--primary);color:#fff}
-.btn-primary:hover{background:var(--primary-dark);transform:translateY(-2px);box-shadow:var(--shadow-hover)}
-.btn-accent{background:var(--accent);color:var(--primary-dark)}
-.btn-accent:hover{background:var(--accent-dark);transform:translateY(-2px)}
-.btn-outline{background:transparent;color:var(--primary);border:2px solid var(--primary)}
-.btn-outline:hover{background:var(--primary);color:#fff}
-.mobile-toggle{display:none;background:none;border:none;font-size:1.5rem;color:var(--primary-dark);cursor:pointer}
+.nav-cta{display:flex;align-items:center;gap:14px}
+.hamburger{display:none;background:none;border:none;font-size:1.4rem;color:var(--green-900);cursor:pointer}
 
-/* ---------- HERO ---------- */
-.hero{
-  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 60%,var(--primary-light) 100%);
-  color:#fff;padding:100px 0 80px;position:relative;overflow:hidden;
-}
-.hero::before{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(circle at 20% 30%,rgba(201,169,97,.15) 0%,transparent 50%),
-                   radial-gradient(circle at 80% 70%,rgba(255,255,255,.08) 0%,transparent 50%);
-}
-.hero-content{position:relative;z-index:1;text-align:center;max-width:860px;margin:0 auto}
-.hero-badge{
-  display:inline-block;padding:8px 20px;border-radius:50px;
-  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);
-  font-size:.85rem;letter-spacing:1px;text-transform:uppercase;
-  margin-bottom:24px;font-weight:500;
-}
-.hero h1{
-  color:#fff;font-size:clamp(2.2rem,5vw,3.8rem);
-  margin-bottom:20px;font-weight:700;
-}
-.hero h1 span{color:var(--accent);font-style:italic}
-.hero-sub{font-size:1.15rem;opacity:.9;margin-bottom:16px;max-width:680px;margin-left:auto;margin-right:auto}
-.hero-role{font-size:1.05rem;opacity:.8;margin-bottom:36px;font-weight:400}
-.hero-role i{color:var(--accent);margin-right:8px}
-.hero-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:60px}
-.stats-bar{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:40px;
-  max-width:700px;margin:0 auto;padding-top:40px;
-  border-top:1px solid rgba(255,255,255,.2);
-}
-.stat{text-align:center}
-.stat-num{font-family:'Playfair Display',serif;font-size:2.8rem;font-weight:700;color:var(--accent);display:block;line-height:1}
-.stat-label{font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.85;margin-top:8px}
+/* ============ HERO (light, with photo) ============ */
+.hero{position:relative;overflow:hidden;padding:70px 0 60px;background:linear-gradient(160deg,var(--bg) 0%,var(--green-50) 100%)}
+.hero::before,.hero::after{content:'';position:absolute;border-radius:50%;filter:blur(2px);pointer-events:none}
+.hero::before{width:520px;height:520px;top:-180px;right:-140px;background:radial-gradient(circle,rgba(42,138,104,.14) 0%,transparent 70%)}
+.hero::after{width:380px;height:380px;bottom:-160px;left:-120px;background:radial-gradient(circle,rgba(201,162,39,.16) 0%,transparent 70%)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:50px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 18px;border-radius:50px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow);font-size:.82rem;font-weight:600;color:var(--green-700);margin-bottom:22px}
+.hero-badge i{color:var(--gold)}
+.hero h1{font-size:clamp(2.4rem,5vw,3.6rem);margin-bottom:8px}
+.hero h1 em{font-style:italic;color:var(--green-600)}
+.hero-role{font-size:1.2rem;color:var(--green-700);font-weight:600;margin-bottom:16px}
+.hero-bio{color:var(--muted);font-size:1.02rem;max-width:520px;margin-bottom:14px}
+.hero-loc{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:.95rem;margin-bottom:26px}
+.hero-loc i{color:var(--gold)}
+.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:26px}
+.hero-social{display:flex;flex-wrap:wrap;gap:10px}
+.hero-social a{display:inline-flex;align-items:center;gap:8px;padding:9px 16px;background:#fff;border:1px solid var(--line);border-radius:50px;font-size:.85rem;font-weight:600;color:var(--green-900);box-shadow:var(--shadow)}
+.hero-social a:hover{background:var(--green-700);color:#fff;border-color:var(--green-700)}
+.hero-social a i{color:var(--gold)}
+.hero-social a:hover i{color:var(--gold-soft)}
 
-/* ---------- SECTION ---------- */
-section{padding:90px 0}
-.section-label{
-  display:inline-block;color:var(--accent-dark);font-weight:600;
-  text-transform:uppercase;letter-spacing:2px;font-size:.85rem;
-  margin-bottom:14px;
-}
-.section-title{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:18px}
-.section-intro{max-width:720px;color:var(--text-light);font-size:1.05rem;margin-bottom:50px}
-.section-head{text-align:center;margin-bottom:60px}
-.section-head .section-intro{margin-left:auto;margin-right:auto}
+/* profile photo */
+.hero-photo{display:flex;justify-content:center;position:relative}
+.photo-wrap{position:relative;width:300px;height:340px}
+.photo-frame{position:relative;width:100%;height:100%;border-radius:24px;overflow:hidden;box-shadow:var(--shadow-lg);border:5px solid #fff;background:linear-gradient(135deg,var(--green-600),var(--green-900))}
+.photo-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;gap:8px}
+.photo-fallback b{font-family:'Playfair Display',serif;font-size:4rem;font-weight:800;color:var(--gold-soft)}
+.photo-fallback small{font-size:.75rem;opacity:.7;text-align:center;padding:0 20px}
+.photo-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo-chip{position:absolute;background:#fff;border-radius:14px;box-shadow:var(--shadow-lg);padding:12px 18px;display:flex;align-items:center;gap:10px;font-size:.85rem;font-weight:600;color:var(--green-900)}
+.photo-chip i{color:var(--gold);font-size:1.2rem}
+.chip-1{top:-16px;left:-24px}
+.chip-2{bottom:-16px;right:-24px}
+.photo-ring{position:absolute;width:100%;height:100%;top:14px;left:14px;border:2px dashed rgba(201,162,39,.5);border-radius:24px;z-index:-1}
 
-/* ---------- ABOUT ---------- */
-.about{background:var(--white)}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
-.about-text h2{font-size:2.2rem;margin-bottom:20px}
-.about-text p{margin-bottom:18px;color:var(--text-light)}
-.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}
-.highlight-card{
-  background:var(--bg);padding:24px;border-radius:var(--radius);
-  border-left:4px solid var(--accent);
-}
-.highlight-card h4{font-size:1.05rem;margin-bottom:8px;font-family:'Inter',sans-serif;font-weight:600;color:var(--primary-dark)}
-.highlight-card p{font-size:.9rem;color:var(--text-light);margin:0}
-.about-visual{
-  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);
-  border-radius:var(--radius);padding:40px;color:#fff;
-  box-shadow:var(--shadow);position:relative;overflow:hidden;
-}
-.about-visual::before{
-  content:'';position:absolute;top:-50px;right:-50px;
-  width:200px;height:200px;border-radius:50%;
-  background:rgba(201,169,97,.2);
-}
-.about-visual h3{color:#fff;font-size:1.6rem;margin-bottom:24px;position:relative}
-.experience-badge{
-  display:flex;align-items:center;gap:20px;margin-bottom:30px;
-  padding:20px;background:rgba(255,255,255,.1);border-radius:var(--radius);
-  position:relative;
-}
-.exp-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:var(--accent);line-height:1}
-.exp-text{font-size:.95rem;opacity:.9}
-.academic-links{display:flex;flex-wrap:wrap;gap:12px;position:relative}
-.academic-links a{
-  display:flex;align-items:center;gap:8px;
-  padding:10px 16px;background:rgba(255,255,255,.15);
-  border-radius:50px;font-size:.85rem;font-weight:500;
-  transition:var(--transition);
-}
-.academic-links a:hover{background:var(--accent);color:var(--primary-dark)}
+/* stats */
+.stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:680px;margin:50px auto 0}
+.stat-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;text-align:center;box-shadow:var(--shadow)}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.6rem;font-weight:800;color:var(--green-700);line-height:1;display:block}
+.stat-label{font-size:.8rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);font-weight:600;margin-top:8px}
 
-/* ---------- RESEARCH INTERESTS (TAG CLOUD) ---------- */
+/* ============ ABOUT ============ */
+.about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.about-text p{color:var(--muted);margin-bottom:16px}
+.about-points{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+.point{background:var(--bg);border-left:4px solid var(--gold);border-radius:10px;padding:18px}
+.point h4{font-family:'Inter',sans-serif;font-size:.98rem;font-weight:700;color:var(--green-900);margin-bottom:6px}
+.point p{font-size:.85rem;color:var(--muted);margin:0}
+.about-card{background:linear-gradient(150deg,var(--green-700),var(--green-900));border-radius:var(--radius);padding:36px;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden}
+.about-card::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;border-radius:50%;background:rgba(201,162,39,.18)}
+.about-card h3{color:#fff;font-size:1.5rem;margin-bottom:20px;position:relative}
+.about-meta{display:flex;align-items:center;gap:16px;background:rgba(255,255,255,.1);border-radius:12px;padding:16px;margin-bottom:24px;position:relative}
+.about-meta .big{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:800;color:var(--gold-soft)}
+.about-meta p{font-size:.9rem;opacity:.9}
+.about-card>p{opacity:.85;font-size:.92rem;margin-bottom:22px;position:relative}
+
+/* ============ TAGS (Research Interests) ============ */
 .interests{background:var(--bg-alt)}
-.tag-cloud{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;max-width:900px;margin:0 auto}
-.tag{
-  padding:12px 24px;background:var(--white);
-  border:1px solid var(--border);border-radius:50px;
-  font-weight:500;font-size:.95rem;color:var(--primary-dark);
-  transition:var(--transition);cursor:default;
-}
-.tag:hover{background:var(--primary);color:#fff;border-color:var(--primary);transform:translateY(-3px);box-shadow:var(--shadow)}
-.tag i{color:var(--accent);margin-right:8px}
-.tag:hover i{color:var(--accent)}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;max-width:900px;margin:0 auto}
+.tag{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;background:#fff;border:1px solid var(--line);border-radius:50px;font-weight:600;font-size:.93rem;color:var(--green-900);box-shadow:var(--shadow);transition:var(--tr)}
+.tag:hover{background:var(--green-700);color:#fff;border-color:var(--green-700);transform:translateY(-3px)}
+.tag i{color:var(--gold)}
 
-/* ---------- PUBLICATIONS (CARDS) ---------- */
-.publications{background:var(--white)}
-.pub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:28px}
-.pub-card{
-  background:var(--white);border:1px solid var(--border);
-  border-radius:var(--radius);padding:28px;
-  transition:var(--transition);display:flex;flex-direction:column;
-  position:relative;overflow:hidden;
-}
-.pub-card::before{
-  content:'';position:absolute;top:0;left:0;width:4px;height:100%;
-  background:var(--accent);transform:scaleY(0);transform-origin:top;
-  transition:transform .4s ease;
-}
-.pub-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-4px);border-color:transparent}
+/* ============ PUBLICATIONS ============ */
+.pub-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px}
+.pub-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;transition:var(--tr);position:relative;overflow:hidden}
+.pub-card::before{content:'';position:absolute;left:0;top:0;width:4px;height:100%;background:var(--gold);transform:scaleY(0);transform-origin:top;transition:transform .4s ease}
+.pub-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:transparent}
 .pub-card:hover::before{transform:scaleY(1)}
-.pub-year{
-  display:inline-block;padding:4px 12px;background:var(--bg-alt);
-  color:var(--primary);border-radius:50px;font-size:.78rem;
-  font-weight:600;letter-spacing:.5px;margin-bottom:16px;width:fit-content;
-}
-.pub-card h3{
-  font-size:1.1rem;font-family:'Inter',sans-serif;font-weight:600;
-  color:var(--primary-dark);margin-bottom:14px;line-height:1.5;
-  flex-grow:1;
-}
-.pub-meta{font-size:.85rem;color:var(--text-light);margin-bottom:6px}
-.pub-meta i{color:var(--accent);margin-right:6px;width:14px}
-.pub-journal{font-style:italic;color:var(--primary);font-weight:500}
-.pub-link{
-  display:inline-flex;align-items:center;gap:8px;
-  margin-top:18px;color:var(--primary);font-weight:600;
-  font-size:.9rem;padding-top:14px;border-top:1px solid var(--border);
-}
-.pub-link:hover{color:var(--accent-dark);gap:12px}
+.pub-year{display:inline-block;width:fit-content;padding:4px 13px;background:var(--green-50);color:var(--green-700);border-radius:50px;font-size:.76rem;font-weight:700;letter-spacing:.5px;margin-bottom:14px}
+.pub-card h3{font-size:1.05rem;font-family:'Inter',sans-serif;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:13px;flex-grow:1}
+.pub-card h3 a:hover{color:var(--green-600)}
+.pub-meta{font-size:.84rem;color:var(--muted);margin-bottom:6px;display:flex;gap:8px;align-items:flex-start}
+.pub-meta i{color:var(--gold);margin-top:4px;width:14px;flex-shrink:0}
+.pub-journal{font-style:italic;color:var(--green-700);font-weight:500}
+.pub-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);color:var(--green-700);font-weight:700;font-size:.9rem}
+.pub-link:hover{color:var(--gold);gap:12px}
+.view-all-wrap{text-align:center;margin-top:44px}
+.year-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:20px}
+.year-link{font-size:.88rem;font-weight:600;color:var(--green-700);display:inline-flex;align-items:center;gap:6px}
+.year-link:hover{color:var(--gold)}
 
-/* ---------- RESEARCH THEMES (WHY CHOOSE US STYLE) ---------- */
-.themes{background:var(--bg)}
-.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
-.theme-card{
-  background:var(--white);padding:32px 28px;border-radius:var(--radius);
-  text-align:center;transition:var(--transition);
-  border:1px solid var(--border);
-}
-.theme-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-hover);border-color:var(--accent)}
-.theme-icon{
-  width:64px;height:64px;border-radius:50%;
-  background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);
-  display:flex;align-items:center;justify-content:center;
-  margin:0 auto 20px;color:#fff;font-size:1.5rem;
-}
-.theme-card h4{font-size:1.15rem;margin-bottom:12px;font-family:'Inter',sans-serif;font-weight:600;color:var(--primary-dark)}
-.theme-card p{font-size:.92rem;color:var(--text-light)}
+/* full publications list */
+.pubs-all{background:var(--bg-alt)}
+.pub-list{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.pub-item{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px;transition:var(--tr)}
+.pub-item:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px);border-color:var(--gold)}
+.pub-item .yr{display:inline-block;padding:3px 11px;background:var(--gold-soft);color:var(--green-900);border-radius:50px;font-size:.72rem;font-weight:700;margin-bottom:10px}
+.pub-item h4{font-family:'Inter',sans-serif;font-size:.96rem;font-weight:600;color:var(--ink);line-height:1.45;margin-bottom:9px}
+.pub-item h4 a:hover{color:var(--green-600)}
+.pub-item .meta{font-size:.8rem;color:var(--muted)}
+.pub-item .meta i{color:var(--gold);margin-right:6px}
 
-/* ---------- PEER REVIEW ---------- */
-.peer-review{
-  background:linear-gradient(135deg,var(--primary-dark) 0%,var(--primary) 100%);
-  color:#fff;
-}
-.peer-review .section-title{color:#fff}
-.peer-review .section-intro{color:rgba(255,255,255,.85)}
-.peer-review .section-label{color:var(--accent)}
-.peer-stats{
-  display:flex;justify-content:center;gap:60px;margin-bottom:50px;flex-wrap:wrap;
-}
+/* ============ PEER REVIEW ============ */
+.peer{background:linear-gradient(150deg,var(--green-900),var(--green-700));color:#fff}
+.peer .section-title{color:#fff}
+.peer .section-label{color:var(--gold-soft)}
+.peer .section-intro{color:rgba(255,255,255,.8)}
+.peer-stats{display:flex;justify-content:center;gap:70px;margin-bottom:44px;flex-wrap:wrap}
 .peer-stat{text-align:center}
-.peer-stat .num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:var(--accent);display:block;line-height:1}
-.peer-stat .lbl{font-size:.9rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.85;margin-top:8px}
-.journal-list{
-  display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto;
-}
-.journal-tag{
-  padding:10px 20px;background:rgba(255,255,255,.1);
-  border:1px solid rgba(255,255,255,.25);border-radius:50px;
-  font-size:.88rem;font-weight:500;
-}
+.peer-stat .num{font-family:'Playfair Display',serif;font-size:3.4rem;font-weight:800;color:var(--gold-soft);display:block;line-height:1}
+.peer-stat .lbl{font-size:.85rem;text-transform:uppercase;letter-spacing:1.5px;opacity:.85;margin-top:8px}
+.journal-list{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;max-width:900px;margin:0 auto}
+.journal-tag{display:inline-flex;align-items:center;gap:9px;padding:10px 20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);border-radius:50px;font-size:.87rem;font-weight:500}
+.journal-tag i{color:var(--gold-soft)}
 
-/* ---------- CONTACT ---------- */
-.contact{background:var(--white)}
-.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
-.contact-info h2{font-size:2.2rem;margin-bottom:20px}
-.contact-info p{color:var(--text-light);margin-bottom:30px}
-.contact-item{
-  display:flex;align-items:center;gap:16px;margin-bottom:20px;
-  padding:16px;background:var(--bg);border-radius:var(--radius);
-}
-.contact-item i{
-  width:44px;height:44px;border-radius:50%;
-  background:var(--primary);color:#fff;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.1rem;flex-shrink:0;
-}
-.contact-item h4{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:600;margin-bottom:2px;color:var(--primary-dark)}
-.contact-item p{font-size:.9rem;color:var(--text-light);margin:0}
-.contact-form{
-  background:var(--bg);padding:40px;border-radius:var(--radius);
-  border:1px solid var(--border);
-}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+/* ============ CV ============ */
+.cv-box{text-align:center;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:50px 30px;box-shadow:var(--shadow);max-width:640px;margin:0 auto}
+.cv-box i{font-size:2.6rem;color:var(--gold);margin-bottom:18px}
+.cv-box p{color:var(--muted);margin:14px 0 24px}
+
+/* ============ CONTACT ============ */
+.contact{background:var(--bg-alt)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:start}
+.contact-item{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:16px;box-shadow:var(--shadow)}
+.contact-item i{width:46px;height:46px;border-radius:50%;background:var(--green-700);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-item h4{font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;color:var(--green-900)}
+.contact-item p{font-size:.88rem;color:var(--muted);margin:0}
+.contact-form{background:#fff;padding:36px;border-radius:var(--radius);border:1px solid var(--line);box-shadow:var(--shadow)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .form-group{margin-bottom:16px}
-.form-group label{display:block;font-size:.85rem;font-weight:600;margin-bottom:6px;color:var(--primary-dark)}
-.form-group input,.form-group textarea{
-  width:100%;padding:12px 16px;border:1px solid var(--border);
-  border-radius:8px;font-family:inherit;font-size:.95rem;
-  background:var(--white);transition:var(--transition);
-}
-.form-group input:focus,.form-group textarea:focus{
-  outline:none;border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(26,77,62,.1);
-}
+.form-group label{display:block;font-size:.85rem;font-weight:700;color:var(--green-900);margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%;padding:12px 16px;border:1px solid var(--line);border-radius:9px;font-family:inherit;font-size:.95rem;background:var(--bg);transition:var(--tr)}
+.form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--green-600);background:#fff;box-shadow:0 0 0 3px rgba(30,111,84,.12)}
 .form-group textarea{resize:vertical;min-height:120px}
-.contact-form .btn{width:100%;padding:14px}
+.contact-form .btn{width:100%;justify-content:center}
+.form-success{display:none;background:var(--green-50);color:var(--green-700);border:1px solid var(--green-500);padding:13px;border-radius:9px;margin-top:14px;font-size:.9rem;font-weight:600;text-align:center}
+.form-success.show{display:block}
 
-/* ---------- CTA BANNER ---------- */
-.cta-banner{
-  background:var(--accent);padding:70px 0;text-align:center;
-  position:relative;overflow:hidden;
-}
-.cta-banner::before{
-  content:'';position:absolute;inset:0;
-  background-image:radial-gradient(circle at 10% 50%,rgba(26,77,62,.1) 0%,transparent 40%),
-                   radial-gradient(circle at 90% 50%,rgba(26,77,62,.1) 0%,transparent 40%);
-}
-.cta-banner h2{color:var(--primary-dark);font-size:2.2rem;margin-bottom:16px;position:relative}
-.cta-banner p{color:var(--primary-dark);opacity:.85;max-width:640px;margin:0 auto 30px;position:relative}
-.cta-banner .btn{position:relative}
+/* ============ CTA ============ */
+.cta{background:var(--gold);padding:64px 0;text-align:center}
+.cta h2{color:var(--green-900);font-size:2rem;margin-bottom:14px}
+.cta p{color:var(--green-900);opacity:.8;max-width:620px;margin:0 auto 26px}
 
-/* ---------- FOOTER ---------- */
-.footer{background:var(--primary-dark);color:rgba(255,255,255,.85);padding:70px 0 30px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:50px}
-.footer-col h4{color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:600;margin-bottom:20px;position:relative;padding-bottom:12px}
-.footer-col h4::after{content:'';position:absolute;bottom:0;left:0;width:30px;height:2px;background:var(--accent)}
-.footer-col p{font-size:.9rem;opacity:.75;margin-bottom:20px}
+/* ============ FOOTER ============ */
+.footer{background:var(--green-900);color:rgba(255,255,255,.8);padding:64px 0 28px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:44px}
+.footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;font-weight:800;margin-bottom:14px}
+.footer-logo span{color:var(--gold)}
+.footer-col h4{color:#fff;font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;margin-bottom:18px;position:relative;padding-bottom:11px}
+.footer-col h4::after{content:'';position:absolute;left:0;bottom:0;width:30px;height:2px;background:var(--gold)}
+.footer-col p{font-size:.9rem;opacity:.75;margin-bottom:18px}
 .footer-col ul{list-style:none}
-.footer-col ul li{margin-bottom:10px}
-.footer-col ul a{font-size:.9rem;opacity:.75;transition:var(--transition)}
-.footer-col ul a:hover{opacity:1;color:var(--accent);padding-left:5px}
-.footer-logo{font-family:'Playfair Display',serif;font-size:1.5rem;color:#fff;font-weight:700;margin-bottom:16px}
-.footer-logo span{color:var(--accent)}
-.social-row{display:flex;gap:12px;margin-top:20px}
-.social-row a{
-  width:38px;height:38px;border-radius:50%;
-  background:rgba(255,255,255,.1);
-  display:flex;align-items:center;justify-content:center;
-  color:#fff;transition:var(--transition);
-}
-.social-row a:hover{background:var(--accent);color:var(--primary-dark);transform:translateY(-3px)}
-.footer-bottom{
-  padding-top:30px;border-top:1px solid rgba(255,255,255,.1);
-  text-align:center;font-size:.85rem;opacity:.6;
-}
+.footer-col ul li{margin-bottom:9px}
+.footer-col ul a{font-size:.9rem;opacity:.75}
+.footer-col ul a:hover{opacity:1;color:var(--gold-soft);padding-left:5px}
+.social-row{display:flex;gap:11px;margin-top:18px}
+.social-row a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#fff}
+.social-row a:hover{background:var(--gold);color:var(--green-900);transform:translateY(-3px)}
+.footer-bottom{padding-top:26px;border-top:1px solid rgba(255,255,255,.12);text-align:center;font-size:.85rem;opacity:.6}
 
-/* ---------- RESPONSIVE ---------- */
-@media(max-width:900px){
-  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:#fff;flex-direction:column;padding:20px;gap:16px;box-shadow:var(--shadow)}
-  .nav-links.open{display:flex}
-  .nav .btn{display:none}
-  .mobile-toggle{display:block}
+/* back to top */
+.to-top{position:fixed;bottom:26px;right:26px;width:48px;height:48px;border-radius:50%;background:var(--green-700);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:var(--tr);z-index:90;border:none;cursor:pointer}
+.to-top.show{opacity:1;pointer-events:auto}
+.to-top:hover{background:var(--gold);color:var(--green-900)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;text-align:center;gap:44px}
+  .hero-bio,.hero-loc{margin-left:auto;margin-right:auto}
+  .hero-actions,.hero-social{justify-content:center}
+  .hero-photo{order:-1}
+  .photo-wrap{width:240px;height:280px}
   .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
-  .stats-bar{grid-template-columns:1fr;gap:24px}
-  .form-row{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:30px}
-  .about-highlights{grid-template-columns:1fr}
+  .pub-list{grid-template-columns:1fr}
+}
+@media(max-width:820px){
+  .nav-links{position:fixed;top:72px;left:0;right:0;background:#fff;flex-direction:column;align-items:flex-start;gap:0;padding:10px 24px 20px;box-shadow:0 12px 24px rgba(14,59,46,.12);transform:translateY(-140%);transition:transform .35s ease;z-index:99}
+  .nav-links.open{transform:translateY(0)}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:14px 0;border-bottom:1px solid var(--line);width:100%}
+  .nav-links a::after{display:none}
+  .nav-cta .btn{display:none}
+  .hamburger{display:block}
   section{padding:60px 0}
-  .hero{padding:70px 0 60px}
+  .stats{grid-template-columns:repeat(3,1fr);gap:12px}
+  .stat-num{font-size:1.9rem}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:32px}
 }
 @media(max-width:560px){
+  .container{padding:0 18px}
+  .hero{padding:50px 0 44px}
+  .photo-wrap{width:200px;height:230px}
+  .chip-1{left:-8px}.chip-2{right:-8px}
+  .stats{grid-template-columns:1fr 1fr 1fr}
+  .stat-card{padding:16px 8px}
+  .stat-num{font-size:1.6rem}
+  .stat-label{font-size:.68rem}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .about-points,.form-row{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr}
+  .peer-stats{gap:34px}
+  .peer-stat .num{font-size:2.6rem}
   .contact-form{padding:24px}
-  .peer-stats{gap:30px}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav">
-  <div class="nav-wrap">
-    <div class="logo">Nihal<span>.</span>Ahmed</div>
+<!-- ============ NAV ============ -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="#home" class="logo">Nihal<span>.</span>Ahmed</a>
     <ul class="nav-links" id="navLinks">
       <li><a href="#home">Home</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#interests">Research</a></li>
       <li><a href="#publications">Publications</a></li>
-      <li><a href="#peer-review">Peer Review</a></li>
+      <li><a href="#cv">CV</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="#contact" class="btn btn-primary">Collaborate</a>
-    <button class="mobile-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')"><i class="fa-solid fa-bars"></i></button>
+    <div class="nav-cta">
+      <a href="#contact" class="btn btn-green"><i class="fa-solid fa-envelope"></i> Get in Touch</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><i class="fa-solid fa-bars"></i></button>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- ============ HERO ============ -->
 <header class="hero" id="home">
-  <div class="container hero-content">
-    <span class="hero-badge"><i class="fa-solid fa-leaf"></i> &nbsp;PhD Researcher · Ecological Economics</span>
-    <h1>Nihal <span>Ahmed</span></h1>
-    <p class="hero-sub">Studying how food systems and agricultural trade generate, displace, and obscure costs to land and soil ecosystems.</p>
-    <p class="hero-role"><i class="fa-solid fa-location-dot"></i> Northwest A&F University, Xian, China</p>
-    <div class="hero-ctas">
-      <a href="mailto:hello@nihalahmed.uk" class="btn btn-accent"><i class="fa-solid fa-envelope"></i> &nbsp;Email Me</a>
-      <a href="#publications" class="btn btn-outline" style="color:#fff;border-color:#fff">View Publications</a>
-    </div>
-    <div class="stats-bar">
-      <div class="stat"><span class="stat-num" data-target="0">0</span><div class="stat-label">Citations</div></div>
-      <div class="stat"><span class="stat-num" data-target="0">0</span><div class="stat-label">h-index</div></div>
-      <div class="stat"><span class="stat-num" data-target="0">0</span><div class="stat-label">i10-index</div></div>
-    </div>
-  </div>
-</header>
-
-<!-- ABOUT -->
-<section class="about" id="about">
   <div class="container">
-    <div class="about-grid">
-      <div class="about-text">
-        <span class="section-label">About Me</span>
-        <h2>Ecological Economist Exploring the Hidden Costs of Global Food Systems</h2>
-        <p>I am a PhD candidate in economics at Northwest A&F University. My research is in ecological economics, where the central question is not only how land is used but what happens to the living systems within it.</p>
-        <p>Soil biological communities, nutrient cycles, and landscape-level ecosystem functioning underpin global agricultural productivity yet remain outside every existing trade and environmental accounting framework. I study how agricultural production generates costs to these systems, how those costs are embodied in trade flows and displaced across borders, and how consumption-based accounting can be extended to make the belowground dimension of global food systems visible and governable.</p>
-        <div class="about-highlights">
-          <div class="highlight-card">
-            <h4>Core Focus</h4>
-            <p>Land ecological security & belowground ecosystem multifunctionality</p>
-          </div>
-          <div class="highlight-card">
-            <h4>Methodology</h4>
-            <p>Consumption-based environmental accounting & trade flow analysis</p>
-          </div>
+    <div class="hero-grid">
+      <div class="hero-text">
+        <span class="hero-badge"><i class="fa-solid fa-leaf"></i> PhD Researcher · Ecological Economics</span>
+        <h1>Nihal <em>Ahmed</em></h1>
+        <p class="hero-role">Ecological Economist</p>
+        <p class="hero-bio">Studying how food systems and agricultural trade generate, displace, and obscure costs to land and soil ecosystems.</p>
+        <p class="hero-loc"><i class="fa-solid fa-location-dot"></i> Northwest A&amp;F University, Xian, China</p>
+        <div class="hero-actions">
+          <a href="mailto:hello@nihalahmed.uk" class="btn btn-green"><i class="fa-solid fa-envelope"></i> Email Me</a>
+          <a href="#publications" class="btn btn-outline"><i class="fa-solid fa-book-open"></i> Publications</a>
         </div>
-      </div>
-      <div class="about-visual">
-        <h3>Research Identity</h3>
-        <div class="experience-badge">
-          <span class="exp-num">PhD</span>
-          <div class="exp-text">Candidate in Economics<br><small style="opacity:.7">Northwest A&F University</small></div>
-        </div>
-        <p style="opacity:.85;margin-bottom:24px;font-size:.92rem">The thread connecting my work is a conviction that the functional biology of landscapes is both foundational to food systems and systematically undervalued in the economic frameworks that govern how land and trade are managed.</p>
-        <div class="academic-links">
+        <div class="hero-social">
           <a href="https://orcid.org/0000-0002-0183-9583" target="_blank"><i class="fa-brands fa-orcid"></i> ORCID</a>
           <a href="#"><i class="fa-solid fa-graduation-cap"></i> Scholar</a>
           <a href="#"><i class="fa-brands fa-researchgate"></i> ResearchGate</a>
@@ -411,197 +311,226 @@ section{padding:90px 0}
           <a href="#"><i class="fa-brands fa-twitter"></i> Twitter</a>
         </div>
       </div>
+      <div class="hero-photo">
+        <div class="photo-wrap">
+          <div class="photo-ring"></div>
+          <div class="photo-frame">
+            <!-- Drop a file named profile.jpg next to this HTML to show your photo -->
+            <div class="photo-fallback"><b>NA</b><small>Add <strong>profile.jpg</strong> to show your photo</small></div>
+            <img src="profile.jpg" alt="Nihal Ahmed" onerror="this.style.display='none'">
+          </div>
+          <div class="photo-chip chip-1"><i class="fa-solid fa-award"></i> PhD Candidate</div>
+          <div class="photo-chip chip-2"><i class="fa-solid fa-seedling"></i> Ecology &amp; Trade</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STATS (numbers always visible) -->
+    <div class="stats">
+      <div class="stat-card"><span class="stat-num counter" data-target="0">0</span><div class="stat-label">Citations</div></div>
+      <div class="stat-card"><span class="stat-num counter" data-target="0">0</span><div class="stat-label">h-index</div></div>
+      <div class="stat-card"><span class="stat-num counter" data-target="0">0</span><div class="stat-label">i10-index</div></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ ABOUT ============ -->
+<section class="about" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <span class="section-label">About Me</span>
+        <h2 class="section-title">Ecological Economist Exploring the Hidden Costs of Global Food Systems</h2>
+        <p>I am a PhD candidate in economics at Northwest A&amp;F University. My research is in ecological economics, where the central question is not only how land is used but what happens to the living systems within it.</p>
+        <p>Soil biological communities, nutrient cycles, and landscape-level ecosystem functioning underpin global agricultural productivity yet remain outside every existing trade and environmental accounting framework. I study how agricultural production generates costs to these systems, how those costs are embodied in trade flows and displaced across borders, and how consumption-based accounting can be extended to make the belowground dimension of global food systems visible and governable.</p>
+        <div class="about-points">
+          <div class="point"><h4>Core Focus</h4><p>Land ecological security &amp; belowground ecosystem multifunctionality</p></div>
+          <div class="point"><h4>Methodology</h4><p>Consumption-based environmental accounting &amp; trade flow analysis</p></div>
+        </div>
+      </div>
+      <div class="about-card reveal">
+        <h3>The Connecting Thread</h3>
+        <div class="about-meta"><span class="big">PhD</span><p>Candidate in Economics<br><small style="opacity:.7">Northwest A&amp;F University</small></p></div>
+        <p>My core interests are land ecological security, belowground ecosystem multifunctionality, consumption-based environmental accounting, and the equity dimensions of ecological burden displacement through trade. The thread connecting them is a conviction that the functional biology of landscapes is both foundational to food systems and systematically undervalued in the economic frameworks that govern how land and trade are managed.</p>
+        <a href="#contact" class="btn btn-gold"><i class="fa-solid fa-handshake"></i> Let's Talk Research</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- RESEARCH INTERESTS (TAG CLOUD) -->
+<!-- ============ RESEARCH INTERESTS ============ -->
 <section class="interests" id="interests">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="section-label">Research Interests</span>
       <h2 class="section-title">Areas of Inquiry</h2>
       <p class="section-intro">The conceptual terrain where my research lives — at the intersection of ecological economics, trade accounting, and soil ecosystem governance.</p>
     </div>
-    <div class="tag-cloud">
-      <div class="tag"><i class="fa-solid fa-seedling"></i> Ecological Economics</div>
-      <div class="tag"><i class="fa-solid fa-shield-halved"></i> Land Ecological Security</div>
-      <div class="tag"><i class="fa-solid fa-calculator"></i> Consumption-based Accounting</div>
-      <div class="tag"><i class="fa-solid fa-ship"></i> Agricultural Trade Footprints</div>
-      <div class="tag"><i class="fa-solid fa-worm"></i> Belowground Ecosystem Multifunctionality</div>
-      <div class="tag"><i class="fa-solid fa-globe"></i> Planetary Boundaries</div>
-      <div class="tag"><i class="fa-solid fa-scale-unbalanced"></i> Ecological Trade Deficits</div>
-      <div class="tag"><i class="fa-solid fa-mountain-sun"></i> Soil Ecosystem Functioning</div>
-      <div class="tag"><i class="fa-solid fa-landmark"></i> Sustainability Governance</div>
+    <div class="tag-cloud reveal">
+      <span class="tag"><i class="fa-solid fa-seedling"></i> Ecological Economics</span>
+      <span class="tag"><i class="fa-solid fa-shield-halved"></i> Land Ecological Security</span>
+      <span class="tag"><i class="fa-solid fa-calculator"></i> Consumption-based Accounting</span>
+      <span class="tag"><i class="fa-solid fa-ship"></i> Agricultural Trade Footprints</span>
+      <span class="tag"><i class="fa-solid fa-worm"></i> Belowground Ecosystem Multifunctionality</span>
+      <span class="tag"><i class="fa-solid fa-globe"></i> Planetary Boundaries</span>
+      <span class="tag"><i class="fa-solid fa-scale-unbalanced"></i> Ecological Trade Deficits</span>
+      <span class="tag"><i class="fa-solid fa-mountain-sun"></i> Soil Ecosystem Functioning</span>
+      <span class="tag"><i class="fa-solid fa-landmark"></i> Sustainability Governance</span>
     </div>
   </div>
 </section>
 
-<!-- RECENT PUBLICATIONS -->
-<section class="publications" id="publications">
+<!-- ============ RECENT PUBLICATIONS ============ -->
+<section id="publications">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="section-label">Recent Publications</span>
-      <h2 class="section-title">Selected Research Output</h2>
+      <h2 class="section-title">Latest Research Output</h2>
       <p class="section-intro">Peer-reviewed contributions on land ecological security, agricultural innovation, and urban climate transitions.</p>
     </div>
     <div class="pub-grid">
-      <article class="pub-card">
+      <article class="pub-card reveal">
         <span class="pub-year">2026 · Latest</span>
-        <h3>Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios</h3>
+        <h3><a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank">Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios</a></h3>
         <p class="pub-meta"><i class="fa-solid fa-users"></i> Nihal Ahmed, Nisar Ahmed Khan, Józef Ober, Muhammad Farrukh Shahzad</p>
         <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Resources, Environment and Sustainability</span></p>
         <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.1016/j.resenv.2026.100345</p>
         <a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
       </article>
-
-      <article class="pub-card">
+      <article class="pub-card reveal">
         <span class="pub-year">2026</span>
-        <h3>Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers</h3>
+        <h3><a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank">Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers</a></h3>
         <p class="pub-meta"><i class="fa-solid fa-users"></i> Nihal Ahmed, Józef Ober, Jianjun Huai</p>
         <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Environmental and Sustainability Indicators</span></p>
         <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.1016/j.indic.2026.101224</p>
         <a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
       </article>
-
-      <article class="pub-card">
+      <article class="pub-card reveal">
         <span class="pub-year">2025</span>
-        <h3>The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans</h3>
+        <h3><a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank">The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans</a></h3>
         <p class="pub-meta"><i class="fa-solid fa-users"></i> Nihal Ahmed, Nisar Ahmed Khan, Józef Ober</p>
         <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Global Transitions</span></p>
         <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.1016/j.glt.2025.01.002</p>
         <a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
       </article>
-
-      <article class="pub-card">
-        <span class="pub-year">2025</span>
-        <h3>Quantifying China's ecological assets: A carbon-based assessment of climate change and land use change effects using generalized additive models</h3>
-        <p class="pub-meta"><i class="fa-solid fa-users"></i> Nihal Ahmed, Nisar Ahmed Khan, Józef Ober, Jianjun Huai</p>
-        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Sustainable Futures</span></p>
-        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.1016/j.sftr.2025.101350</p>
-        <a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
-      </article>
-
-      <article class="pub-card">
-        <span class="pub-year">2025</span>
-        <h3>Social Capital, Crop Differences, and Farmers' Climate Change Adaptation Behaviors: Evidence from Yellow River, China</h3>
-        <p class="pub-meta"><i class="fa-solid fa-users"></i> Ziying Chang, Nihal Ahmed, Ruxue Li, Jianjun Huai</p>
-        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Agriculture</span></p>
-        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.3390/agriculture15131399</p>
-        <a href="https://doi.org/10.3390/agriculture15131399" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
-      </article>
-
-      <article class="pub-card">
-        <span class="pub-year">2024</span>
-        <h3>Synergistic evaluation of energy security and environmental sustainability in BRICS geo-political entities: An integrated index framework</h3>
-        <p class="pub-meta"><i class="fa-solid fa-users"></i> Ahmed Nihal, Franklin Ore Areche, Jesús Manuel More López, et al.</p>
-        <p class="pub-meta"><i class="fa-solid fa-book"></i> <span class="pub-journal">Equilibrium. Quarterly Journal of Economics and Economic Policy</span></p>
-        <p class="pub-meta"><i class="fa-solid fa-link"></i> DOI: 10.24136/eq.3088</p>
-        <a href="https://doi.org/10.24136/eq.3088" target="_blank" class="pub-link">View Article <i class="fa-solid fa-arrow-right"></i></a>
-      </article>
     </div>
-  </div>
-</section>
-
-<!-- RESEARCH THEMES -->
-<section class="themes">
-  <div class="container">
-    <div class="section-head">
-      <span class="section-label">The Connecting Thread</span>
-      <h2 class="section-title">Four Pillars of My Research</h2>
-      <p class="section-intro">The conviction linking my work: the functional biology of landscapes is foundational to food systems and systematically undervalued in economic governance.</p>
-    </div>
-    <div class="theme-grid">
-      <div class="theme-card">
-        <div class="theme-icon"><i class="fa-solid fa-shield-halved"></i></div>
-        <h4>Land Ecological Security</h4>
-        <p>Mapping and modelling the integrity of landscapes that underpin agricultural systems across borders.</p>
-      </div>
-      <div class="theme-card">
-        <div class="theme-icon"><i class="fa-solid fa-worm"></i></div>
-        <h4>Belowground Multifunctionality</h4>
-        <p>Making visible the soil biological communities and nutrient cycles absent from current trade accounting.</p>
-      </div>
-      <div class="theme-card">
-        <div class="theme-icon"><i class="fa-solid fa-calculator"></i></div>
-        <h4>Consumption-based Accounting</h4>
-        <p>Extending environmental accounts to capture belowground costs embodied in agricultural trade flows.</p>
-      </div>
-      <div class="theme-card">
-        <div class="theme-icon"><i class="fa-solid fa-scale-balanced"></i></div>
-        <h4>Equity of Burden Displacement</h4>
-        <p>Examining who bears the ecological cost when consumption in one place degrades land in another.</p>
+    <div class="view-all-wrap reveal">
+      <a href="#all-publications" class="btn btn-green"><i class="fa-solid fa-list"></i> View All Publications</a>
+      <div class="year-links">
+        <a href="#all-publications" class="year-link">See all publications 2026 <i class="fa-solid fa-angle-down"></i></a>
+        <a href="#all-publications" class="year-link">See all publications 2025 <i class="fa-solid fa-angle-down"></i></a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PEER REVIEW -->
-<section class="peer-review" id="peer-review">
+<!-- ============ PEER REVIEW ============ -->
+<section class="peer" id="peer-review">
   <div class="container">
-    <div class="section-head">
+    <div class="section-head reveal">
       <span class="section-label">Academic Service</span>
       <h2 class="section-title">Active Peer Reviewer</h2>
       <p class="section-intro">Contributing to the rigor of the field through manuscript review for leading journals in sustainability, agriculture, and environmental policy.</p>
     </div>
-    <div class="peer-stats">
-      <div class="peer-stat"><span class="num">0</span><div class="lbl">Reviews</div></div>
-      <div class="peer-stat"><span class="num">0</span><div class="lbl">Journals</div></div>
+    <div class="peer-stats reveal">
+      <div class="peer-stat"><span class="num counter" data-target="0">0</span><div class="lbl">Reviews</div></div>
+      <div class="peer-stat"><span class="num counter" data-target="0">0</span><div class="lbl">Journals</div></div>
     </div>
-    <div class="journal-list">
-      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Agricultural Systems</span>
-      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Climatic Change</span>
-      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Environmental and Sustainability Indicators</span>
-      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Ecological Indicators</span>
-      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> &nbsp;Environmental Science & Policy</span>
+    <div class="journal-list reveal">
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> Agricultural Systems</span>
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> Climatic Change</span>
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> Environmental and Sustainability Indicators</span>
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> Ecological Indicators</span>
+      <span class="journal-tag"><i class="fa-solid fa-book-open"></i> Environmental Science &amp; Policy</span>
     </div>
   </div>
 </section>
 
-<!-- CTA BANNER -->
-<section class="cta-banner">
+<!-- ============ ALL PUBLICATIONS ============ -->
+<section class="pubs-all" id="all-publications">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Full List</span>
+      <h2 class="section-title">All Publications</h2>
+      <p class="section-intro">A complete record of peer-reviewed articles across ecological economics, energy, sustainability, and agricultural policy.</p>
+    </div>
+    <div class="pub-list">
+      <div class="pub-item reveal"><span class="yr">2026</span><h4><a href="https://doi.org/10.1016/j.resenv.2026.100345" target="_blank">Deep learning approaches for synthesizing Land Ecological Security pathways in global land-use scenarios</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Resources, Environment and Sustainability</p></div>
+      <div class="pub-item reveal"><span class="yr">2026</span><h4><a href="https://doi.org/10.1016/j.indic.2026.101224" target="_blank">Efficiency divergence in agricultural innovation-to-ecological security transformation: Network analysis of Chinese provincial spillovers</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Environmental and Sustainability Indicators</p></div>
+      <div class="pub-item reveal"><span class="yr">2025</span><h4><a href="https://doi.org/10.1016/j.glt.2025.01.002" target="_blank">The role of carbon peaking targets in urban green economic transition: Insights from U.S. city-level climate action plans</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Global Transitions</p></div>
+      <div class="pub-item reveal"><span class="yr">2025</span><h4><a href="https://doi.org/10.1016/j.sftr.2025.101350" target="_blank">Quantifying China's ecological assets: A carbon-based assessment of climate change and land use change effects using generalized additive models</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Sustainable Futures</p></div>
+      <div class="pub-item reveal"><span class="yr">2025</span><h4><a href="https://doi.org/10.3390/agriculture15131399" target="_blank">Social Capital, Crop Differences, and Farmers' Climate Change Adaptation Behaviors: Evidence from Yellow River, China</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Agriculture</p></div>
+      <div class="pub-item reveal"><span class="yr">2024</span><h4><a href="https://doi.org/10.24136/eq.3088" target="_blank">Synergistic evaluation of energy security and environmental sustainability in BRICS geo-political entities: An integrated index framework</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Equilibrium. Quarterly Journal of Economics and Economic Policy</p></div>
+      <div class="pub-item reveal"><span class="yr">2023</span><h4><a href="https://doi.org/10.3390/su15065145" target="_blank">Environmental Regulation, Fiscal Decentralization, and Agricultural Carbon Intensity: A Challenge to Ecological Sustainability Policies in the United States</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Sustainability</p></div>
+      <div class="pub-item reveal"><span class="yr">2023</span><h4><a href="https://doi.org/10.1371/journal.pone.0276973" target="_blank">A comparative study of the policy response to COVID-19 in the ASEAN region: A dynamic simulated ARDL approach</a></h4><p class="meta"><i class="fa-solid fa-book"></i>PLOS ONE</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/su15010350" target="_blank">Intensifying Effects of Climate Change in Food Loss: A Threat to Food Security in Turkey</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Sustainability</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/agriculture12101742" target="_blank">Technical Efficiency Analysis of Layer and Broiler Poultry Farmers in Pakistan</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Agriculture</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/su141912067" target="_blank">The Role of Educating the Labor Force in Sustaining a Green Economy in MINT Countries: Panel Symmetric and Asymmetric Approach</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Sustainability</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/en15196956" target="_blank">Nexus between Nuclear Energy Consumption and Carbon Footprint in Asia Pacific Region: Policy toward Environmental Sustainability</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Energies</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/su141811768" target="_blank">Nexus between Cyclical Innovation in Green Technologies and CO2 Emissions in Nordic Countries: Consent toward Environmental Sustainability</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Sustainability</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/agriculture12091320" target="_blank">Causal Linkage among Agricultural Insurance, Air Pollution, and Agricultural Green Total Factor Productivity in United States: Pairwise Granger Causality Approach</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Agriculture</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/en15155422" target="_blank">Energy Diversification: A Friend or Foe to Economic Growth in Nordic Countries? A Novel Energy Diversification Approach</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Energies</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/en15145199" target="_blank">Exploring the Causal Relationship among Green Taxes, Energy Intensity, and Energy Consumption in Nordic Countries: Dumitrescu and Hurlin Causality Approach</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Energies</p></div>
+      <div class="pub-item reveal"><span class="yr">2022</span><h4><a href="https://doi.org/10.3390/en15145068" target="_blank">Green Finance and Green Energy Nexus in ASEAN Countries: A Bootstrap Panel Causality Test</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Energies</p></div>
+      <div class="pub-item reveal"><span class="yr">2021</span><h4><a href="https://doi.org/10.3390/su132011315" target="_blank">Assessing the Impact of Policy Measures in Reducing the COVID-19 Pandemic: A Case Study of South Asia</a></h4><p class="meta"><i class="fa-solid fa-book"></i>Sustainability</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CV ============ -->
+<section id="cv">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Curriculum Vitae</span>
+      <h2 class="section-title">Academic CV</h2>
+    </div>
+    <div class="cv-box reveal">
+      <i class="fa-solid fa-file-lines"></i>
+      <h3 style="font-family:'Inter',sans-serif;font-size:1.2rem;font-weight:700;color:var(--green-900)">CV content coming soon</h3>
+      <p>My full curriculum vitae — including education, publications, reviews, and teaching — will be available here shortly.</p>
+      <a href="mailto:hello@nihalahmed.uk?subject=CV Request" class="btn btn-outline"><i class="fa-solid fa-download"></i> Request CV by Email</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="cta">
   <div class="container">
     <h2>Let's Build Knowledge Together</h2>
     <p>If your work touches on ecological economics, land security, or consumption-based accounting, I welcome the conversation.</p>
-    <a href="#contact" class="btn btn-primary"><i class="fa-solid fa-handshake"></i> &nbsp;Start a Collaboration</a>
+    <a href="#contact" class="btn btn-green"><i class="fa-solid fa-handshake"></i> Start a Collaboration</a>
   </div>
 </section>
 
-<!-- CONTACT -->
+<!-- ============ CONTACT ============ -->
 <section class="contact" id="contact">
   <div class="container">
+    <div class="section-head reveal">
+      <span class="section-label">Get in Touch</span>
+      <h2 class="section-title">Open to Collaboration</h2>
+    </div>
     <div class="contact-grid">
-      <div class="contact-info">
-        <span class="section-label">Get in Touch</span>
-        <h2>Open to Research Collaboration</h2>
-        <p>I am happy to hear from you — whether it is about research collaborations, peer review invitations, or general inquiries. Use the form or reach out directly.</p>
-        <div class="contact-item">
-          <i class="fa-solid fa-envelope"></i>
-          <div><h4>Email</h4><p>hello@nihalahmed.uk</p></div>
-        </div>
-        <div class="contact-item">
-          <i class="fa-solid fa-location-dot"></i>
-          <div><h4>Affiliation</h4><p>Northwest A&F University, Xian, China</p></div>
-        </div>
-        <div class="contact-item">
-          <i class="fa-brands fa-orcid"></i>
-          <div><h4>ORCID</h4><p>0000-0002-0183-9583</p></div>
-        </div>
+      <div class="reveal">
+        <p style="color:var(--muted);margin-bottom:24px">I am happy to hear from you — whether it is about research collaborations, peer review invitations, or general inquiries. Use the form or reach out directly.</p>
+        <div class="contact-item"><i class="fa-solid fa-envelope"></i><div><h4>Email</h4><p>hello@nihalahmed.uk</p></div></div>
+        <div class="contact-item"><i class="fa-solid fa-location-dot"></i><div><h4>Affiliation</h4><p>Northwest A&amp;F University, Xian, China</p></div></div>
+        <div class="contact-item"><i class="fa-brands fa-orcid"></i><div><h4>ORCID</h4><p>0000-0002-0183-9583</p></div></div>
       </div>
-      <form class="contact-form" onsubmit="event.preventDefault();alert('Message sent successfully!');this.reset();">
+      <form class="contact-form reveal" id="contactForm">
         <div class="form-row">
           <div class="form-group"><label>Name</label><input type="text" required></div>
           <div class="form-group"><label>Email</label><input type="email" required></div>
         </div>
         <div class="form-group"><label>Subject</label><input type="text" required></div>
         <div class="form-group"><label>Message</label><textarea required></textarea></div>
-        <button type="submit" class="btn btn-primary">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+        <button type="submit" class="btn btn-green"><i class="fa-solid fa-paper-plane"></i> Send Message</button>
+        <div class="form-success" id="formSuccess"><i class="fa-solid fa-circle-check"></i> Message sent successfully!</div>
       </form>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
+<!-- ============ FOOTER ============ -->
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
@@ -618,59 +547,72 @@ section{padding:90px 0}
       </div>
       <div class="footer-col">
         <h4>Navigate</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#interests">Research Interests</a></li>
-          <li><a href="#publications">Publications</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+        <ul><li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#interests">Research Interests</a></li><li><a href="#publications">Publications</a></li><li><a href="#cv">CV</a></li><li><a href="#contact">Contact</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Research</h4>
-        <ul>
-          <li><a href="#interests">Ecological Economics</a></li>
-          <li><a href="#interests">Land Security</a></li>
-          <li><a href="#interests">Trade Footprints</a></li>
-          <li><a href="#interests">Soil Ecosystems</a></li>
-          <li><a href="#interests">Planetary Boundaries</a></li>
-        </ul>
+        <ul><li><a href="#interests">Ecological Economics</a></li><li><a href="#interests">Land Security</a></li><li><a href="#interests">Trade Footprints</a></li><li><a href="#interests">Soil Ecosystems</a></li><li><a href="#interests">Planetary Boundaries</a></li></ul>
       </div>
       <div class="footer-col">
         <h4>Profiles</h4>
-        <ul>
-          <li><a href="https://orcid.org/0000-0002-0183-9583" target="_blank">ORCID</a></li>
-          <li><a href="#">Google Scholar</a></li>
-          <li><a href="#">ResearchGate</a></li>
-          <li><a href="#">LinkedIn</a></li>
-          <li><a href="#">Twitter / X</a></li>
-        </ul>
+        <ul><li><a href="https://orcid.org/0000-0002-0183-9583" target="_blank">ORCID</a></li><li><a href="#">Google Scholar</a></li><li><a href="#">ResearchGate</a></li><li><a href="#">LinkedIn</a></li><li><a href="#">Twitter / X</a></li></ul>
       </div>
     </div>
     <div class="footer-bottom">© 2026 Nihal Ahmed · Built with care for the living systems beneath our feet.</div>
   </div>
 </footer>
 
+<button class="to-top" id="toTop" aria-label="Back to top"><i class="fa-solid fa-arrow-up"></i></button>
+
 <script>
-// Animated counters
-const counters = document.querySelectorAll('.stat-num, .peer-stat .num');
-const animate = (el) => {
-  const target = +el.dataset?.target || +el.textContent;
-  if(target === 0){ el.textContent = '0'; return; }
-  let cur = 0;
-  const step = Math.max(1, Math.ceil(target/40));
-  const tick = () => {
-    cur += step;
-    if(cur >= target){ el.textContent = target; return; }
-    el.textContent = cur;
-    requestAnimationFrame(tick);
-  };
-  tick();
-};
-const obs = new IntersectionObserver((entries)=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ animate(e.target); obs.unobserve(e.target); }});
+// Nav scroll effect
+const nav=document.getElementById('nav');
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>10);
+  toTop.classList.toggle('show',window.scrollY>500);
+});
+toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+// Mobile menu
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>navLinks.classList.toggle('open'));
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+// Counters — always show the value, then animate
+function animateCounter(el){
+  const target=parseInt(el.getAttribute('data-target'))||0;
+  const duration=1400;const start=performance.now();
+  function step(now){
+    const p=Math.min((now-start)/duration,1);
+    const eased=1-Math.pow(1-p,3);
+    el.textContent=Math.floor(eased*target);
+    if(p<1)requestAnimationFrame(step);else el.textContent=target;
+  }
+  requestAnimationFrame(step);
+}
+const counterObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){animateCounter(e.target);counterObs.unobserve(e.target);}});
 },{threshold:.4});
-counters.forEach(c=>obs.observe(c));
+document.querySelectorAll('.counter').forEach(c=>{
+  c.textContent=c.getAttribute('data-target')||'0'; // ensure visible immediately
+  counterObs.observe(c);
+});
+
+// Reveal on scroll
+const revealObs=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');revealObs.unobserve(e.target);}});
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>revealObs.observe(el));
+
+// Contact form success
+document.getElementById('contactForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  document.getElementById('formSuccess').classList.add('show');
+  this.reset();
+  setTimeout(()=>document.getElementById('formSuccess').classList.remove('show'),4000);
+});
 </script>
 </body>
 </html>
