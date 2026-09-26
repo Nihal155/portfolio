@@ -139,6 +139,9 @@ section{padding:80px 0;transition:background-color .35s ease,color .35s ease}
 
 /* ============ TAGS ============ */
 .interests{background:var(--bg-alt)}
+.interest-group{margin-bottom:30px}
+.interest-group:last-child{margin-bottom:0}
+.interest-group-label{display:block;text-align:center;font-size:.78rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green-700);margin-bottom:16px}
 .tag-cloud{display:flex;flex-wrap:wrap;gap:13px;justify-content:center;max-width:900px;margin:0 auto}
 .tag{display:inline-flex;align-items:center;gap:9px;padding:12px 22px;background:var(--card);border:1px solid var(--line);border-radius:50px;font-weight:600;font-size:.93rem;color:var(--green-900);box-shadow:var(--shadow);transition:var(--tr)}
 .tag:hover{background:var(--green-700);color:#fff;border-color:var(--green-700);transform:translateY(-3px)}
