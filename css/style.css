@@ -176,6 +176,53 @@ section{padding:80px 0;transition:background-color .35s ease,color .35s ease}
 .pub-item .meta{font-size:.8rem;color:var(--muted)}
 .pub-item .meta i{color:var(--gold);margin-right:6px}
 
+/* ============ PUBLICATIONS DETAIL LIST ============ */
+.pub-year-heading{display:flex;align-items:center;gap:18px;margin:48px 0 22px}
+.pub-year-heading:first-child{margin-top:0}
+.pub-year-heading span{font-family:'Playfair Display',serif;font-size:1.55rem;font-weight:800;color:var(--green-900);white-space:nowrap}
+.pub-year-heading::after{content:'';flex:1;height:1px;background:var(--line)}
+
+.pub-detail-list{display:flex;flex-direction:column;gap:20px;max-width:900px;margin:0 auto}
+.pub-row{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 32px;box-shadow:var(--shadow);transition:var(--tr)}
+.pub-row:hover{box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.pub-row .yr{display:inline-block;padding:4px 13px;background:var(--gold-soft);color:var(--green-900);border-radius:50px;font-size:.74rem;font-weight:700;letter-spacing:.3px;margin-bottom:14px}
+.pub-row h3{font-family:'Inter',sans-serif;font-size:1.08rem;font-weight:700;color:var(--ink);line-height:1.5;margin-bottom:10px}
+.pub-row h3 a:hover{color:var(--green-600)}
+.pub-row .authors{font-size:.9rem;color:var(--muted);margin-bottom:6px}
+.pub-row .authors b{color:var(--green-700);font-weight:700}
+.pub-journal-name{font-size:.86rem;color:var(--green-700);font-style:italic;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.pub-journal-name i{color:var(--gold);font-style:normal}
+
+.pub-metrics{display:flex;flex-wrap:wrap;gap:9px;margin-bottom:16px}
+.metric-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:50px;font-size:.76rem;font-weight:700;transition:var(--tr)}
+.metric-badge.if{background:var(--green-50);color:var(--green-700)}
+.metric-badge.cite{background:var(--gold-soft);color:var(--green-900)}
+.metric-badge.review{background:var(--bg-alt);color:var(--muted)}
+.metric-badge.doi{background:var(--bg-alt);color:var(--muted);font-weight:600;letter-spacing:.2px}
+.metric-badge.doi:hover{background:var(--green-700);color:#fff}
+
+.pub-actions{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:6px}
+.btn-sm{padding:9px 20px;font-size:.83rem}
+
+.pub-note-line{font-size:.78rem;color:var(--muted);font-style:italic;display:flex;align-items:center;gap:7px;margin:4px 0 14px}
+.pub-note-line i{color:var(--gold);font-style:normal}
+
+.pub-abstract{margin-top:10px}
+.pub-abstract summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:9px;padding:9px 20px;border-radius:50px;border:2px solid var(--green-700);color:var(--green-700);font-weight:600;font-size:.83rem;width:fit-content;transition:var(--tr)}
+.pub-abstract summary::-webkit-details-marker{display:none}
+.pub-abstract summary::marker{content:''}
+.pub-abstract summary i{font-size:.72rem;transition:transform .3s ease}
+.pub-abstract summary:hover{background:var(--green-50)}
+.pub-abstract[open] summary{background:var(--green-700);color:#fff}
+.pub-abstract[open] summary i{transform:rotate(180deg)}
+.pub-abstract .abstract-text{margin-top:16px;padding:20px 22px;background:var(--bg);border-radius:10px;color:var(--muted);font-size:.9rem;line-height:1.8}
+
+.pub-metrics-note{text-align:center;font-size:.8rem;color:var(--muted);margin-top:36px;max-width:700px;margin-left:auto;margin-right:auto}
+
+[data-theme="dark"] .pub-row h3{color:#e8f3ec}
+[data-theme="dark"] .metric-badge.if{color:#8fd0b2}
+[data-theme="dark"] .pub-abstract summary:hover{background:rgba(255,255,255,.06)}
+
 /* ============ PEER REVIEW ============ */
 .peer{background:linear-gradient(150deg,var(--green-900),var(--green-700));color:#fff}
 .peer .section-title{color:#fff}
