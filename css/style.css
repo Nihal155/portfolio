@@ -191,6 +191,88 @@ section{padding:80px 0;transition:background-color .35s ease,color .35s ease}
 .cv-box i{font-size:2.6rem;color:var(--gold);margin-bottom:18px}
 .cv-box p{color:var(--muted);margin:14px 0 24px}
 
+/* ============ CV DETAIL ============ */
+#cv{background:var(--bg-alt)}
+.cv-actions{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:8px}
+
+.cv-intro{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:38px 40px;max-width:900px;margin:0 auto 60px;text-align:center;transition:background-color .35s ease,border-color .35s ease}
+.cv-intro h2{font-size:1.6rem;margin-bottom:6px}
+.cv-intro .cv-role{color:var(--green-700);font-weight:600;font-size:1.02rem;margin-bottom:4px}
+.cv-intro .cv-affil{color:var(--muted);font-size:.92rem;margin-bottom:20px}
+.cv-intro .cv-contacts{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:24px}
+.cv-intro .cv-contacts a{display:inline-flex;align-items:center;gap:8px;padding:8px 16px;background:var(--bg);border:1px solid var(--line);border-radius:50px;font-size:.83rem;font-weight:600;color:var(--green-900)}
+.cv-intro .cv-contacts a:hover{background:var(--green-700);color:#fff;border-color:var(--green-700)}
+.cv-intro .cv-contacts a i{color:var(--gold)}
+.cv-intro .cv-contacts a:hover i{color:var(--gold-soft)}
+
+.cv-block{max-width:900px;margin:0 auto 54px}
+.cv-block-head{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.cv-block-head .ic{width:44px;height:44px;flex-shrink:0;border-radius:50%;background:var(--green-50);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:background-color .35s ease}
+.cv-block-head h2{font-size:1.35rem;margin:0}
+
+.cv-profile-text{background:var(--card);border-left:4px solid var(--gold);border-radius:10px;padding:22px 26px;color:var(--muted);font-size:.98rem;line-height:1.75;box-shadow:var(--shadow)}
+
+.cv-entry{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:16px;box-shadow:var(--shadow);transition:var(--tr)}
+.cv-entry:hover{box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.cv-entry-top{display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:6px 14px}
+.cv-entry-title{font-family:'Inter',sans-serif;font-weight:700;font-size:1.02rem;color:var(--ink)}
+.cv-entry-date{font-size:.83rem;color:var(--muted);font-style:italic;white-space:nowrap}
+.cv-entry-org{font-size:.88rem;color:var(--green-700);font-weight:600;margin-top:5px}
+.cv-entry-sub{font-size:.86rem;color:var(--muted);margin-top:6px}
+
+.cv-subentry{margin-top:20px;padding-top:18px;border-top:1px dashed var(--line)}
+.cv-subentry:first-of-type{margin-top:18px}
+.cv-subentry h4{display:flex;align-items:center;gap:9px;font-size:.94rem;font-weight:700;color:var(--green-900);margin-bottom:10px}
+.cv-subentry h4 i{color:var(--gold);font-size:.8rem}
+.cv-bullets{list-style:none;display:flex;flex-direction:column;gap:8px}
+.cv-bullets li{position:relative;padding-left:20px;color:var(--text);font-size:.92rem;line-height:1.65}
+.cv-bullets li::before{content:'\2013';position:absolute;left:0;top:0;color:var(--gold);font-weight:700}
+
+.cv-pub{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 24px;margin-bottom:14px;transition:var(--tr)}
+.cv-pub:hover{box-shadow:var(--shadow-lg);border-color:var(--gold);transform:translateY(-2px)}
+.cv-pub .yr{display:inline-block;padding:3px 11px;background:var(--gold-soft);color:var(--green-900);border-radius:50px;font-size:.72rem;font-weight:700;margin-bottom:10px}
+.cv-pub h4{font-family:'Inter',sans-serif;font-size:.98rem;font-weight:600;color:var(--ink);line-height:1.5;margin-bottom:8px}
+.cv-pub .authors{font-size:.86rem;color:var(--muted);margin-bottom:8px}
+.cv-pub .authors b{color:var(--green-700);font-weight:700}
+.cv-pub .journal-line{font-size:.82rem;color:var(--muted);display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center}
+.cv-pub .journal-line em{color:var(--green-700);font-style:italic}
+.cv-pub .journal-line a{color:var(--green-700);font-weight:600}
+.cv-pub .journal-line a:hover{color:var(--gold)}
+.cv-pub .if-badge{background:var(--green-50);color:var(--green-700);padding:2px 11px;border-radius:50px;font-weight:700;font-size:.73rem}
+.cv-pub-note{text-align:center;font-size:.88rem;color:var(--muted);margin-top:18px}
+.cv-pub-note a{color:var(--green-700);font-weight:600}
+.cv-pub-note a:hover{color:var(--gold)}
+
+.cv-skill-group{margin-bottom:22px}
+.cv-skill-group:last-child{margin-bottom:0}
+.cv-skill-group h4{font-size:.9rem;font-weight:700;color:var(--green-900);margin-bottom:12px;text-transform:uppercase;letter-spacing:.5px}
+.cv-skill-tags{display:flex;flex-wrap:wrap;gap:9px}
+.cv-skill-tags span{background:var(--green-50);color:var(--green-700);padding:7px 16px;border-radius:50px;font-size:.83rem;font-weight:600;transition:background-color .35s ease,color .35s ease}
+.cv-skill-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px 30px;box-shadow:var(--shadow)}
+
+.cv-funding h3{font-family:'Inter',sans-serif;font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:8px}
+.cv-funding p{font-size:.9rem;color:var(--muted);line-height:1.7}
+
+.cv-refs{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.cv-ref-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px 24px;box-shadow:var(--shadow)}
+.cv-ref-card h4{font-family:'Inter',sans-serif;font-weight:700;color:var(--ink);margin-bottom:8px;font-size:.96rem}
+.cv-ref-card p{font-size:.85rem;color:var(--muted);line-height:1.7}
+.cv-ref-card a{color:var(--green-700);font-weight:600}
+.cv-ref-card a:hover{color:var(--gold)}
+
+[data-theme="dark"] .cv-intro .cv-contacts a{color:#e8f3ec}
+[data-theme="dark"] .cv-entry-title{color:#e8f3ec}
+[data-theme="dark"] .cv-pub h4{color:#e8f3ec}
+[data-theme="dark"] .cv-ref-card h4{color:#e8f3ec}
+[data-theme="dark"] .cv-funding h3{color:#e8f3ec}
+
+@media(max-width:640px){
+  .cv-intro{padding:30px 22px}
+  .cv-entry-top{flex-direction:column;align-items:flex-start}
+  .cv-refs{grid-template-columns:1fr}
+  .cv-skill-card{padding:22px}
+}
+
 /* ============ CONTACT ============ */
 .contact{background:var(--bg-alt)}
 .contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:start}
